@@ -35,6 +35,9 @@ var prof60=0;
 var prof40=0;
 var gotivka=0;
 var balans=0;
+var start;
+var stop;
+
 var sqlq="";
 var cell = [];
 txt = fs.readFileSync(filename, "utf8");
@@ -56,7 +59,15 @@ fs.createReadStream(filename)
   console.log(max+"   ------------------------");
   max--;
   var cntadd=0;
+  var tmp='';
   for (var i=1; i<max;i++){
+    tmp=cell['Період'];
+    start='';
+    stop='';
+    for (var j=8;j<18;j++) start+=tmp[j];
+    for (var j=21;j<31;j++) stop+=tmp[j];
+
+//console.log ("'"+start+"'-------------------------------------:"+stop+":");
     cell=results[i];
     gotivka=normal(cell['Поїздки за готівку (зібрана готівка)']);
     itogo=normal(cell['Тижневий баланс']) - normal(gotivka);
@@ -69,8 +80,8 @@ fs.createReadStream(filename)
     if (itogo) {
 //      console.log (id1+" "+id2+" "+" i:"+itogo+" 40%:"+prof40.toFixed(2)+" 60%:"+prof60.toFixed(2)+" g:"+gotivka+" b:"+ balans.toFixed(2));
       cntadd++;
-      sqlq="INSERT INTO bolt (namebolt, telbolt, itogo, pro40, pro60, gotivka,balans) VALUES('" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40 + ", "+ prof60 + ", "+ gotivka + ", " + balans + ");"
-      console.log(sqlq);
+      sqlq="INSERT INTO bolt (namebolt, telbolt, itogo, pro40, pro60, gotivka, balans, start, end) VALUES('" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2) + ", '"+start+"', '"+stop+"');"
+//      console.log(sqlq);
       connection.execute(sqlq, function(err, sqlresults, fields) {
       if (err) console.log(err);
         console.log(sqlresults); // data
@@ -81,7 +92,7 @@ fs.createReadStream(filename)
     connection.end();
     console.log("----------------------------------------------");
     console.log("Всего добавлено "+cntadd+" из "+max+"строк");
-//console.log(results[2]);
+console.log(results[2]);
   });
 
 
