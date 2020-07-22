@@ -2,7 +2,7 @@
 // denis.kudriakov@gmail.com
 //
 
-const fileame="test.csv";
+const filename="test.csv";
 const csv = require("csv-parser");
 const fs = require("fs");  
 const mysql = require("mysql2");
@@ -24,14 +24,15 @@ var gotivka=0;
 var balans=0;
 var sqlq="";
 var cell = [];
-txt = fs.readFileSync(fileame, "utf8");
+txt = fs.readFileSync(filename, "utf8");
 const results = [];
 /////////////////// translante CSV 2 obj
 console.log ("читаем CSV :"+filename);
-fs.createReadStream('test.csv');
-  .pipe(csv());
-  .on('data', (data) => results.push(data));
+fs.createReadStream('test.csv')
+  .pipe(csv())
+  .on('data', (data) => results.push(data))
   .on('end', () => {
+//console.log(results);
     for (var i=0;i<results.length;i++){
       cell=results[i];
       itogo=cell['Итого'];

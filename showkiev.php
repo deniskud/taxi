@@ -27,13 +27,13 @@ echo ">не показывать ботов <input type='submit' value='обно
 
 
 $host='localhost';
-$database='4okna'; // имя базы данных
-$user='4okna'; //user
-$pswd='zeratul'; // пароль
+$database='zmey'; // имя базы данных
+$user='root'; //user
+$pswd='zeratul@)))'; // пароль
 $dbh = mysqli_connect($host, $user, $pswd, $database) or die("Can not connect to MySQL.");
 
 //building query
-$sql = "SELECT * FROM kiev WHERE dt > NOW()-INTERVAL $srok DAY ORDER BY $sort";
+$sql = "SELECT * FROM uber WHERE start > NOW()-INTERVAL $srok DAY ORDER BY $sort";
 $result = mysqli_query($dbh,$sql) or die('query error: ' . mysql_error());
 // Выводим результаты в html
 $count=0;
