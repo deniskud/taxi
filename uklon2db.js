@@ -5,11 +5,18 @@
 exports.__esModule = true;
 var path = require("path");
 var xlsx_1 = require("xlsx");
-const csvfilename="test.csv";
+const csvfilename="tmp.csv";
 const csv = require("csv-parser");
 const fs = require("fs");  
 const mysql = require("mysql2");
-var xlsfilename = 'test.xlsx';
+
+if (!process.argv[2]) {
+  console.log("No file! Usge uklon2db FILENAME.XLSX"); 
+  return(0);
+}
+
+var xlsfilename=process.argv[2];
+//var xlsfilename = 'test.xlsx';
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",

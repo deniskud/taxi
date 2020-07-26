@@ -2,7 +2,9 @@
 // denis.kudriakov@gmail.com
 //
 
-const filename="test.csv";
+if (!process.argv[2])  {console.log("No file! Usge uber2db FILENAME.CSV"); return(0);}
+const filename=process.argv[2];
+//const filename="test.csv";
 const csv = require("csv-parser");
 const fs = require("fs");  
 const mysql = require("mysql2");
