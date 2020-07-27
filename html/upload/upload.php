@@ -1,7 +1,13 @@
 <?php
 session_start();
-
+$ok='0';
 $message = ''; 
+if (isset($_POST['operator'])) $agregator=$_POST['operator'];
+if (isset($_POST['startp']))   $startp=$_POST['startp'];
+if (isset($_POST['endp']))     $endp=$_POST['endp'];
+//echo 'start:'.$startp.' endp:'.$endp.'<br>';
+
+
 if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
 {
   if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK)
@@ -29,6 +35,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
       if(move_uploaded_file($fileTmpPath, $dest_path)) 
       {
         $message ='File is successfully uploaded.';
+        $ok='1';
       }
       else 
       {
@@ -46,6 +53,24 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
     $message .= 'Error:' . $_FILES['uploadedFile']['error'];
   }
 }
-$_SESSION['message'] = $message;
-header("Location: index.php");
+
+//$_SESSION['message'] = $message;
+if ($ok=='1') {echo '<font color="#2222aa">';}
+else {echo '<font color="#bb1111">';}
+echo $message.'<br></font>';
+
+echo '<font face="Arial">File &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp :<b>'.$fileName.'</b> <br>Format &nbsp&nbsp:<b>'.$agregator.'</b><br>  saved as:<b>'.$newFileName.'</b></font><br>';
+echo 'From&nbsp&nbsp&nbsp&nbsp:<b>'.$startp.'</b><br>To &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:<b>'.$endp.'</b><br>';
+echo '<br>---------<br>';
+
+$execstring='';
+$execstr2='';
+$execstring='node /var/www/js/'.$agregator.'2db.js /var/www/html/zmey/uploaded_files/'.$newFileName.' '.$startp.' '.$endp;
+$execstr2='rm -y '.$newFileName;
+//if ($agregator='uber') $execstring.
+echo $execstring.'<br>';
+$ret=exec($execstring);
+echo '<p><a href="http://taxi.4okna.com/zmey/index.php"> <button> <--- Back</button></a></p>';
+exec(execstr2);
+//header("Location: index.php");
 ?>
