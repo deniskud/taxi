@@ -19,10 +19,10 @@ var xlsfilename=process.argv[2];
 //var xlsfilename = 'test.xlsx';
 const connection = mysql.createConnection({
   host: "localhost",
-  user: "root",
+  user: "zmey",
   charset: "utf8",
-  database: "zmey",
-  password: "zeratul@)))"
+  database: "taxi",
+  password: "kalina"
 });
 var id1=0;
 var id2=0;

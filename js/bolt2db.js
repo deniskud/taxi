@@ -1,7 +1,7 @@
 // 16.07.2020
 // denis.kudriakov@gmail.com
 //
-
+//time-ok
 
 function normal(txt){
   var cnt=0;
@@ -23,10 +23,10 @@ const fs = require("fs");
 const mysql = require("mysql2");
 const connection = mysql.createConnection({
   host: "localhost",
-  user: "root",
+  user: "zmey",
   charset: "utf8",
-  database: "zmey",
-  password: "zeratul@)))"
+  database: "taxi",
+  password: "kalina"
 });
 var id1=0;
 var id2=0;
