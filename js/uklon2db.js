@@ -1,6 +1,7 @@
 // 16.07.2020
 // denis.kudriakov@gmail.com
 //
+//time -ok
 "use strict";
 exports.__esModule = true;
 var path = require("path");
@@ -14,8 +15,10 @@ if (!process.argv[2]) {
   console.log("No file! Usge uklon2db FILENAME.XLSX"); 
   return(0);
 }
-
 var xlsfilename=process.argv[2];
+var start=process.argv[3];
+var end=process.argv[4];
+
 //var xlsfilename = 'test.xlsx';
 console.log(xlsfilename);
 const connection = mysql.createConnection({
@@ -70,12 +73,14 @@ for (var _i = 0, _a = workbook.SheetNames; _i < _a.length; _i++) {
         if (itogo) {
 //        console.log ("["+i+"]"+id1+" "+id2+" "+" i:"+itogo+" 40%:"+prof40.toFixed(2)+" 60%:"+prof60.toFixed(2)+" g:"+gotivka+" b:"+ balans.toFixed(2));
           cntadd++;
-          sqlq="INSERT INTO uklon (pozivnoy, gosnomer, itogo, pro40, pro60, gotivka,balans) VALUES('" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2) + ");"
+          sqlq="INSERT INTO uklon (pozivnoy, gosnomer, itogo, pro40, pro60, gotivka,balans,start,end) VALUES('" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2)+ ", '" +start+ "', '" +end + "');"
           console.log(sqlq);
+
         connection.execute(sqlq, function(err, sqlresults, fields) {
           if (err) console.log(err);
           console.log(sqlresults); // data
         });
+
         }
       }
       connection.end();

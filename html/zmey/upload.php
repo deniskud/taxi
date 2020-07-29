@@ -68,7 +68,7 @@ $execstr2='';
 $execstring='node /var/www/js/'.$agregator.'2db.js /var/www/html/zmey/uploaded_files/'.$newFileName.' '.$startp.' '.$endp;
 $execstr2='rm -y '.$newFileName;
 //if ($agregator='uber') $execstring.
-echo $execstring.'<br>';
+echo 'Try executing '.$execstring.'<br>';
 $ret=exec($execstring);
 echo '<p><a href="http://taxi.4okna.com/zmey/index.php"> <button> <--- Back</button></a></p>';
 exec(execstr2);
