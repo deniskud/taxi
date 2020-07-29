@@ -17,6 +17,7 @@ if (!process.argv[2]) {
 
 var xlsfilename=process.argv[2];
 //var xlsfilename = 'test.xlsx';
+console.log(xlsfilename);
 const connection = mysql.createConnection({
   host: "localhost",
   user: "zmey",
@@ -37,8 +38,10 @@ var sqlq="";
 var cell = [];
 const results = [];
 var max=0;
+//for (var i=0;i<)
 
-var workbook = xlsx_1.readFile(path.join(process.cwd(), xlsfilename));
+var workbook = xlsx_1.readFile(path.join('', xlsfilename));
+
 for (var _i = 0, _a = workbook.SheetNames; _i < _a.length; _i++) {
   var sheetName = _a[_i];
   var sheet = workbook.Sheets[sheetName];
@@ -68,7 +71,7 @@ for (var _i = 0, _a = workbook.SheetNames; _i < _a.length; _i++) {
 //        console.log ("["+i+"]"+id1+" "+id2+" "+" i:"+itogo+" 40%:"+prof40.toFixed(2)+" 60%:"+prof60.toFixed(2)+" g:"+gotivka+" b:"+ balans.toFixed(2));
           cntadd++;
           sqlq="INSERT INTO uklon (pozivnoy, gosnomer, itogo, pro40, pro60, gotivka,balans) VALUES('" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2) + ");"
-//          console.log(sqlq);
+          console.log(sqlq);
         connection.execute(sqlq, function(err, sqlresults, fields) {
           if (err) console.log(err);
           console.log(sqlresults); // data
