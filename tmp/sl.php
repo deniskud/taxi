@@ -13,11 +13,14 @@ $head ="<!DOCTYPE html>
  </head>
 <body>
 ";
-$head .=" <form action='showlelik.php' method='get'>";
+//$head .=" <form action='showlelik.php' method='get'>";
+
+
+/*
 
 
 echo $head;
-require "dbi.php";
+//require "dbi.php";
 
 $sort=$_GET['sort'];
 if (!$sort) $sort='id';
@@ -36,8 +39,8 @@ $database='zmey'; // имя базы данных
 $user='zmey'; //user
 $pswd='kalina'; // пароль
 //$dbh = mysqli_connect($host, $user, $pswd, $database) or die("Can not connect to MySQL.");
-
-$link = mysqli_connect("127.0.0.1", "zmey", "kalina", "zmey");
+*/
+$link = mysqli_connect("127.0.0.1", "zmey", "kalina", "taxi");
 
 if (!$link) {
     echo "Ошибка: Невозможно установить соединение с MySQL." . PHP_EOL;
@@ -50,7 +53,8 @@ echo "Соединение с MySQL установлено!" . PHP_EOL;
 echo "Информация о сервере: " . mysqli_get_host_info($link) . PHP_EOL;
 
 mysqli_close($link);
-
+echo "</body></html>";
+/*
 /$dbh = mysqli_connect($host, $user, $pswd, $database) or die("Can not connect to MySQL.");
 
 //building query
@@ -116,5 +120,6 @@ echo($count." records.\nall ok\n");
 mysqli_close($dbh);
 echo "</body>\n</html>";
 die();
+*/
 ?>
 
