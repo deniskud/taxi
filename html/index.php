@@ -63,17 +63,19 @@ $result = mysqli_query($dbh,$sql) or die('query error: ' . mysql_error());
 $count=0;
 $i=0;
 $counter=0;
-$leliks= array ( array () );
-$row = array( array());
+$leliks= array(array ());
+$row =   array(array());
 $itogo = array();
-$itogobolt =array();
+$itogobolt = array();
 $itogouklon =array();
+//$tmp = array();
 //pushing data from DB 2 array
 while ($row[$counter] = mysqli_fetch_row($result)) $counter++;
 mysqli_free_result($result);
 //////////////////////////////////////
+
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
-  $sql='SELECT itogo FROM uber WHERE uber.iduber="'.$row[$tmpcnt][6].'" ;';
+  $sql='SELECT SUM(itogo) FROM uber WHERE uber.iduber="'.$row[$tmpcnt][6].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
   $tmp=mysqli_fetch_row($result);
   $itogo[$tmpcnt]=$tmp[0];
@@ -82,7 +84,7 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
 mysqli_free_result($result);
 
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
-  $sql='SELECT itogo FROM uklon WHERE uklon.pozivnoy="'.$row[$tmpcnt][8].'" ;';
+  $sql='SELECT SUM(itogo) FROM uklon WHERE uklon.pozivnoy="'.$row[$tmpcnt][8].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
   $tmp=mysqli_fetch_row($result);
   $itogouklon[$tmpcnt]=$tmp[0];
@@ -91,7 +93,7 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
 mysqli_free_result($result);
 
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
-  $sql='SELECT itogo FROM bolt WHERE bolt.telbolt="'.$row[$tmpcnt][7].'" ;';
+  $sql='SELECT SUM(itogo) FROM bolt WHERE bolt.telbolt="'.$row[$tmpcnt][7].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
   $tmp=mysqli_fetch_row($result);
   $itogobolt[$tmpcnt]=$tmp[0];
@@ -108,7 +110,7 @@ echo "<table border=0>
   <td><a href='?srok=$srok&sort=togo'>Itog Uber</a></td>
   <td><a href='?srok=$srok&sort=togo'>Itog Uklon</a></td>
   <td><a href='?srok=$srok&sort=togo'>Itog Bolt</a></td>
-  <td><a href='?srok=$srok&sort=togo'>Itogo</a></td>
+  <td width=90><a href='?srok=$srok&sort=togo'>Itogo</a></td>
 </tr>\n";
 /////////
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
@@ -130,10 +132,10 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   <td>".$row[$tmpcnt][1]."</td>
   <td><a href=''>".$row[$tmpcnt][2]."</a></td>
   <td><a href='callto:".$row[$tmpcnt][3]."'>".$row[$tmpcnt][3]." </a></td>
-   <td>".$itogo[$tmpcnt]."</td>
-   <td>".$itogouklon[$tmpcnt]."</td>
-   <td>".$itogobolt[$tmpcnt]."</td>
-   <td><font color=#222288><b>".$itogtmp."</b></font></td>
+   <td>".number_format($itogo[$tmpcnt], 0, ',', ' ')."</td>
+   <td>".number_format($itogouklon[$tmpcnt], 0, ',', ' ')."</td>
+   <td>".number_format($itogobolt[$tmpcnt], 0, ',', ' ')."</td>
+   <td><font color=#222288><b>".number_format($itogtmp, 0, ',', ' ')."</b></font></td>
   ";
   echo "\n</tr>\n";    
 }
@@ -148,11 +150,12 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $sumuklon+=$itogouklon[$tmpcnt];
   $sumbolt+=$itogobolt[$tmpcnt];
 }
-echo "Всего по Uber:<b>$sumuber</b><br>";
-echo "Всего по Bolt:<b>$sumbolt</b><br>";
-echo "Всего по Uklon:<b>$sumuklon</b><br>";
+echo "Всего по Uber : <b>".number_format($sumuber, 0, ',', ' ')."</b><br>";
+
+echo "Всего по Bolt : <b>".number_format($sumbolt, 0, ',', ' ')."</b><br>";
+echo "Всего по Uklon : <b>".number_format($sumuklon, 0, ',', ' ')."</b><br>";
 $sumvsego=$sumuklon+$sumbolt+$sumuklon;
-echo "Итого за период:<font color=#222288><b>$sumvsego</b></font><br>";
+echo "Итого за период : <font color=#222288><b>".number_format($sumvsego, 0, ',', ' ')."</b></font><br>";
 
 // Освобождаем память от результата
 mysqli_free_result($result);
