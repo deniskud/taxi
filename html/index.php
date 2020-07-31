@@ -11,14 +11,14 @@ $head ="<!DOCTYPE HTML>
   <meta charset='utf-8'>
   <style>
    .t1 {background-color: #cccccc; font-weight: bold; text-align: center;font-family: sans-serif;}  
-   .t2 {background-color: #eeeeff; font-weight: normal;font-family: sans-serif;}  
+   .t2 {background-color: #eef5ee; font-weight: normal;font-family: sans-serif;}  
    table {font-family: sans-serif;text-align: right;}
   </style> 
  
  </head>
 <body>
 ";
-$head .=" <form action='showlelik.php' method='get'>";
+$head .=" <form action='' method='get'>";
 
 
 echo $head;
@@ -104,13 +104,15 @@ mysqli_free_result($result);
 echo "<table border=0>
 <tr class=t1>
   <td><a href='?sort=id&srok=$srok'>id</a></td>
+  <td><a href='?srok=$srok&sort=tel'>tel</a></td>
+
   <td><a href='?srok=$srok&sort=name'>name</a></td>
   <td><a href='?srok=$srok&sort=fam'>fam</a></td>
-  <td><a href='?srok=$srok&sort=tel'>tel</a></td>
-  <td><a href='?srok=$srok&sort=togo'>Itog Uber</a></td>
-  <td><a href='?srok=$srok&sort=togo'>Itog Uklon</a></td>
-  <td><a href='?srok=$srok&sort=togo'>Itog Bolt</a></td>
-  <td width=90><a href='?srok=$srok&sort=togo'>Itogo</a></td>
+  <td width=60>Uber</td>
+  <td width=60>Uklon</td>
+  <td width=60>Bolt</td>
+  <td width=90>Итого</td>
+
 </tr>\n";
 /////////
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
@@ -118,7 +120,7 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $bf=0;
   $bf=strpos($tmp,'bot');
   if ($bf > 0) {
-   $tmp="<font size='-3' color='#afafaf'>".$tmp."</font>";
+   $tmp="<font size='-3' color='#8fff8f'>".$tmp."</font>";
   }
   else {
    $tmp="<font size='-2' color='#000000'>".$tmp."</font>";
@@ -129,17 +131,19 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $itogtmp=$itogo[$tmpcnt]+$itogouklon[$tmpcnt]+$itogobolt[$tmpcnt];
   echo "\t<tr $cla >\n";
   echo "\t\t<td>".++$count."</td>
+  <td><a href='callto:".$row[$tmpcnt][3]."'>".$row[$tmpcnt][3]." </a></td>
+
   <td>".$row[$tmpcnt][1]."</td>
   <td><a href=''>".$row[$tmpcnt][2]."</a></td>
-  <td><a href='callto:".$row[$tmpcnt][3]."'>".$row[$tmpcnt][3]." </a></td>
    <td>".number_format($itogo[$tmpcnt], 0, ',', ' ')."</td>
    <td>".number_format($itogouklon[$tmpcnt], 0, ',', ' ')."</td>
    <td>".number_format($itogobolt[$tmpcnt], 0, ',', ' ')."</td>
    <td><font color=#222288><b>".number_format($itogtmp, 0, ',', ' ')."</b></font></td>
+
   ";
   echo "\n</tr>\n";    
 }
-echo "</table>\n";
+echo "</table><br>\n";
 ////////////// end table
 
 $sumuber=0; //itogo
