@@ -66,8 +66,8 @@ fs.createReadStream(filename)
     tmp=cell['Період'];
     start='';
     stop='';
-    for (var j=8;j<18;j++) start+=tmp[j];
-    for (var j=21;j<31;j++) stop+=tmp[j];
+//    for (var j=8;j<18;j++) start+=tmp[j];
+//    for (var j=21;j<31;j++) stop+=tmp[j];
 
 //console.log ("'"+start+"'-------------------------------------:"+stop+":");
     cell=results[i];
@@ -82,7 +82,7 @@ fs.createReadStream(filename)
     if (itogo) {
 //      console.log (id1+" "+id2+" "+" i:"+itogo+" 40%:"+prof40.toFixed(2)+" 60%:"+prof60.toFixed(2)+" g:"+gotivka+" b:"+ balans.toFixed(2));
       cntadd++;
-      sqlq="INSERT INTO bolt (namebolt, telbolt, itogo, pro40, pro60, gotivka, balans, start, end) VALUES('" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2) + ", '"+start+"', '"+stop+"');"
+      sqlq="INSERT INTO bolt (namebolt, telbolt, itogo, pro40, pro60, gotivka, balans) VALUES('" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2) + ");"
 //      console.log(sqlq);
       connection.execute(sqlq, function(err, sqlresults, fields) {
       if (err) console.log(err);
