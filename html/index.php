@@ -1,5 +1,4 @@
 <?php
-
 $t=0;
 $head ="<!DOCTYPE HTML>
 <html lang='ru-UA'>
@@ -19,18 +18,10 @@ $head ="<!DOCTYPE HTML>
 <body>
 ";
 $head .=" <form action='' method='get'>";
-
-
 echo $head;
-
-
-
-//require "dbi.php";
 
 $sort=$_GET['sort'];
 if (!$sort) $sort='id';
-
-//$srok=$_GET['srok'];
 if (!$srok) $srok=7;
 
 $now   = new DateTime;
@@ -104,7 +95,10 @@ mysqli_free_result($result);
 echo "<table border=0>
 <tr class=t1>
   <td><a href='?sort=id&srok=$srok'>id</a></td>
+
+<!--
   <td><a href='?srok=$srok&sort=tel'>tel</a></td>
+-->
 
   <td><a href='?srok=$srok&sort=name'>name</a></td>
   <td><a href='?srok=$srok&sort=fam'>fam</a></td>
@@ -129,12 +123,14 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $cla='';                   // учет четности для вывода строк
   if ( round($i/2) == ($i/2) ) $cla="class=t2";//
   $itogtmp=$itogo[$tmpcnt]+$itogouklon[$tmpcnt]+$itogobolt[$tmpcnt];
+  $idl= $row[$tmpcnt][0];
   echo "\t<tr $cla >\n";
   echo "\t\t<td>".++$count."</td>
+<!--
   <td><a href='callto:".$row[$tmpcnt][3]."'>".$row[$tmpcnt][3]." </a></td>
-
-  <td>".$row[$tmpcnt][1]."</td>
-  <td><a href=''>".$row[$tmpcnt][2]."</a></td>
+-->
+  <td><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][1]."</a></td>
+  <td><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][2]."</a></td>
    <td>".number_format($itogo[$tmpcnt], 0, ',', ' ')."</td>
    <td>".number_format($itogouklon[$tmpcnt], 0, ',', ' ')."</td>
    <td>".number_format($itogobolt[$tmpcnt], 0, ',', ' ')."</td>
@@ -164,13 +160,25 @@ echo "Итого за период : <font color=#222288><b>".number_format($sum
 // Освобождаем память от результата
 mysqli_free_result($result);
 echo "-----------------<br>";
-echo($count." records.\nall ok\n");
+//echo($count." records.\nall ok\n");
 mysqli_close($dbh);
-echo "</body>\n</html>";
-die();
 
-
+//echo "</body>\n</html>";
+//die();
 //echo "</body></html>";
-
 ?>
+
+<hr>
+  <form method="POST" action="zmey/upload.php" target="podrobno" enctype="multipart/form-data">
+    <div>
+      <span>Upload a File:</span>
+      <input type="file" name="uploadedFile" />
+    </div>
+      <p><input name="operator" type="radio" value="uber">Uber (.csv)</p>
+      <p><input name="operator" type="radio" value="bolt">Bolt (.csv)</p>
+      <p><input name="operator" type="radio" value="uklon" checked>Uklon (.xlsx)</p>
+      startd date: <input type='date' id='start' name='startp' value='<?php echo date("Y-m-d");?>'>
+      end date: <input type='date' id='end' name='endp' value='<?php echo date("Y-m-d");?>'>
+    <input type="submit" name="uploadBtn" value="Upload" />
+  </form>
 

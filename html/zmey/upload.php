@@ -70,7 +70,7 @@ $execstr2='rm -y '.$newFileName;
 //if ($agregator='uber') $execstring.
 echo 'Try executing '.$execstring.'<br>';
 $ret=exec($execstring);
-echo '<p><a href="http://taxi.4okna.com/zmey/index.php"> <button> <--- Back</button></a></p>';
+//echo '<p><a href="http://taxi.4okna.com" target="table"> <button> <--- Back</button></a></p>';
 exec(execstr2);
 //header("Location: index.php");
 ?>
