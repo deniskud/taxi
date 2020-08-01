@@ -107,6 +107,11 @@ echo "<table border=0>
   <td width=60>Bolt</td>
   <td width=90>Итого</td>
 
+  <td width=90>нал</td>
+  <td width=90>60</td>
+  <td width=90>40</td>
+  <td width=90>баланс</td>
+
 </tr>\n";
 /////////
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
@@ -125,7 +130,8 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $itogtmp=$itogo[$tmpcnt]+$itogouklon[$tmpcnt]+$itogobolt[$tmpcnt];
   $idl= $row[$tmpcnt][0];
   echo "\t<tr $cla >\n";
-  echo "\t\t<td>".++$count."</td>
+  ++$count;
+  echo "\t\t<td>$idl</td>
 <!--
   <td><a href='callto:".$row[$tmpcnt][3]."'>".$row[$tmpcnt][3]." </a></td>
 -->
@@ -135,7 +141,10 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
    <td>".number_format($itogouklon[$tmpcnt], 0, ',', ' ')."</td>
    <td>".number_format($itogobolt[$tmpcnt], 0, ',', ' ')."</td>
    <td><font color=#222288><b>".number_format($itogtmp, 0, ',', ' ')."</b></font></td>
-
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
   ";
   echo "\n</tr>\n";    
 }
