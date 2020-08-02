@@ -53,6 +53,10 @@ $uberid=$data[6];
 $uklonid=$data[8];
 $boltid=$data[7];
 mysqli_free_result($result);
+
+
+/////////////////////////////uber
+
 $sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM uber WHERE iduber='$uberid';";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
@@ -70,8 +74,9 @@ echo number_format($data[5], 0, ',', ' ');
 echo "</font>
 <hr align='left' width='25%'>
 ";
-
 mysqli_free_result($result);
+
+/////////////////////////////uklon
 $sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM uklon WHERE pozivnoy='$uklonid';";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
@@ -80,7 +85,7 @@ if (!$result){
 }
 $data= mysqli_fetch_row($result);
 echo "Статистика по <b>Uklon</b>: <br>\nПоездок: $data[0] <br>\n
-наличка: ".number_format($data[2], 0, ',', ' ')."<br>\n
+наличка: ".number_format(-$data[2], 0, ',', ' ')."<br>\n
 ВСЕГО: ".number_format($data[1], 0, ',', ' ')." (<b>".number_format($data[3], 2, ',', ' ')."</b> + ".number_format($data[4], 2, ',', ' ').")<br>
 Баланс: <font color=#";
 if ($data[5]<0) echo "ff0000>";
@@ -89,9 +94,9 @@ echo number_format($data[5], 0, ',', ' ');
 echo "</font>
 <hr align='left' width='25%'>
 ";
-
-
 mysqli_free_result($result);
+
+/////////////////////////////bolt
 $sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM bolt WHERE telbolt='$boltid';";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
@@ -99,8 +104,30 @@ if (!$result){
     exit;
 }
 $data= mysqli_fetch_row($result);
+
 echo "Статистика по <b>Bolt</b>: <br>\nПоездок: $data[0] <br>\n
 наличка: ".number_format($data[2], 0, ',', ' ')."<br>\n
+ВСЕГО: ".number_format($data[1], 0, ',', ' ')." (<b>".number_format($data[3], 2, ',', ' ')."</b> + ".number_format($data[4], 2, ',', ' ').")<br>
+Баланс: <font color=#";
+if ($data[5]<0) echo "ff0000>";
+else echo "000000>";
+echo number_format($data[5], 0, ',', ' ');
+echo "</font>
+<hr align='left' width='25%'>";
+
+
+/////////////////////////////naliva
+mysqli_free_result($result);
+$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM naliva WHERE idtel='$boltid';";
+$result = mysqli_query($dbh,$sql);
+if (!$result){
+    echo "ошибка запроса в БД<br>";
+    exit;
+}
+$data= mysqli_fetch_row($result);
+
+echo "Статистика по <b>Налу</b>: <br>\nПоездок: $data[0] <br>\n
+наличка: ".number_format(-$data[2], 0, ',', ' ')."<br>\n
 ВСЕГО: ".number_format($data[1], 0, ',', ' ')." (<b>".number_format($data[3], 2, ',', ' ')."</b> + ".number_format($data[4], 2, ',', ' ').")<br>
 Баланс: <font color=#";
 if ($data[5]<0) echo "ff0000>";

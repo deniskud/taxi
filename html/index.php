@@ -12,6 +12,7 @@ $head ="<!DOCTYPE HTML>
    .t1 {background-color: #cccccc; font-weight: bold; text-align: center;font-family: sans-serif;}  
    .t2 {background-color: #eef5ee; font-weight: normal;font-family: sans-serif;}  
    table {font-family: sans-serif;text-align: right;}
+   body {font-family: Arial;}
   </style> 
  
  </head>
@@ -22,7 +23,7 @@ echo $head;
 
 $sort=$_GET['sort'];
 if (!$sort) $sort='id';
-if (!$srok) $srok=7;
+//if (!$srok) $srok=7;
 
 $now   = new DateTime;
 $clone = new DateTime;        //this doesnot clone so:
@@ -48,6 +49,7 @@ mysqli_query($dbh,"SET NAMES 'utf8'");
 //building query
 //echo "<br>sort=$sort<br>";
 $sql = "SELECT * FROM leliki ORDER BY $sort";// ORDER BY $sort";
+echo $sql;
 $result = mysqli_query($dbh,$sql) or die('query error: ' . mysql_error());
 // Выводим результаты в html
 
@@ -66,36 +68,78 @@ mysqli_free_result($result);
 //////////////////////////////////////
 
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
-  $sql='SELECT SUM(itogo) FROM uber WHERE uber.iduber="'.$row[$tmpcnt][6].'" ;';
+  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka) FROM uber WHERE uber.iduber="'.$row[$tmpcnt][6].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
   $tmp=mysqli_fetch_row($result);
   $itogo[$tmpcnt]=$tmp[0];
+
+  $balans[$tmpcnt]=$tmp[1];
+  $pro60[$tmpcnt]=$tmp[2];
+  $pro40[$tmpcnt]=$tmp[3];
+  $nal[$tmpcnt]=$tmp[4];
+ 
 //  echo $tmpcnt." ".$sql."<br>";
 }
 mysqli_free_result($result);
 
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
-  $sql='SELECT SUM(itogo) FROM uklon WHERE uklon.pozivnoy="'.$row[$tmpcnt][8].'" ;';
+  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM uklon WHERE uklon.pozivnoy="'.$row[$tmpcnt][8].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
   $tmp=mysqli_fetch_row($result);
   $itogouklon[$tmpcnt]=$tmp[0];
+
+  $balans[$tmpcnt]+=$tmp[1];
+  $pro60[$tmpcnt]+=$tmp[2];
+  $pro40[$tmpcnt]+=$tmp[3];
+$tmp[4]=-$tmp[4];
+  $nal[$tmpcnt]+=$tmp[4];
 //  echo $tmpcnt." ".$sql."<br>";
 }
 mysqli_free_result($result);
 
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
-  $sql='SELECT SUM(itogo) FROM bolt WHERE bolt.telbolt="'.$row[$tmpcnt][7].'" ;';
+  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM bolt WHERE bolt.telbolt="'.$row[$tmpcnt][7].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
   $tmp=mysqli_fetch_row($result);
   $itogobolt[$tmpcnt]=$tmp[0];
+
+  $balans[$tmpcnt]+=$tmp[1];
+  $pro60[$tmpcnt]+=$tmp[2];
+  $pro40[$tmpcnt]+=$tmp[3];
+  $nal[$tmpcnt]+=$tmp[4];
 //  echo $tmpcnt." ".$sql."<br>";
 }
 mysqli_free_result($result);
-///////////create table:
+
+
+
+for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
+  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM naliva WHERE idtel="'.$row[$tmpcnt][7].'" ;';
+//echo "<br>$sql<br>";
+  $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
+  $tmp=mysqli_fetch_row($result);
+ // $itogobolt[$tmpcnt]=$tmp[0];
+  $nalik[$tmpcnt]=$tmp[4];
+  $balans[$tmpcnt]+=$tmp[1];
+  $pro60[$tmpcnt]+=$tmp[2];
+  $pro40[$tmpcnt]+=$tmp[3];
+  $nal[$tmpcnt]-=$tmp[4];
+
+//  echo $tmpcnt." ".$sql."<br>";
+}
+mysqli_free_result($result);
+
+
+
+
+
+//////////////////////////create table:
 echo "<table border=0>
 <tr class=t1>
-  <td><a href='?sort=id&srok=$srok'>id</a></td>
-
+<td></td>  
+<td><a href='?sort=id>id</a></td>
+  <td><a href='?sort=txt4'>UU</a></td>
+  <td><a href='?sort=txt2'>номер</a></td>
 <!--
   <td><a href='?srok=$srok&sort=tel'>tel</a></td>
 -->
@@ -105,12 +149,14 @@ echo "<table border=0>
   <td width=60>Uber</td>
   <td width=60>Uklon</td>
   <td width=60>Bolt</td>
+  <td width=60>Наличка</td>
   <td width=90>Итого</td>
 
-  <td width=90>нал</td>
+  <td width=90>нал всего</td>
   <td width=90>60</td>
   <td width=90>40</td>
   <td width=90>баланс</td>
+  <td width=90>Поправка</td>
 
 </tr>\n";
 /////////
@@ -127,29 +173,40 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $i++;                      //
   $cla='';                   // учет четности для вывода строк
   if ( round($i/2) == ($i/2) ) $cla="class=t2";//
-  $itogtmp=$itogo[$tmpcnt]+$itogouklon[$tmpcnt]+$itogobolt[$tmpcnt];
+  $itogtmp=$itogo[$tmpcnt]+$itogouklon[$tmpcnt]+$itogobolt[$tmpcnt]+$nalik[$tmpcnt];
   $idl= $row[$tmpcnt][0];
+  $nomer=$row[$tmpcnt][11];
   echo "\t<tr $cla >\n";
   ++$count;
   echo "\t\t<td>$idl</td>
+
+  <td>".$row[$tmpcnt][12]."</td> 
+  <td>".$row[$tmpcnt][11]."</td> 
 <!--
   <td><a href='callto:".$row[$tmpcnt][3]."'>".$row[$tmpcnt][3]." </a></td>
 -->
   <td><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][1]."</a></td>
-  <td><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][2]."</a></td>
+  <td align=left><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][2]."</a></td>
    <td>".number_format($itogo[$tmpcnt], 0, ',', ' ')."</td>
    <td>".number_format($itogouklon[$tmpcnt], 0, ',', ' ')."</td>
    <td>".number_format($itogobolt[$tmpcnt], 0, ',', ' ')."</td>
+   <td>$nalik[$tmpcnt]</td>
    <td><font color=#222288><b>".number_format($itogtmp, 0, ',', ' ')."</b></font></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
+   <td>".number_format($nal[$tmpcnt], 0, ',', ' ')."</td>
+   <td>".number_format($pro60[$tmpcnt], 0, ',', ' ')."</td>
+   <td>".number_format($pro40[$tmpcnt], 0, ',', ' ')."</td>
+   <td>".number_format($balans[$tmpcnt], 0, ',', ' ')."</td>
+   <td>0</td>
+
   ";
   echo "\n</tr>\n";    
 }
 echo "</table><br>\n";
 ////////////// end table
+
+
+
+
 
 $sumuber=0; //itogo
 $sumuklon=0;
@@ -163,7 +220,9 @@ echo "Всего по Uber : <b>".number_format($sumuber, 0, ',', ' ')."</b><br>
 
 echo "Всего по Bolt : <b>".number_format($sumbolt, 0, ',', ' ')."</b><br>";
 echo "Всего по Uklon : <b>".number_format($sumuklon, 0, ',', ' ')."</b><br>";
-$sumvsego=$sumuklon+$sumbolt+$sumuklon;
+
+$sumvsego=$sumuklon+$sumbolt+$sumuber;
+
 echo "Итого за период : <font color=#222288><b>".number_format($sumvsego, 0, ',', ' ')."</b></font><br>";
 
 // Освобождаем память от результата
@@ -183,9 +242,11 @@ mysqli_close($dbh);
       <span>Upload a File:</span>
       <input type="file" name="uploadedFile" />
     </div>
-      <p><input name="operator" type="radio" value="uber">Uber (.csv)</p>
-      <p><input name="operator" type="radio" value="bolt">Bolt (.csv)</p>
+      <p><input name="operator" type="radio" value="uber" checked>Uber (.csv)</p>
+      <p><input name="operator" type="radio" value="bolt" >Bolt (.csv)</p>
       <p><input name="operator" type="radio" value="uklon" checked>Uklon (.xlsx)</p>
+      <p><input name="operator" type="radio" value="nalik" >Cash (.xlsx)</p>
+
       startd date: <input type='date' id='start' name='startp' value='<?php echo date("Y-m-d");?>'>
       end date: <input type='date' id='end' name='endp' value='<?php echo date("Y-m-d");?>'>
     <input type="submit" name="uploadBtn" value="Upload" />
