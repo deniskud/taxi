@@ -64,6 +64,7 @@ for (var _i = 0, _a = workbook.SheetNames; _i < _a.length; _i++) {
         cell=results[i];
         gotivka=cell['Наличные '];
         itogo=cell['Заработок'];
+        itogo*=.99;
         id1=cell['Позывной'];
         id2=cell['Гос. номер'];
         prof60=itogo*0.6;

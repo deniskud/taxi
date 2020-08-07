@@ -52,6 +52,7 @@ echo "<b>$data[1]&nbsp$data[2]</b>&nbsp<a href='callto:$data[3]'> $data[3]</a>&n
 $uberid=$data[6];
 $uklonid=$data[8];
 $boltid=$data[7];
+$id=$data[0];
 mysqli_free_result($result);
 
 
@@ -64,9 +65,12 @@ if (!$result){
     exit;
 }
 $data= mysqli_fetch_row($result);
-echo "<hr width=50% align=left>Статистика по <b>Uber</b>: <br>\nПоездок: $data[0] <br>\n
+echo "<hr width=50% align=left>Статистика по <b>Uber</b>: <br>\nПоездок: $data[0] <br>\n";
+
+
+echo "ВСЕГО: ".number_format($data[1], 0, ',', ' ')." 
+<br>40%=".number_format($data[3], 2, ',', ' ')."<br> 60%=".number_format($data[4], 2, ',', ' ')."<br>
 наличка: ".number_format($data[2], 0, ',', ' ')."<br>\n
-ВСЕГО: ".number_format($data[1], 0, ',', ' ')." (<b>".number_format($data[3], 2, ',', ' ')."</b> + ".number_format($data[4], 2, ',', ' ').")<br>
 Баланс: <font color=#";
 if ($data[5]<0) echo "ff0000>";
 else echo "000000>";
@@ -126,7 +130,7 @@ if (!$result){
 }
 $data= mysqli_fetch_row($result);
 
-echo "Статистика по <b>Налу</b>: <br>\nПоездок: $data[0] <br>\n
+echo "Статистика <b>'С руки'</b>: <br>\nПоездок: $data[0] <br>\n
 наличка: ".number_format(-$data[2], 0, ',', ' ')."<br>\n
 ВСЕГО: ".number_format($data[1], 0, ',', ' ')." (<b>".number_format($data[3], 2, ',', ' ')."</b> + ".number_format($data[4], 2, ',', ' ').")<br>
 Баланс: <font color=#";
@@ -137,13 +141,41 @@ echo "</font>
 <hr align='left' width='25%'>
 ";
 
+$sql="SELECT SUM(gotivka) FROM popravki WHERE idtel=$id;";
+$result = mysqli_query($dbh,$sql);
+if (!$result){
+    echo "ошибка запроса в БД<br>";
+    exit;
+}
+$data= mysqli_fetch_row($result);
+//echo $sql;
+
+echo "Сумма всех поправок:";
+echo $data[0];
+echo "<br>Подробно:<br>";
+$sql="SELECT text, gotivka, start FROM popravki WHERE idtel=$id;";
+$result = mysqli_query($dbh,$sql);
+if (!$result){
+    echo "ошибка запроса в БД<br>";
+    exit;
+}
+echo "<font size=-1><i>";
+while ($data= mysqli_fetch_row($result)){
+  echo $data[1];
+  echo "грн ";
+  echo $data[2];
+  echo " ";
+  echo $data[0];
+  echo "<br>-----------</i></font>";
+}
+//echo $sql;
 
 ////////////////////////////
 
 
  
 
-
+mysqli_close($dbh);
 //echo "</body></html>";
 
 

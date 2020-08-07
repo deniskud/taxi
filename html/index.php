@@ -13,6 +13,8 @@ $head ="<!DOCTYPE HTML>
    .t2 {background-color: #eef5ee; font-weight: normal;font-family: sans-serif;}  
    table {font-family: sans-serif;text-align: right;}
    body {font-family: Arial;}
+    .it {font-weight: bold;}
+    .it2 {font-weight: normal;}
   </style> 
  
  </head>
@@ -49,7 +51,7 @@ mysqli_query($dbh,"SET NAMES 'utf8'");
 //building query
 //echo "<br>sort=$sort<br>";
 $sql = "SELECT * FROM leliki ORDER BY $sort";// ORDER BY $sort";
-echo $sql;
+//echo $sql;
 $result = mysqli_query($dbh,$sql) or die('query error: ' . mysql_error());
 // Выводим результаты в html
 
@@ -62,6 +64,7 @@ $itogo = array();
 $itogobolt = array();
 $itogouklon =array();
 //$tmp = array();
+$unal =array();
 //pushing data from DB 2 array
 while ($row[$counter] = mysqli_fetch_row($result)) $counter++;
 mysqli_free_result($result);
@@ -77,7 +80,7 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $pro60[$tmpcnt]=$tmp[2];
   $pro40[$tmpcnt]=$tmp[3];
   $nal[$tmpcnt]=$tmp[4];
- 
+  $unal[$tmpcnt]=$tmp[4];
 //  echo $tmpcnt." ".$sql."<br>";
 }
 mysqli_free_result($result);
@@ -136,34 +139,29 @@ mysqli_free_result($result);
 //////////////////////////create table:
 echo "<table border=0>
 <tr class=t1>
-<td></td>  
-<td><a href='?sort=id>id</a></td>
+<td width =30><a href='?sort=id'>id</a></td>
   <td><a href='?sort=txt4'>UU</a></td>
   <td><a href='?sort=txt2'>номер</a></td>
-<!--
-  <td><a href='?srok=$srok&sort=tel'>tel</a></td>
--->
-
-  <td><a href='?srok=$srok&sort=name'>name</a></td>
-  <td><a href='?srok=$srok&sort=fam'>fam</a></td>
+  <td width =120><a href='?srok=$srok&sort=name'>name</a></td>
+  <td width =170><a href='?srok=$srok&sort=fam'>fam</a></td>
   <td width=60>Uber</td>
-  <td width=60>Uklon</td>
   <td width=60>Bolt</td>
-  <td width=60>Наличка</td>
+  <td width=60>Uklon</td>
+  <td width=60>Pyka</td>
   <td width=90>Итого</td>
-
   <td width=90>нал всего</td>
   <td width=90>60</td>
+<!--
   <td width=90>40</td>
+-->
   <td width=90>баланс</td>
   <td width=90>Поправка</td>
-
+  <td width =90> Unal</td>
 </tr>\n";
 /////////
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $tmp=$row[$tmpcnt][4];
-  $bf=0;
-  $bf=strpos($tmp,'bot');
+
   if ($bf > 0) {
    $tmp="<font size='-3' color='#8fff8f'>".$tmp."</font>";
   }
@@ -176,37 +174,32 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $itogtmp=$itogo[$tmpcnt]+$itogouklon[$tmpcnt]+$itogobolt[$tmpcnt]+$nalik[$tmpcnt];
   $idl= $row[$tmpcnt][0];
   $nomer=$row[$tmpcnt][11];
-  echo "\t<tr $cla >\n";
+  echo "<tr $cla  onmouseout=\"this.style='font-weight: normal;'\" onmouseover=\"this.style='font-weight: bold;'\" >\n";
   ++$count;
-  echo "\t\t<td>$idl</td>
-
+  echo "  <td>$idl</td>
   <td>".$row[$tmpcnt][12]."</td> 
   <td>".$row[$tmpcnt][11]."</td> 
-<!--
-  <td><a href='callto:".$row[$tmpcnt][3]."'>".$row[$tmpcnt][3]." </a></td>
--->
   <td><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][1]."</a></td>
   <td align=left><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][2]."</a></td>
-   <td>".number_format($itogo[$tmpcnt], 0, ',', ' ')."</td>
-   <td>".number_format($itogouklon[$tmpcnt], 0, ',', ' ')."</td>
-   <td>".number_format($itogobolt[$tmpcnt], 0, ',', ' ')."</td>
-   <td>$nalik[$tmpcnt]</td>
-   <td><font color=#222288><b>".number_format($itogtmp, 0, ',', ' ')."</b></font></td>
-   <td>".number_format($nal[$tmpcnt], 0, ',', ' ')."</td>
-   <td>".number_format($pro60[$tmpcnt], 0, ',', ' ')."</td>
-   <td>".number_format($pro40[$tmpcnt], 0, ',', ' ')."</td>
-   <td>".number_format($balans[$tmpcnt], 0, ',', ' ')."</td>
-   <td>0</td>
-
-  ";
+  <td>".number_format($itogo[$tmpcnt], 0, ',', ' ')."</td>
+  <td>".number_format($itogobolt[$tmpcnt], 0, ',', ' ')."</td>
+  <td>".number_format($itogouklon[$tmpcnt], 0, ',', ' ')."</td>
+  <td>$nalik[$tmpcnt]</td>
+  <td><font color=#222288><b>".number_format($itogtmp, 0, ',', ' ')."</b></font></td>
+  <td>".number_format(-$nal[$tmpcnt], 0, ',', ' ')."</td>
+  <td>".number_format($pro60[$tmpcnt], 0, ',', ' ')."</td>
+<!--
+  <td>".number_format($pro40[$tmpcnt], 0, ',', ' ')."</td>
+-->
+  <td><font color=#";
+  if ($balans[$tmpcnt]<0) echo "ff"; else echo "00";
+  echo "0000>".number_format($balans[$tmpcnt], 0, ',', ' ')."</font></td>
+  <td>0</td>
+  <td>".number_format(-$unal[$tmpcnt], 0, ',', ' ')."</td>";
   echo "\n</tr>\n";    
 }
 echo "</table><br>\n";
 ////////////// end table
-
-
-
-
 
 $sumuber=0; //itogo
 $sumuklon=0;
@@ -227,14 +220,42 @@ echo "Итого за период : <font color=#222288><b>".number_format($sum
 
 // Освобождаем память от результата
 mysqli_free_result($result);
-echo "-----------------<br>";
+echo "\n-----------------<br>\n";
 //echo($count." records.\nall ok\n");
+
+
+
+
+echo "
+<form method='GET' action='zmey/addcoment.php' target='podrobno'>
+  <select name='id'>\n";
+for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
+  echo "    <option value='";
+  echo $row[$tmpcnt][0];
+  echo "'>";
+  echo $row[$tmpcnt][1];
+  echo " ";
+  echo $row[$tmpcnt][2];
+  echo "</option>\n";
+}
+echo "  </select>
+  <input type='text' size='4' id='korr' name='korr' onfocus=\"if (this.value=='0.0') {this.value='';}\" onblur=\"if (this.value==''){this.value='0.0';}\" value='0.0' onclick='return true;'>
+  <input type='text' size='70'id='komm' name='komm' onfocus=\"if (this.value=='комментарий') {this.value='';}\" onblur=\"if (this.value==''){this.value='комментарий';}\" value='комментарий' onclick='return true;'>
+  <input type='date' id='datec' name='datec' value='";
+echo date("Y-m-d");
+echo "'>
+  <input type='submit' value='Добавить в базу!'>
+</form>
+";
+
+
 mysqli_close($dbh);
 
 //echo "</body>\n</html>";
 //die();
 //echo "</body></html>";
 ?>
+
 
 <hr>
   <form method="POST" action="zmey/upload.php" target="podrobno" enctype="multipart/form-data">
