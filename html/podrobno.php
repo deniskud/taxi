@@ -48,14 +48,17 @@ if (!$result){
     exit;
 }
 $data= mysqli_fetch_row($result);
-echo "<b>$data[1]&nbsp$data[2]</b>&nbsp<a href='callto:$data[3]'> $data[3]</a>&nbsp<FONT SIZE=-1> работает с $data[4]</FONT><br>\n";
+echo "<b>$data[1]&nbsp$data[2]</b><br><a href='callto:$data[3]'> $data[3]</a><br>\n";
 $uberid=$data[6];
 $uklonid=$data[8];
 $boltid=$data[7];
 $id=$data[0];
 mysqli_free_result($result);
 
-
+$svsego=0;
+$sbalans=0;
+$snal=0;
+$s60=0;
 /////////////////////////////uber
 
 $sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM uber WHERE iduber='$uberid';";
@@ -69,18 +72,23 @@ echo "<hr width=50% align=left>Статистика по <b>Uber</b>: <br>\nПо
 
 
 echo "ВСЕГО: ".number_format($data[1], 0, ',', ' ')." 
-<br>40%=".number_format($data[3], 2, ',', ' ')."<br> 60%=".number_format($data[4], 2, ',', ' ')."<br>
+<br> 60%=".number_format($data[4], 0, ',', ' ')."<br>
 наличка: ".number_format($data[2], 0, ',', ' ')."<br>\n
 Баланс: <font color=#";
 if ($data[5]<0) echo "ff0000>";
 else echo "000000>";
 echo number_format($data[5], 0, ',', ' ');
 echo "</font>
-<hr align='left' width='25%'>
 ";
+$svsego+=$data[1];
+$sbalans+=$data[5];
+$snal+=-$data[2];
+$s60+=$data[4];
+
 mysqli_free_result($result);
 
-/////////////////////////////uklon
+////////////////////////uklon
+
 $sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM uklon WHERE pozivnoy='$uklonid';";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
@@ -88,19 +96,27 @@ if (!$result){
     exit;
 }
 $data= mysqli_fetch_row($result);
-echo "Статистика по <b>Uklon</b>: <br>\nПоездок: $data[0] <br>\n
-наличка: ".number_format(-$data[2], 0, ',', ' ')."<br>\n
-ВСЕГО: ".number_format($data[1], 0, ',', ' ')." (<b>".number_format($data[3], 2, ',', ' ')."</b> + ".number_format($data[4], 2, ',', ' ').")<br>
+echo "<hr width=50% align=left>Статистика по <b>Uklon</b>: <br>\nПоездок: $data[0] <br>\n";
+
+
+echo "ВСЕГО: ".number_format($data[1], 0, ',', ' ')." 
+<br> 60%=".number_format($data[4], 0, ',', ' ')."<br>
+наличка: ".number_format($data[2], 0, ',', ' ')."<br>\n
 Баланс: <font color=#";
 if ($data[5]<0) echo "ff0000>";
 else echo "000000>";
 echo number_format($data[5], 0, ',', ' ');
 echo "</font>
-<hr align='left' width='25%'>
 ";
+$svsego+=$data[1];
+$sbalans+=$data[5];
+$snal+=$data[2];
+$s60+=$data[4];
+
 mysqli_free_result($result);
 
-/////////////////////////////bolt
+////////////////////////////////// bolt
+
 $sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM bolt WHERE telbolt='$boltid';";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
@@ -108,21 +124,32 @@ if (!$result){
     exit;
 }
 $data= mysqli_fetch_row($result);
+echo "<hr width=50% align=left>Статистика по <b>Bolt</b>: <br>\nПоездок: $data[0] <br>\n";
 
-echo "Статистика по <b>Bolt</b>: <br>\nПоездок: $data[0] <br>\n
+
+echo "ВСЕГО: ".number_format($data[1], 0, ',', ' ')." 
+<br> 60%=".number_format($data[4], 0, ',', ' ')."<br>
 наличка: ".number_format($data[2], 0, ',', ' ')."<br>\n
-ВСЕГО: ".number_format($data[1], 0, ',', ' ')." (<b>".number_format($data[3], 2, ',', ' ')."</b> + ".number_format($data[4], 2, ',', ' ').")<br>
 Баланс: <font color=#";
 if ($data[5]<0) echo "ff0000>";
 else echo "000000>";
 echo number_format($data[5], 0, ',', ' ');
 echo "</font>
-<hr align='left' width='25%'>";
+";
+$svsego+=$data[1];
+$sbalans+=$data[5];
+$snal+=$data[2];
+$s60+=$data[4];
+
+
+mysqli_free_result($result);
+
+echo "<hr width=50% align=left>";
 
 
 /////////////////////////////naliva
 mysqli_free_result($result);
-$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM naliva WHERE idtel='$boltid';";
+$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM naliva WHERE idtel='$id';";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
     echo "ошибка запроса в БД<br>";
@@ -130,16 +157,26 @@ if (!$result){
 }
 $data= mysqli_fetch_row($result);
 
-echo "Статистика <b>'С руки'</b>: <br>\nПоездок: $data[0] <br>\n
-наличка: ".number_format(-$data[2], 0, ',', ' ')."<br>\n
-ВСЕГО: ".number_format($data[1], 0, ',', ' ')." (<b>".number_format($data[3], 2, ',', ' ')."</b> + ".number_format($data[4], 2, ',', ' ').")<br>
+echo "Статистика <b>'С руки'</b>: <br>\nПоездок: $data[0] <br>\n";
+
+
+echo "ВСЕГО: ".number_format($data[1], 0, ',', ' ')." 
+<br> 60%=".number_format($data[4], 0, ',', ' ')."<br>
+наличка: ".number_format($data[2], 0, ',', ' ')."<br>\n
 Баланс: <font color=#";
 if ($data[5]<0) echo "ff0000>";
 else echo "000000>";
 echo number_format($data[5], 0, ',', ' ');
 echo "</font>
-<hr align='left' width='25%'>
+<hr>
+
 ";
+
+$svsego+=$data[1];
+$sbalans+=$data[5];
+$snal+=$data[2];
+$s60+=$data[4];
+
 
 $sql="SELECT SUM(gotivka) FROM popravki WHERE idtel=$id;";
 $result = mysqli_query($dbh,$sql);
@@ -149,37 +186,42 @@ if (!$result){
 }
 $data= mysqli_fetch_row($result);
 //echo $sql;
-
-echo "Сумма всех поправок:";
-echo $data[0];
-echo "<br>Подробно:<br>";
-$sql="SELECT text, gotivka, start FROM popravki WHERE idtel=$id;";
-$result = mysqli_query($dbh,$sql);
-if (!$result){
-    echo "ошибка запроса в БД<br>";
-    exit;
-}
-echo "<font size=-1><i>";
-while ($data= mysqli_fetch_row($result)){
-  echo $data[1];
-  echo "грн ";
-  echo $data[2];
-  echo " ";
+if ($data[0]){
+  echo "Сумма всех поправок: ";
   echo $data[0];
-  echo "<br>-----------</i></font>";
-}
+  $sbalans+=$data[0];
+  echo "грн<br>Подробно:<br>";
+  $sql="SELECT text, gotivka, start FROM popravki WHERE idtel=$id;";
+  $result = mysqli_query($dbh,$sql);
+  if (!$result){
+      echo "ошибка запроса в БД<br>";
+      exit;
+  }
+  echo "<font size=-1><i>";
+  while ($data= mysqli_fetch_row($result)){
+    echo " ";
+    echo substr($data[2],0,10);
+    echo "<b> ";
+    echo $data[1];
+    echo "грн</b> ";
+    echo $data[0];
+    echo "<br>";
+  }
+  echo "------------------</i></font><br>";
 //echo $sql;
-
+}
 ////////////////////////////
 
-
- 
+echo "<b>Итого</b><br>ВСЕГО: ".number_format($svsego, 0, ',', ' ')." 
+<br> 60%=".number_format($s60, 2, ',', ' ')."<br>
+наличка: ".number_format($snal, 0, ',', ' ')."<br>\n
+Баланс: <font color=#";
+if ($sbalans<0) echo "ff0000>";
+else echo "000000>";
+echo number_format($sbalans, 0, ',', ' ');
+echo "</font>";
 
 mysqli_close($dbh);
-//echo "</body></html>";
-
-
-//die();
 ?>
 
 </body></html>

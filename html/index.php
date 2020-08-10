@@ -11,15 +11,26 @@ $head ="<!DOCTYPE HTML>
   <style>
    .t1 {background-color: #cccccc; font-weight: bold; text-align: center;font-family: sans-serif;}  
    .t2 {background-color: #eef5ee; font-weight: normal;font-family: sans-serif;}  
-   table {font-family: sans-serif;text-align: right;}
+   .bott {background-color: #fbfffb ;position: absolute; top:55px; left: 270px; font-family: sans-serif;text-align: leftt;}
    body {font-family: Arial;}
     .it {font-weight: bold;}
     .it2 {font-weight: normal;}
-  </style> 
+    .iframe1 {background-color: #f0f0f0; 
+              font-family: Arial; 
+              position: absolute; 
+              leftt: 5px; 
+              top: 55px;
+              width: 250px;
+              height: 90%;
+              text-align: left;
+             };
+  </style>
  
  </head>
 <body>
+<iframe class='iframe1' id='podrobno'' name='podrobno'></iframe>
 ";
+$head.="<button onclick='exceller()'>2EXCEL</button>";
 $head .=" <form action='' method='get'>";
 echo $head;
 
@@ -37,7 +48,6 @@ $start = $clone->format( 'Y-m-d' );
 echo "\n<input type='date' value='$start' name='start'>\n";//<input type='checkbox' name='bot' value='1'";
 echo "\n<input type='date' value='$end' name='end'>\n";
 echo "<input type='submit' value='обновить'></form>\n";
-
 
 $dbh = mysqli_connect("127.0.0.1", "zmey", "kalina", "taxi");
 if (!$dbh) {
@@ -63,6 +73,7 @@ $row =   array(array());
 $itogo = array();
 $itogobolt = array();
 $itogouklon =array();
+$popravki = array();
 //$tmp = array();
 $unal =array();
 //pushing data from DB 2 array
@@ -70,6 +81,7 @@ while ($row[$counter] = mysqli_fetch_row($result)) $counter++;
 mysqli_free_result($result);
 //////////////////////////////////////
 
+/////uber
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka) FROM uber WHERE uber.iduber="'.$row[$tmpcnt][6].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
@@ -85,6 +97,8 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
 }
 mysqli_free_result($result);
 
+
+///uklon
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM uklon WHERE uklon.pozivnoy="'.$row[$tmpcnt][8].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
@@ -94,12 +108,14 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $balans[$tmpcnt]+=$tmp[1];
   $pro60[$tmpcnt]+=$tmp[2];
   $pro40[$tmpcnt]+=$tmp[3];
-$tmp[4]=-$tmp[4];
+  $tmp[4]=-$tmp[4];
   $nal[$tmpcnt]+=$tmp[4];
 //  echo $tmpcnt." ".$sql."<br>";
 }
 mysqli_free_result($result);
 
+
+////bolt
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM bolt WHERE bolt.telbolt="'.$row[$tmpcnt][7].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
@@ -115,50 +131,83 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
 mysqli_free_result($result);
 
 
-
+//// naliva
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
-  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM naliva WHERE idtel="'.$row[$tmpcnt][7].'" ;';
+  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM naliva WHERE idtel="'.$row[$tmpcnt][0].'" ;';
+//echo $sql;
+//echo "<br>";
 //echo "<br>$sql<br>";
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
   $tmp=mysqli_fetch_row($result);
- // $itogobolt[$tmpcnt]=$tmp[0];
   $nalik[$tmpcnt]=$tmp[4];
   $balans[$tmpcnt]+=$tmp[1];
   $pro60[$tmpcnt]+=$tmp[2];
   $pro40[$tmpcnt]+=$tmp[3];
   $nal[$tmpcnt]-=$tmp[4];
-
 //  echo $tmpcnt." ".$sql."<br>";
 }
+mysqli_free_result($result);
+
+///// popravki 
+for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
+  $sql="SELECT SUM(gotivka) FROM popravki WHERE idtel=".$row[$tmpcnt][0].";";
+//echo $sql;
+  $result = mysqli_query($dbh,$sql);
+  if (!$result){
+    echo "ошибка запроса в БД<br>";
+    exit;
+  }
+  $data= mysqli_fetch_row($result);
+  $popravki[$tmpcnt]=$data[0];
+  $balans[$tmpcnt]+=$data[0];
+
+}
+//  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM naliva WHERE idtel="'.$row[$tmpcnt][0].'" ;';
+//echo $sql;
+//echo "<br>";
+//echo "<br>$sql<br>";
+
+/*
+
+//echo $sql;
+if ($data[0]){
+  $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
+  $tmp=mysqli_fetch_row($result);
+  $nalik[$tmpcnt]=$tmp[4];
+  $balans[$tmpcnt]+=$tmp[1];
+  $pro60[$tmpcnt]+=$tmp[2];
+  $pro40[$tmpcnt]+=$tmp[3];
+  $nal[$tmpcnt]-=$tmp[4];
+*/
+
+//  echo $tmpcnt." ".$sql."<br>";
+
 mysqli_free_result($result);
 
 
 
 
-
 //////////////////////////create table:
-echo "<table border=0>
+echo "<div class=bott> <table id='toExcel' class='uitable' border=0>
 <tr class=t1>
 <td width =30><a href='?sort=id'>id</a></td>
   <td><a href='?sort=txt4'>UU</a></td>
   <td><a href='?sort=txt2'>номер</a></td>
   <td width =120><a href='?srok=$srok&sort=name'>name</a></td>
   <td width =170><a href='?srok=$srok&sort=fam'>fam</a></td>
-  <td width=60>Uber</td>
-  <td width=60>Bolt</td>
-  <td width=60>Uklon</td>
-  <td width=60>Pyka</td>
-  <td width=90>Итого</td>
-  <td width=90>нал всего</td>
-  <td width=90>60</td>
-<!--
-  <td width=90>40</td>
--->
-  <td width=90>баланс</td>
-  <td width=90>Поправка</td>
-  <td width =90> Unal</td>
+  <td width=65px>Uber</td>
+  <td width=65px>Bolt</td>
+  <td width=65px>Uklon</td>
+  <td width=65px>Pyka</td>
+  <td width=90px>Итого</td>
+  <td width=90px>нал всего</td>
+  <td width=90px>60</td>
+  <td width=90px>баланс</td>
+  <td width=90px>Поправка</td>
+  <td width =90px> Unal</td>
 </tr>\n";
 /////////
+
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   $tmp=$row[$tmpcnt][4];
 
@@ -179,7 +228,7 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   echo "  <td>$idl</td>
   <td>".$row[$tmpcnt][12]."</td> 
   <td>".$row[$tmpcnt][11]."</td> 
-  <td><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][1]."</a></td>
+  <td align=right><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][1]."</a></td>
   <td align=left><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][2]."</a></td>
   <td>".number_format($itogo[$tmpcnt], 0, ',', ' ')."</td>
   <td>".number_format($itogobolt[$tmpcnt], 0, ',', ' ')."</td>
@@ -194,7 +243,7 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   <td><font color=#";
   if ($balans[$tmpcnt]<0) echo "ff"; else echo "00";
   echo "0000>".number_format($balans[$tmpcnt], 0, ',', ' ')."</font></td>
-  <td>0</td>
+  <td>".$popravki[$tmpcnt]."</td>
   <td>".number_format(-$unal[$tmpcnt], 0, ',', ' ')."</td>";
   echo "\n</tr>\n";    
 }
@@ -220,9 +269,8 @@ echo "Итого за период : <font color=#222288><b>".number_format($sum
 
 // Освобождаем память от результата
 mysqli_free_result($result);
-echo "\n-----------------<br>\n";
+echo "\n<hr width=75% align=left>\n";
 //echo($count." records.\nall ok\n");
-
 
 
 
@@ -266,10 +314,33 @@ mysqli_close($dbh);
       <p><input name="operator" type="radio" value="uber" checked>Uber (.csv)</p>
       <p><input name="operator" type="radio" value="bolt" >Bolt (.csv)</p>
       <p><input name="operator" type="radio" value="uklon" checked>Uklon (.xlsx)</p>
-      <p><input name="operator" type="radio" value="nalik" >Cash (.xlsx)</p>
+      <p><input name="operator" type="radio" value="cash" >Cash (.xlsx)</p>
 
       startd date: <input type='date' id='start' name='startp' value='<?php echo date("Y-m-d");?>'>
       end date: <input type='date' id='end' name='endp' value='<?php echo date("Y-m-d");?>'>
     <input type="submit" name="uploadBtn" value="Upload" />
   </form>
-
+</div>
+<script>
+  function exceller() {
+    var uri = 'data:application/vnd.ms-excel;base64,',
+      template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+      base64 = function(s) {
+        return window.btoa(unescape(encodeURIComponent(s)))
+      },
+      format = function(s, c) {
+        return s.replace(/{(\w+)}/g, function(m, p) {
+          return c[p];
+        })
+      }
+    var toExcel = document.getElementById("toExcel").innerHTML;
+    var ctx = {
+      worksheet: name || '',
+      table: toExcel
+    };
+    var link = document.createElement("a");
+    link.download = "export.xls";
+    link.href = uri + base64(format(template, ctx))
+    link.click();
+  }
+</script>

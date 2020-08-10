@@ -15,7 +15,7 @@ function normal(txt){
 }
 
 
-if (!process.argv[2])  {console.log("No file! Usge bol2db FILENAME.CSV"); return(0);}
+if (!process.argv[2])  {console.log("No file! Usge bolt2db FILENAME.CSV"); return(0);}
 
 const filename=process.argv[2];
 const csv = require("csv-parser");
@@ -53,6 +53,8 @@ fs.createReadStream(filename)
   .on('end', () => {
   max=0;
 //  cell=results[max];
+//console.log("rezult size: "+results.length);
+
   while (cell['Водій']!=''){
 //    if (cell['Загальний тариф']!='0,00') console.log(max+"-"+cell['Водій']);
     cell=results[max];
@@ -62,6 +64,14 @@ fs.createReadStream(filename)
   max--;
   var cntadd=0;
   var tmp='';
+//////
+  function minepoezd(id){
+    var counter=0;
+    for(var i=max; i<results.length; i++){ if (results[i]['Телефон водія']==id) counter++;}
+//  console.log ("id="+id+" -"+counter+"raz");
+    return counter;
+  };
+////////////////////////////////////////////////
   for (var i=1; i<max;i++){
     tmp=cell['Період'];
     start='';
@@ -79,10 +89,11 @@ fs.createReadStream(filename)
     balans=(prof60*1+1*gotivka);
     id2=cell['Телефон водія'];
     id3='';
+    poezdok=minepoezd(id2);
     if (itogo) {
 //      console.log (id1+" "+id2+" "+" i:"+itogo+" 40%:"+prof40.toFixed(2)+" 60%:"+prof60.toFixed(2)+" g:"+gotivka+" b:"+ balans.toFixed(2));
       cntadd++;
-      sqlq="INSERT INTO bolt (namebolt, telbolt, itogo, pro40, pro60, gotivka, balans) VALUES('" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2) + ");"
+      sqlq="INSERT INTO bolt (poezdok, namebolt, telbolt, itogo, pro40, pro60, gotivka, balans) VALUES('"+poezdok+"', '" +id1+"', '" +id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2) + ");"
 //      console.log(sqlq);
       connection.execute(sqlq, function(err, sqlresults, fields) {
       if (err) console.log(err);
@@ -90,11 +101,11 @@ fs.createReadStream(filename)
       });
     }
   }
-
-    connection.end();
-    console.log("----------------------------------------------");
-    console.log("Всего добавлено "+cntadd+" из "+max+"строк");
-console.log(results[2]);
-  });
+//////////////////////////////////////////////
+  connection.end();
+  console.log("----------------------------------------------");
+  console.log("Всего добавлено "+cntadd+" из "+max+"строк");
+//  console.log(results[2]);
+});
 
 

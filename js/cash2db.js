@@ -1,7 +1,7 @@
 // 16.07.2020
 // denis.kudriakov@gmail.com
 //
-//time -ok
+// naliva-cash-sruki
 "use strict";
 exports.__esModule = true;
 var path = require("path");
@@ -12,7 +12,7 @@ const fs = require("fs");
 const mysql = require("mysql2");
 
 if (!process.argv[2]) {
-  console.log("No file! Usge uklon2db FILENAME.XLSX"); 
+  console.log("No file! Usge cach2db FILENAME.XLSX"); 
   return(0);
 }
 var xlsfilename=process.argv[2];
@@ -62,27 +62,25 @@ for (var _i = 0, _a = workbook.SheetNames; _i < _a.length; _i++) {
       var cntadd=0;
       for (var i=0; i<max;i++){
         cell=results[i];
-        gotivka=cell['Наличные '];
-        itogo=cell['Заработок'];
-        itogo*=.99;
-        id1=cell['Позывной'];
-        id2=cell['Гос. номер'];
-        prof60=itogo*0.6;
-        prof40=itogo*0.4;
-        balans=(prof60*1-1*gotivka);
-        poezdok=cell['К-во поездок'];
+        itogo=cell['рука'];
         if (itogo) {
-//        console.log ("["+i+"]"+id1+" "+id2+" "+" i:"+itogo+" 40%:"+prof40.toFixed(2)+" 60%:"+prof60.toFixed(2)+" g:"+gotivka+" b:"+ balans.toFixed(2));
+          gotivka=itogo;
+          id1=cell['id'];
+          id2=cell['номер'];
+          prof60=itogo*0.6;
+          prof40=itogo*0.4;
+          balans=(prof60*1-1*gotivka);
+          poezdok=1;
           cntadd++;
-          sqlq="INSERT INTO uklon (pozivnoy, gosnomer, itogo, pro40, pro60, gotivka,balans,start,end) VALUES('" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2)+ ", '" +start+ "', '" +end + "');"
+          sqlq="INSERT INTO naliva ( idtel,poezdok, itogo, pro40, pro60, gotivka,balans) VALUES('" +id1+"', '"+poezdok+"','"  + itogo + "', '" + prof40.toFixed(2) + "', '"+ prof60.toFixed(2) + "', '"+ gotivka + "', '" + balans.toFixed(2)+ "');";
           console.log(sqlq);
-
-        connection.execute(sqlq, function(err, sqlresults, fields) {
-          if (err) console.log(err);
-          console.log(sqlresults); // data
-        });
-
+          connection.execute(sqlq, function(err, sqlresults, fields) {
+            if (err) console.log(err);
+            console.log(sqlresults); // data
+          });
         }
+
+//        console.log ("["+i+"]"+id1+" "+id2+" "+" i:"+itogo+" 40%:"+prof40.toFixed(2)+" 60%:"+prof60.toFixed(2)+" g:"+gotivka+" b:"+ balans.toFixed(2));
       }
       connection.end();
       console.log("----------------------------------------------");
