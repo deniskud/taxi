@@ -74,7 +74,7 @@ for (var _i = 0, _a = workbook.SheetNames; _i < _a.length; _i++) {
         if (itogo) {
 //        console.log ("["+i+"]"+id1+" "+id2+" "+" i:"+itogo+" 40%:"+prof40.toFixed(2)+" 60%:"+prof60.toFixed(2)+" g:"+gotivka+" b:"+ balans.toFixed(2));
           cntadd++;
-          sqlq="INSERT INTO uklon (pozivnoy, gosnomer, itogo, pro40, pro60, gotivka,balans,start,end) VALUES('" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2)+ ", '" +start+ "', '" +end + "');"
+          sqlq="INSERT INTO uklon (poezdok, pozivnoy, gosnomer, itogo, pro40, pro60, gotivka,balans,start,end) VALUES('"+poezdok+"','" +id1+"', " + "'"+id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2)+ ", '" +start+ "', '" +end + "');"
           console.log(sqlq);
 
         connection.execute(sqlq, function(err, sqlresults, fields) {

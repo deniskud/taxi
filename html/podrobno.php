@@ -90,13 +90,14 @@ mysqli_free_result($result);
 ////////////////////////uklon
 
 $sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM uklon WHERE pozivnoy='$uklonid';";
+//echo $sql;
 $result = mysqli_query($dbh,$sql);
 if (!$result){
     echo "ошибка запроса в БД<br>";
     exit;
 }
 $data= mysqli_fetch_row($result);
-echo "<hr width=50% align=left>Статистика по <b>Uklon</b>: <br>\nПоездок: $data[0] <br>\n";
+echo "<hr width=50% align=left>Статистика по <b>Uklon</b>: <br>\nПоездок: ".$data[0]." <br>\n";
 
 
 echo "ВСЕГО: ".number_format($data[1], 0, ',', ' ')." 

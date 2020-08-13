@@ -230,6 +230,7 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   <td>".$row[$tmpcnt][11]."</td> 
   <td align=right><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][1]."</a></td>
   <td align=left><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][2]."</a></td>
+
   <td>".number_format($itogo[$tmpcnt], 0, ',', ' ')."</td>
   <td>".number_format($itogobolt[$tmpcnt], 0, ',', ' ')."</td>
   <td>".number_format($itogouklon[$tmpcnt], 0, ',', ' ')."</td>
@@ -244,7 +245,7 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   if ($balans[$tmpcnt]<0) echo "ff"; else echo "00";
   echo "0000>".number_format($balans[$tmpcnt], 0, ',', ' ')."</font></td>
   <td>".$popravki[$tmpcnt]."</td>
-  <td>".number_format(-$unal[$tmpcnt], 0, ',', ' ')."</td>";
+  <td>".number_format((-$unal[$tmpcnt]), 0, ',', ' ')."</td>";
   echo "\n</tr>\n";    
 }
 echo "</table><br>\n";
