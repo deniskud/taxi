@@ -7,7 +7,8 @@ session_start();
   <title>PHP File Upload</title>
 </head>
 <body>
-<a href=weekindex.php><button> на недельную</button></a>
+<a href=index.php><button> на дневную</button></a>
+
 <!--
   <?php
 /*

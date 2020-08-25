@@ -30,7 +30,7 @@ $head ="<!DOCTYPE HTML>
 <body>
 <iframe class='iframe1' id='podrobno' name='podrobno'>тут подробно:</iframe>
 ";
-$head.="<a href=weekindex.php><button onclick='exceller()'>на недельную</button><a>";
+$head.="<a href=index.php><button onclick='exceller()'>на дневную</button><a>";
 $head .=" <form action='' method='get'>";
 echo $head;
 
@@ -83,7 +83,7 @@ mysqli_free_result($result);
 
 /////uber
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
-  $sql="SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka) FROM uber WHERE uber.iduber='".$row[$tmpcnt][6]."';";
+  $sql="SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka) FROM weekuber WHERE weekuber.iduber='".$row[$tmpcnt][6]."';";
 //echo $sql;
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
   $tmp=mysqli_fetch_row($result);
@@ -103,7 +103,7 @@ mysqli_free_result($result);
 
 ///uklon
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
-  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM uklon WHERE uklon.pozivnoy="'.$row[$tmpcnt][8].'" ;';
+  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM weekuklon WHERE weekuklon.pozivnoy="'.$row[$tmpcnt][8].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
   $tmp=mysqli_fetch_row($result);
   $itogouklon[$tmpcnt]=$tmp[0];
@@ -120,7 +120,7 @@ mysqli_free_result($result);
 
 ////bolt
 for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
-  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM bolt WHERE bolt.telbolt="'.$row[$tmpcnt][7].'" ;';
+  $sql='SELECT SUM(itogo), SUM(balans), SUM(pro60), SUM(pro40), SUM(gotivka)  FROM weekbolt WHERE weekbolt.telbolt="'.$row[$tmpcnt][7].'" ;';
   $result = mysqli_query($dbh,$sql);// or die('query error: ' . mysql_error());
   $tmp=mysqli_fetch_row($result);
   $itogobolt[$tmpcnt]=$tmp[0];
@@ -234,8 +234,8 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   echo "  <td>$idl</td>
   <td>".$row[$tmpcnt][12]."</td> 
   <td>".$row[$tmpcnt][11]."</td> 
-  <td align=right><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][1]."</a></td>
-  <td align=left><a target='podrobno' href='podrobno.php?uid=$idl'>".$row[$tmpcnt][2]."</a></td>
+  <td align=right><a target='podrobno' href='weekpodrobno.php?uid=$idl'>".$row[$tmpcnt][1]."</a></td>
+  <td align=left><a target='podrobno' href='weekpodrobno.php?uid=$idl'>".$row[$tmpcnt][2]."</a></td>
 
   <td>".number_format($otchet, 0, ',', ' ')."</td>";
 
@@ -254,9 +254,7 @@ for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
   echo "0000>".number_format($balans[$tmpcnt], 0, ',', ' ')."</font></td>
   <td>".$popravki[$tmpcnt]."</td>";
 
-
-
-  echo "\n</tr>\n";    
+  echo "\n</tr>\n";
 }
 echo "</table><br>\n";
 ////////////// end table

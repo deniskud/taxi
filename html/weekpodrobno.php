@@ -61,7 +61,7 @@ $snal=0;
 $s60=0;
 /////////////////////////////uber
 
-$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM uber WHERE iduber='$uberid';";
+$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM weekuber WHERE iduber='$uberid';";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
     echo "ошибка запроса в БД<br>";
@@ -89,7 +89,7 @@ mysqli_free_result($result);
 
 ////////////////////////uklon
 
-$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM uklon WHERE pozivnoy='$uklonid';";
+$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM weekuklon WHERE pozivnoy='$uklonid';";
 //echo $sql;
 $result = mysqli_query($dbh,$sql);
 if (!$result){
@@ -118,7 +118,7 @@ mysqli_free_result($result);
 
 ////////////////////////////////// bolt
 
-$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM bolt WHERE telbolt='$boltid';";
+$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM weekbolt WHERE telbolt='$boltid';";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
     echo "ошибка запроса в БД<br>";
