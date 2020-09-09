@@ -11,16 +11,22 @@ $head ="<!DOCTYPE HTML>
    .t2 {background-color: #f2fff2; font-weight: normal;font-family: sans-serif;}  
    table {font-family: sans-serif;text-align: right;}
    body {font-family: Arial;}
+   .errr {position: absolute; top: 1000px;left: 5px;}
   </style> 
  </head>
 <body>
+<div id='errr' class='errr'></div>
 ";
 //$head .=" <form action='' method='get'>";
 echo $head;
 
-
+$allpo=0;
 $uid=$_GET['uid'];
 if (!$uid) $uid='1';
+$start=$_GET['stime'];
+$end=$_GET['dtime'];
+
+
 
 $dbh = mysqli_connect("127.0.0.1", "zmey", "kalina", "taxi");
 if (!$dbh) {
@@ -61,7 +67,8 @@ $snal=0;
 $s60=0;
 /////////////////////////////uber
 
-$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM weekuber WHERE iduber='$uberid';";
+$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM weekuber WHERE iduber='$uberid'  AND (start BETWEEN '$start 00:00:00' AND '$end 23:59:59');";
+
 $result = mysqli_query($dbh,$sql);
 if (!$result){
     echo "ошибка запроса в БД<br>";
@@ -69,7 +76,7 @@ if (!$result){
 }
 $data= mysqli_fetch_row($result);
 echo "<hr width=50% align=left>Статистика по <b>Uber</b>: <br>\nПоездок: $data[0] <br>\n";
-
+$allpo+=$data[0];
 
 echo "ВСЕГО: ".number_format($data[1], 0, ',', ' ')." 
 <br> 60%=".number_format($data[4], 0, ',', ' ')."<br>
@@ -89,7 +96,7 @@ mysqli_free_result($result);
 
 ////////////////////////uklon
 
-$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM weekuklon WHERE pozivnoy='$uklonid';";
+$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM weekuklon WHERE pozivnoy='$uklonid'  AND (start BETWEEN '$start 00:00:00' AND '$end 23:59:59');";
 //echo $sql;
 $result = mysqli_query($dbh,$sql);
 if (!$result){
@@ -98,6 +105,7 @@ if (!$result){
 }
 $data= mysqli_fetch_row($result);
 echo "<hr width=50% align=left>Статистика по <b>Uklon</b>: <br>\nПоездок: ".$data[0]." <br>\n";
+$allpo+=$data[0];
 
 
 echo "ВСЕГО: ".number_format($data[1], 0, ',', ' ')." 
@@ -118,7 +126,7 @@ mysqli_free_result($result);
 
 ////////////////////////////////// bolt
 
-$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM weekbolt WHERE telbolt='$boltid';";
+$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM weekbolt WHERE telbolt='$boltid'  AND (start BETWEEN '$start 00:00:00' AND '$end 23:59:59');";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
     echo "ошибка запроса в БД<br>";
@@ -126,6 +134,7 @@ if (!$result){
 }
 $data= mysqli_fetch_row($result);
 echo "<hr width=50% align=left>Статистика по <b>Bolt</b>: <br>\nПоездок: $data[0] <br>\n";
+$allpo+=$data[0];
 
 
 echo "ВСЕГО: ".number_format($data[1], 0, ',', ' ')." 
@@ -150,7 +159,7 @@ echo "<hr width=50% align=left>";
 
 /////////////////////////////naliva
 mysqli_free_result($result);
-$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM naliva WHERE idtel='$id';";
+$sql="SELECT SUM(poezdok), SUM(itogo), SUM(gotivka), SUM(pro40),SUM(pro60),SUM(balans) FROM naliva WHERE idtel='$id' AND (start BETWEEN '$start 00:00:00' AND '$end 23:59:59');";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
     echo "ошибка запроса в БД<br>";
@@ -159,6 +168,7 @@ if (!$result){
 $data= mysqli_fetch_row($result);
 
 echo "Статистика <b>'С руки'</b>: <br>\nПоездок: $data[0] <br>\n";
+$allpo+=$data[0];
 
 
 echo "ВСЕГО: ".number_format($data[1], 0, ',', ' ')." 
@@ -179,7 +189,7 @@ $snal+=$data[2];
 $s60+=$data[4];
 
 
-$sql="SELECT SUM(gotivka) FROM popravki WHERE idtel=$id;";
+$sql="SELECT SUM(gotivka) FROM popravki WHERE idtel=$id  AND (start BETWEEN '$start 00:00:00' AND '$end 23:59:59');";
 $result = mysqli_query($dbh,$sql);
 if (!$result){
     echo "ошибка запроса в БД<br>";
@@ -192,7 +202,7 @@ if ($data[0]){
   echo $data[0];
   $sbalans+=$data[0];
   echo "грн<br>Подробно:<br>";
-  $sql="SELECT text, gotivka, start FROM popravki WHERE idtel=$id;";
+  $sql="SELECT text, gotivka, start FROM popravki WHERE idtel=$id  AND (start BETWEEN '$start 00:00:00' AND '$end 23:59:59');";
   $result = mysqli_query($dbh,$sql);
   if (!$result){
       echo "ошибка запроса в БД<br>";
@@ -214,7 +224,7 @@ if ($data[0]){
 ////////////////////////////
 
 
-echo "<script>document.getElementById('zagolovok').innerHTML='<b>Итого</b><br>ВСЕГО: ".number_format($svsego, 0, ',', ' ')."<br> 60%=".number_format($s60, 2, ',', ' ')."<br>наличка: ".number_format($snal, 0, ',', ' ')."<br>Баланс: <font color=#";
+echo "<script>document.getElementById('zagolovok').innerHTML='Итого $allpo поездок<br>ВСЕГО: ".number_format($svsego, 0, ',', ' ')."<br> 60%=".number_format($s60, 2, ',', ' ')."<br>наличка: ".number_format($snal, 0, ',', ' ')."<br>Баланс: <font color=#";
 
 if ($sbalans<0) echo "ff0000>";
 else echo "000000>";

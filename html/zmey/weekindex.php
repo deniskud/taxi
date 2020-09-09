@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PHP File Upload</title>
+  <title>WEEK Upload</title>
 </head>
 <body>
 <a href=index.php><button> на дневную</button></a>
@@ -22,7 +22,7 @@ session_start();
 -->
 
 
-  <form method="POST" action="upload.php" enctype="multipart/form-data">
+  <form method="POST" action="weekupload.php" enctype="multipart/form-data">
     <div>
       <span>Upload a File:</span>
       <input type="file" name="uploadedFile" />

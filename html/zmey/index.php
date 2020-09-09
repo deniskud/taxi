@@ -4,21 +4,10 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PHP File Upload</title>
+  <title>DAY Upload</title>
 </head>
 <body>
 <a href=weekindex.php><button> на недельную</button></a>
-<!--
-  <?php
-/*
-    if (isset($_SESSION['message']) && $_SESSION['message'])
-    {
-      printf('<b>%s</b>', $_SESSION['message']);
-      unset($_SESSION['message']);
-    }
-*/
-  ?>
--->
 
 
   <form method="POST" action="upload.php" enctype="multipart/form-data">
@@ -61,7 +50,64 @@ session_start();
 </script>
 
 
+<?php
 
+$dbh = mysqli_connect("127.0.0.1", "zmey", "kalina", "taxi");
+if (!$dbh) {
+    echo "Ошибка: Невозможно установить соединение с MySQL." . PHP_EOL;
+    echo "Код ошибки errno: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Текст ошибки error: " . mysqli_connect_error() . PHP_EOL;
+    exit;
+}
+
+mysqli_query($dbh,"SET NAMES 'utf8'");
+
+$sql = "SELECT * FROM leliki ORDER BY fam";// ORDER BY $sort";
+$result = mysqli_query($dbh,$sql);
+
+$count=0;
+$i=0;
+$counter=0;
+$leliks= array(array ());
+$row =   array(array());
+$itogo = array();
+$itogobolt = array();
+$itogouklon =array();
+$popravki = array();
+$unal =array();
+//pushing data from DB 2 array
+while ($row[$counter] = mysqli_fetch_row($result)) $counter++;
+mysqli_free_result($result);
+
+
+
+echo "
+<form method='GET' action='addcoment.php'>
+  <select name='id'>\n";
+
+for ($tmpcnt=0;$tmpcnt<$counter;$tmpcnt++){
+  echo "    <option value='";
+  echo $row[$tmpcnt][0];
+  echo "'>";
+  echo $row[$tmpcnt][1];
+  echo " ";
+  echo $row[$tmpcnt][2];
+  echo " ";
+  echo $row[$tmpcnt][11];
+  echo "</option>\n";
+}
+
+
+echo "  </select>
+  <input type='text' size='4' id='korr' name='korr' onfocus=\"if (this.value=='0.0') {this.value='';}\" onblur=\"if (this.value==''){this.value='0.0';}\" value='0.0' onclick='return true;'>
+  <input type='text' size='70'id='komm' name='komm' onfocus=\"if (this.value=='комментарий') {this.value='';}\" onblur=\"if (this.value==''){this.value='комментарий';}\" value='комментарий' onclick='return true;'>
+<br>  <input type='date' id='datec' name='datec' value='";
+echo date("Y-m-d");
+echo "'>
+  <input type='submit' value='Добавить в базу!'>
+</form>
+";
+?>
 
 </body>
 </html>

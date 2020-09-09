@@ -18,6 +18,7 @@ function normal(txt){
 if (!process.argv[2])  {console.log("No file! Usge boltweek2db FILENAME.CSV"); return(0);}
 
 const filename=process.argv[2];
+const startd=process.argv[3];
 const csv = require("csv-parser");
 const fs = require("fs");  
 const mysql = require("mysql2");
@@ -93,8 +94,9 @@ fs.createReadStream(filename)
     if (itogo) {
 //      console.log (id1+" "+id2+" "+" i:"+itogo+" 40%:"+prof40.toFixed(2)+" 60%:"+prof60.toFixed(2)+" g:"+gotivka+" b:"+ balans.toFixed(2));
       cntadd++;
-      sqlq="INSERT INTO weekbolt (poezdok, namebolt, telbolt, itogo, pro40, pro60, gotivka, balans) VALUES('"+poezdok+"', '" +id1+"', '" +id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2) + ");"
+      sqlq="INSERT INTO weekbolt (poezdok, namebolt, telbolt, itogo, pro40, pro60, gotivka, balans, start) VALUES('"+poezdok+"', '" +id1+"', '" +id2+"',"  + itogo + ", " + prof40.toFixed(2) + ", "+ prof60.toFixed(2) + ", "+ gotivka + ", " + balans.toFixed(2) + ",'"+startd+"');";
 //      console.log(sqlq);
+
       connection.execute(sqlq, function(err, sqlresults, fields) {
       if (err) console.log(err);
         console.log(sqlresults); // data

@@ -72,7 +72,7 @@ for (var _i = 0, _a = workbook.SheetNames; _i < _a.length; _i++) {
           balans=(prof60*1-1*gotivka);
           poezdok=1;
           cntadd++;
-          sqlq="INSERT INTO naliva ( idtel,poezdok, itogo, pro40, pro60, gotivka,balans) VALUES('" +id1+"', '"+poezdok+"','"  + itogo + "', '" + prof40.toFixed(2) + "', '"+ prof60.toFixed(2) + "', '"+ gotivka + "', '" + balans.toFixed(2)+ "');";
+          sqlq="INSERT INTO naliva ( idtel,poezdok, itogo, pro40, pro60, gotivka,balans,start) VALUES('" +id1+"', '"+poezdok+"','"  + itogo + "', '" + prof40.toFixed(2) + "', '"+ prof60.toFixed(2) + "', '"+ gotivka + "', '" + balans.toFixed(2)+ "','"+start+"');";
           console.log(sqlq);
           connection.execute(sqlq, function(err, sqlresults, fields) {
             if (err) console.log(err);
