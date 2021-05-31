@@ -1,0 +1,173 @@
+@media screen and (max-width: 766px) {
+
+    .inner-block {
+        width: auto;
+        padding: 0 15px;
+    }
+
+    .left-side,
+    .right-side {
+        width: auto;
+        float: none;
+    }
+
+    .video-box object,
+    .video-box .inner {
+        width: auto !important;
+    }
+
+    .logo {
+        display: block;
+        text-align: center;
+        margin: 0 0 25px;
+        float: none;
+    }
+
+    .logo img {
+        display: block;
+        float: none;
+        margin: auto;
+    }
+
+    .logo .info {
+        padding: 10px 0 0;
+        margin: 0;
+    }
+
+    .logo .info .small-text {
+        text-align: center;
+    }
+
+    .header .contacts {
+        width: auto;
+        text-align: center;
+        padding: 10px 0;
+        float: none;
+        border-top: 1px solid #1E445B;
+        border-bottom: 1px solid #1E445B;
+    }
+
+    .header .top-line {
+        padding: 0;
+    }
+
+    .slogan h2 {
+        text-align: center;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .mobile-operator {
+        padding: 0 0 10px;
+    }
+
+    .mobile-operator a {
+        height: 38px;
+        color: #fff;
+        font-size: 26px;
+        line-height: 36px;
+        padding: 0 20px;
+        position: relative;
+        border: 1px solid #000;
+        border-radius: 5px;
+        -webkit-transition:all 0.15s ease-in;
+        -moz-transition:all 0.15s ease-in;
+        -o-transition:all 0.15s ease-in;
+        transition:all 0.15s ease-in;
+        background: #1E4459 !important;
+    }
+
+    .mobile-operator a:hover {
+        text-decoration: none;
+        opacity: 0.8;
+    }
+
+    .mobile-none {
+        display: none;
+
+    }
+
+    .mobile-on {
+        display: block;
+    }
+
+    .contacts.mobile-on .time {
+        padding: 0 0 10px;
+    }
+    
+    .contacts.special {
+        width: auto;
+        text-align: center;
+        padding: 0 0 20px;
+        margin: 0 0 20px;
+        border-bottom: 1px solid #1E4459;
+    }
+
+    .comments {
+        padding: 0;
+        border: none;
+    }
+
+    .comment-box:first-child {
+        padding: 0;
+        border-top: none;
+    }
+
+    .comment-box {
+        margin: 0 0 15px;
+    }
+
+}
+
+@media screen and (max-width: 479px) {
+
+    body {
+        min-width: 320px;
+    }
+
+    .logo .info .big-text {
+        font-size: 26px;
+        line-height: 26px;
+        padding: 0;
+    }
+
+    .logo .info .small-text {
+        font-size: 15px;
+    }
+
+    .video-box object,
+    .video-box .inner {
+        width: 100% !important;
+    }
+
+    form#zform input {
+        width: 100%;
+    }
+
+    .mobile-text {
+        font-size: 13px;
+    }
+
+    #price {
+        width: 130px !important;
+    }
+
+    fieldset h3 {
+        font-size: 16px;
+    }
+
+    .comment-box .photo {
+        width: auto;
+        margin: 0 0 15px;
+        float: none;
+    }
+
+    .comment-box .status h4 {
+        word-break: normal;
+    }
+
+    .comment-box p {
+        text-align: left;
+    }
+
+}

@@ -1,0 +1,22 @@
+[input-def]
+0=*
+
+[input2]
+0=/var/www/html/taxi2/jsback
+
+[cmdline]
+0=5
+1=
+
+[Dir Hist New Right Panel]
+0=/var/www/html/abas
+1=/var/www/html
+2=/var/www/html/taxi2
+3=/var/www/html/taxi2/jsback
+
+[Dir Hist New Left Panel]
+0=/var
+1=/var/www
+2=/var/www/html
+3=/var/www/html/abas
+4=/var/www/html/abas/wi

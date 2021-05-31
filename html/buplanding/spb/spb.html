@@ -1,0 +1,735 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+  	<title>Подоконники Данке - пожалуй, самые лучшие подоконники России</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.tablet.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.tablet.small.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.mobile.css" />
+</head>
+
+<body>
+
+<!-- google anal ------------------------------------------------ -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15886641-6']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end of google anal -->
+
+<!-- Yandex.Metrika informer -->
+<!--
+<a href="http://metrika.yandex.ru/stat/?id=22695421&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/22695421/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:22695421,lang:'ru'});return false}catch(e){}"/>
+</a>
+-->
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+
+<!--
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter22695421 = new Ya.Metrika({id:22695421,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/22695421" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+-->
+<!-- /Yandex.Metrika counter -->
+
+<script>
+        function zvalid() {
+          // yaCounter22695421.reachGoal('ORDER'); //target from yandex
+          var field = document.getElementById('clientmail1'); // email field
+          var myform = document.getElementById('zform');
+          myform.action="php/send.php";
+          var str = field.value ; // email string
+          var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/; // not valid
+          var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,3}|[0-9]{1,3})(\]?)$/; // valid
+          var reg3 = /[0-9\-\.]/;
+          var reg4 = /[a-zA-Z]/;
+          var str2 =  document.getElementById('clienttel1').value;
+         if (!reg4.test(str2) && reg3.test(str2)) return true ;
+            if (!reg1.test(str) && reg2.test(str)) {
+              return true;
+            }
+          alert("Указанные вами данные не корректны! Мы не сможем связаться по е-мэйлу:\"" + str + "\" и конечно позвонить по телефону  \"" + str2 + "\" тоже не сможем. Пожалуйста укажите корректно или ТЕЛЕФОН или е-мэйл. А потом нажимайте \"заказать\"");
+          myform.action="#bot";
+          field.focus();
+          field.select();
+          return false;
+        }
+
+         /* функция для вывода значения со слайдера */
+        function printValue(sliderID, textbox) {
+            var x = document.getElementById(textbox);
+            var y = document.getElementById(sliderID);
+            var z = document.getElementById("price");
+            var a = document.getElementById("result");
+        //    var b = document.getElementById("result1");
+            x.value = y.value ;
+            var tmp = x.value * z.value / 1000 ;
+            a.value = tmp.toFixed(2);
+        //    tmp = a.value * 0.30 ;
+        //    b.value = tmp.toFixed(2);
+          }
+         /* функция для вывода сосчитаных значений стоимости  */
+         function minicorrections(sliderID, textbox) {
+            var x = document.getElementById(textbox);
+            var y = document.getElementById(sliderID);
+            var z = document.getElementById("price");
+            var a = document.getElementById("result");
+          //  var b = document.getElementById("result1");
+            y.value = x.value ;
+            a.value = x.value * z.value / 1000 ;
+          //  b.value = a.value * 0.30 ; // za ustanovku
+          //  b.value = b.value.toFixed(2);
+}
+        window.onload = function() { printValue('slider1', 'rangeValue1'); }
+
+/* timer initializations */
+var end = new Date(2019,02,30, 00, 00, 01); /* конечная дата  месяц 0..11  */
+var refreshinterval = 1000; /* в милисекундах 1000мс = 1 сек*/
+var today = new Date(); /* poluchaem datu segodny */
+var _second = 1000;          /* opredelyaem razmernost razryadov*/
+var _minute = _second * 60;
+var _hour = _minute * 60;
+var _day = _hour * 24;
+var timer;
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+            document.getElementById("countdown").innerHTML = "Акция окончена";
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        if (hours < 10) hours = '0' + hours;
+        var minutes = Math.floor((distance % _hour) / _minute);
+        if (minutes < 10) minutes = '0' + minutes;
+        var seconds = Math.floor((distance % _minute) / _second);
+        if (seconds < 10) seconds = '0' + seconds;
+        document.getElementById('countdown').innerHTML = ""+ days +" дн. "+ hours +":"+ minutes +":"+ seconds +"";
+        document.getElementById('countdown2').innerHTML = ""+ days +" дн. "+ hours +":"+ minutes +":"+ seconds +"";
+
+/*        document.getElementById('countdown1').innerHTML = ""+ days +" дн. "+ hours +":"+ minutes +":"+ seconds +"";*/
+    }
+    timer = setInterval(showRemaining, refreshinterval);
+</script>
+
+    <!--wrapper-->
+    <div id="wrapper">
+
+        <!--header-->
+        <div class="header">
+            <div class="inner-block">
+
+                <div class="top-line clearfix">
+                    <a href="" class="logo left clearfix">
+                        <img src="img/danke.jpg" class="left" />
+                        <span class="info">
+                            <h1><span class="big-text">Подоконники Данке</span></h1>
+                            <h3><span class="small-text">Немецкое качество за разумную цену</span></h3>
+                        </span>
+                    </a>
+                    <div class="contacts mobile-none right">
+                        Наш адрес: г.Санкт-Петербург
+                        <br />
+                        <div class="title">
+                            Нажмите, что бы позвонить:
+                        </div>
+                        <div class="mobile-operator item-1">
+                            <a href="tel:8(812)5-076-076">8(812)5-076-076</a>
+                        </div>
+                        <div class="mobile-operator item-2">
+                            <a href="tel:+7932-222-53-43">+7932-222-53-43</a>
+                        </div>
+                        <div class="time">(c 9-00 до 19-00)</div>
+                    </div>
+                </div>
+<!-- УКП -->
+                <div class="slogan">
+                    <h2>Если вы живете в Санкт-Петербурге или Ленинградской области и хотите купить подоконники, то закажите подоконники Данке у нас. Мы даём на них безусловную 10-летнюю гарантию и у нас всегда есть все цвета. А еще вы получаете БЕСПЛАТНО: доставку по Санкт-Петербургу, индивидуальную прирезку и исчерпывающую консультацию.</h2>
+                </div>
+
+                <div class="contacts mobile-on right">
+                    <div class="title">
+                        Нажмите, что бы позвонить:
+                    </div>
+                    <div class="mobile-operator item-1">
+                        <a href="tel:8(812)5-076-076">8(812)5-076-076</a>
+                    </div>
+                    <div class="mobile-operator item-2">
+                        <a href="tel:+7932-222-53-43">+7932-222-53-43</a>
+                    </div>
+                    <div class="time">(c 9-00 до 19-00)</div>
+                    Наш адрес: г.Санкт-Петербург
+                    <br />
+                </div>
+
+            </div>
+        </div>
+        <!--end header-->
+
+        <!--content-->
+        <div class="content">
+            <div class="inner-block clearfix">
+
+                <!--right side-->
+                <div class="right-side right mobile-on">
+
+                    <h3>Почему разумно покупать подоконники Данке у нас?</h3>
+                    <ul class="special-list about">
+                        <li>
+                            У нас <b>бесплатная доставка</b> по Санкт-Петербургу любого количества. Обычно цена доставки существенно увеличивает стоимость, а тут - прямая экономия!
+                        </li>
+                        <li>
+                            И оплата у нас - <b>после</b> доставки. Схема простая: мы привезли - вы оплатили!
+                        </li>
+                        <li>
+                            Наши партнеры-монтажники устанавливают подоконники Данке более 10 лет. Они берут от 150 руб за метр прямого подоконника. Это почти даром! Также они монтируют и эркерные или криволинейные подоконники.
+                        </li>
+                        <li>
+                            При необходимости наш партнер-монтажник приедет к вам на предварительный замер.
+                        </li>
+						<li>
+                            Общую стоимость (подоконник + монтаж) можно просчитать заранее, по телефону или по почте. Сюрпризов у нас не бывает.
+                        </li>
+                    </ul>
+
+                    <h4>Мы работаем с официальным представительством компании Данке в Санкт-Петербурге, а это значит, что:</h4>
+
+                    <ul class="special-list about">
+                        <li>
+                            Безусловная <b>10-летняя гарантия</b> осуществляется максимально оперативно - для этого есть все возможности.
+                        </li>
+                        <li>
+                            У нас всегда в наличии подоконники всех заявленных цветов.
+                        </li>
+                        <li>
+                            Цена на подоконники разных цветов всегда одинакова:
+                            <br />"от производителя" и не зависит от популярности того или иного цвета. Плюс <b>скидки</b> и <b>бонусы</b>!
+                        </li>
+                        <li>
+                            Мы <i>бесплатно</i> делаем индивидуальную прирезку. Это значит, что мы дадим вам сразу тот размер, который вам нужен: хоть 95 см, хоть 2.45 м, хоть 6 м одной полосой. Вам не надо покупать длинный подоконник, а потом прирезать его на месте. Мы это заранее сделаем бесплатно. Вам останется его только установить.
+                        </li>
+                        <li>
+                            Мы даём клиентам <i>бесплатную экспертную консультацию</i>. Мы занимаемся подоконниками более пяти лет и знаем о них всё. <b>Звоните, консультируйтесь</b>!
+                        </li>
+                        <li>
+                            Доставка заказа к вам домой в течении <b>одних суток</b> после звонка.
+                        </li>
+                        <li>
+                            Для тех кто не решился на премиум вариант есть <b>эконом предложения - подоконник Страндарт и Комфорт</b> того же производителя - в 1.5-2,5 раза дешевле! <b>Звоните, уточняйте!</b>
+                        </li>
+                        <li>
+                            А если вы дилер или прораб - то для вас есть спецпредложение.
+                        </li>
+                    </ul>
+
+                    <!--counter-->
+                    <div class="counter">
+                        <h2>Акция: Старый курс!</h2>
+                        <div class="course-info">
+                            курс СберБанка: 63,71 руб./у.е.
+                        </div>
+                        <div class="our-course">
+                            Наш акционный курс: 63,71
+                        </div>
+                        <p><b>+ Каждый клиент получит скидку!</b></p>
+                        <p><b>Цена за метр подоконника от 181 руб.!</b></p>
+                        До конца акции осталось:
+                        <div id="countdown2" class="counterprop">АКЦИЯ</div>
+                        <p>Не упустите возможность сэкономить.</p>
+                        <p>Чем больше заказ тем больше скидка!</p>
+                        <p>Заказав сейчас по сниженной цене, вы получаете:</p>
+                        <ul class="special-list">
+                            <li>Скидку 50% на заглушки при заказе подоконника от 1 м (Вы же не забыли про заглушки? они нужны в любом случае к каждому подоконнику). Экономия от 35 руб.</li>
+                            <li>Скидку 50% на соединители при заказе более одного. 63 руб. сэкономите.</li>
+                            <li>Скидку в 25% на монтаж подоконника. Вы экономите еще от ~120 руб!</li>
+                            <!--<li>Если вам нужны окна (обычно подоконники покупают при замене окон), то вы получаете скидку в 20%. Здесь вы экономите от 200 до 2200 руб.</li>
+                            <li>Если к окнам вам нужны проветриватели (клапаны приточной вентиляции), то вы получаете скидку в 10% на проветриватели <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/selevye" target="_blank"><u>Titon</u></a> и <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/avtomaticeskie" target="_blank"><u>Ventair</u></a>. Вы экономите от 25 до 120 руб.</li>
+                            <li>Предоставляем скидку 25% на установку оконных откосов любой сложности. Экономия составит от 120 руб. на одном окне.</li>-->
+                        </ul>
+                    </div>
+                    <!--end counter-->
+
+                </div>
+                <!--end right side-->
+
+                <div class="contacts special mobile-on">
+                    <div class="title">
+                        Нажмите, что бы позвонить:
+                    </div>
+                    <div class="mobile-operator item-1">
+                        <a href="tel:8(812)5-076-076">8(812)5-076-076</a>
+                    </div>
+                    <div class="mobile-operator item-2">
+                        <a href="tel:+7932-222-53-43">+7932-222-53-43</a>
+                    </div>
+                    <div class="time">(c 9-00 до 19-00)</div>
+                    Наш адрес: г.Санкт-Петербург
+                    <br />
+                </div>
+
+                <!--left side-->
+                <div class="left-side left">
+
+                    <div class="video-box">
+                        <div class="inner">
+                        <iframe id="ytplayer" type="text/html" width="500" height="280"
+  src="http://www.youtube.com/embed/DmxU94I6J8g?hl=ru_RU&fs=1;showinfo=0;rel=0;autoplay=0"
+  frameborder="0"/>
+  </iframe>
+                        
+<!--
+
+
+                        
+                            <object width="500" height="280" type="application/x-shockwave-flash" data="http://www.youtube.com/v/DmxU94I6J8g?hl=ru_RU&amp;fs=1;showinfo=0;rel=0;autoplay=0">
+                                <param name="movie" value="//www.youtube.com/v/DmxU94I6J8g?hl=ru_RU&amp;version=3&amp;rel=0;autoplay=0">
+                                <param name="allowFullScreen" value="true">
+                                <param name="allowscriptaccess" value="always">
+                                <param name="wmode" value="opaque">
+                            </object>
+  -->                          
+                        </div>
+                    </div>
+
+                    <div class="guarantee">
+                        <b>Безусловная гарантия 10 лет на подоконники Данке</b>
+                        <p>Если в течении 10 лет что-то случится с вашими подоконниками не по вашей вине, то мы их без вопросов поменяем.</p>
+                    </div>
+
+                    <ul class="special-list advantages">
+                        <li>
+                            <b>Экологически чистые и безопасные компоненты</b>
+                            Акриловое покрытие не содержит формальдегида и других канцерогенов или вредных веществ, которые часто используются в производстве ПВХ и ДСП.
+                        </li>
+                        <li>
+                            <b>Фабричный блеск идеально сохраняется долгие годы</b>
+                            Глянцевая поверхность защищена от механических повреждений: царапин цветочным горшком, статуэток, ваз и других предметов.
+                        </li>
+                        <li>
+                            <b>Отличная термостойкость</b>
+                            Покрытие гарантированно не пострадает от кратковременного контакта с горячей посудой. И случайно упавшая сигарета не оставит характерного коричневого пятна.
+                        </li>
+                        <li>
+                            <b>Спокойно выдерживает вес взрослого человека</b>
+                            Прочность основы (как по химическому составу, так и по конструктивному решению) гарантированно выдержит вес взрослого человека при мытье окон и не пострадает от тяжелых предметов.
+                        </li>
+                        <li>
+                            <b>Не боятся пара, сырости и влажности</b>
+                            В отличии от деревянных или подоконников из ДСП, на подоконники Данке нанесено водоотталкивающее покрытие Elesgo, которое используют при изготовлении ламината для пола.
+                        </li>
+                        <li>
+                            <b>Устойчив к возникновению пищевых пятен</b>
+                            Следы от пролитого вина или кофе легко вытираются.
+                        </li>
+                        <li>
+                            <b>Не чувствителен к разного рода растворителям</b>
+                            Разлитые лак для ногтей, зеленка или краски для рисования легко вытираются тряпкой. Также поверхность подоконника устойчива к кислотосодержащим средствам.
+                        </li>
+                        <li>
+                            <b>Практичны и просты в уходе</b>
+                            Покрытие не содержит пор и не требует никаких химических средств для чистки. Можно просто протереть.
+                        </li>
+                        <li>
+                            <b>Широкая палитра цветов</b>
+                            Есть имитация дерева и мрамора, которые удовлетворят любой вкус. И конечно же, есть классические белые подоконники в глянцевом и матовом исполнении.
+                        </li>
+                        <li>
+                            <b>Широкий выбор размеров</b>
+                            От 10 до 70 см по глубине и до 6 метров по длине. В наличии подоконники с двумя капиносами глубиной 50 и 70 см.
+                        </li>
+                        <li>
+                            <b>Можно соединить угловые подоконники</b>
+                            В наличии есть угловые соединители на 90, 120, 135 и 180°.
+                        </li>
+                        <li>
+                            <b>Все цвета торцевых заглушек</b>
+                            Для каждого цвета существуют торцевые заглушки по 35 и 70 см.
+                        </li>
+                        <li>
+                            <b>Вся продукция сертифицирована</b>
+                            Есть все нужные сертификаты: СЭС, пожарных, пр.
+                        </li>
+                    </ul>
+
+                    <div class="contacts special mobile-on">
+                        <div class="title">
+                            Нажмите, что бы позвонить:
+                        </div>
+                        <div class="mobile-operator item-1">
+                            <a href="tel:8(812)5-076-076">8(812)5-076-076</a>
+                        </div>
+                        <div class="mobile-operator item-2">
+                            <a href="tel:+7-932-222-53-43">+7-932-222-53-43</a>
+                        </div>-AMFiFI8,Zca
+                        <div class="time">(c 9-00 до 19-00)</div>
+                        Наш адрес: г.Санкт-Петербург
+                        <br />
+                    </div>
+
+                    <!--comments-->
+                    <div class="comments">
+
+                        <div class="comment-box">
+                            <h4>Что говорят профессионалы:</h4>
+                            <div class="row clearfix">
+                                <div class="photo left">
+                                    <img src="img/mnv.jpg" alt="" />
+                                </div>
+                                <div class="status">
+                                    <h4>Монтажник окон Андрей Снегирев. Опыт работы 10 лет. (http://vk.com/id124738314)</h4>
+                                </div>
+                                <p>Я работаю монтажником окон более 10 лет. Мне приходится монтировать вместе с окнами и подоконники разных производителей. Когда я работаю с подоконниками Данке, мне никогда не бывает стыдно за результат своей работы. Заказчик всегда получает больше, чем рассчитывал. С Данке не бывает проблем с монтажем. Не бывает перемонтажа! Мне приходится часто заменять у заказчика разные подоконники на Данке, но еще ни разу не менял подоконники Данке на какие-нибудь другие. Это действительно подоконник премиум класса. Превосходный внешний вид, который не испортится со временем. Разнообразие палитры позволяет его удачно "вписать" в любой интерьер. Всё очень-очень на уровне. Настоятельно рекомендую!</p>
+                            </div>
+                        </div>
+
+                        <div class="comment-box">
+                            <h4>Что говорят клиенты:</h4>
+                            <div class="row clearfix">
+                                <div class="photo left">
+                                    <img src="img/july.jpg" alt="" />
+                                </div>
+                                <div class="status">
+                                    <h4>Юлия Марченко. С Данке 4 года! (http://vk.com/id9050571)</h4>
+                                </div>
+                                <p>У меня дома стоит на балконе Данке золотой дуб глянец, причем над балконной тумбой - широкий, 60 см. Во-первых, думала, что со временем поверхность пойдет волнами, будут выступать внутренние перегородки. Во-вторых, не знала, как этот глянец поведет себя со временем. Просто этот подоконник лучше всего подходил к цвету балкона. По итогам службы за 4 года: все как новенькое. Вазоны стоят каждое лето, засохшие потеки от воды отмываются легко. Инструменты мужа лежали - царапин нет. Кастрюльки ставила остывать - все нормально. Вообще, подоконник вытереть - и смотрится как новый, и глянец выглядит очень приятно. Уверена, что прослужит очень долго.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--end comments-->
+
+                </div>
+                <!--end left side-->
+
+                <!--right side-->
+                <div class="right-side right mobile-none">
+
+                    <h3>Почему разумно покупать подоконники Данке у нас?</h3>
+                    <ul class="special-list about">
+                        <li>
+                            У нас <b>бесплатная доставка</b> по городу и области любого количества. Обычно цена доставки существенно увеличивает стоимость, а тут - прямая экономия!
+                        </li>
+                        <li>
+                            И оплата у нас - <b>после</b> доставки. Схема простая: мы привезли - вы оплатили!
+                        </li>
+                        <li>
+                            Наши партнеры-монтажники устанавливают подоконники Данке более 10 лет. Они берут от 150 руб за метр прямого подоконника. Это почти даром. Также они монтируют и эркерные или криволинейные подоконники.
+                        </li>
+                        <li>
+                            При необходимости наш партнер-монтажник приедет к вам на предварительный замер.
+                        </li>
+						<li>
+                            Общую стоимость (подоконник + монтаж) можно просчитать заранее, по телефону или по почте. Сюрпризов у нас не бывает.
+                        </li>
+                    </ul>
+
+                    <h4>Мы работаем с официальным представительством компании Данке в Санкт-Петербурге, а это значит, что:</h4>
+
+                    <ul class="special-list about">
+                        <li>
+                            Безусловная <b>10-летняя гарантия</b> осуществляется максимально оперативно - для этого есть все возможности.
+                        </li>
+                        <li>
+                            У нас всегда в наличии подоконники всех заявленных цветов.
+                        </li>
+                        <li>
+                            Цена на подоконники разных цветов всегда одинакова:
+                            <br />"от производителя" и не зависит от популярности того или иного цвета. Плюс <b>скидки</b> и <b>бонусы</b>!
+                        </li>
+                        <li>
+                            Мы <i>бесплатно</i> делаем индивидуальную прирезку. Это значит, что мы дадим вам сразу тот размер, который вам нужен: хоть 95 см, хоть 2.45 м, хоть 6 м одной полосой. Вам не надо покупать длинный подоконник, а потом прирезать его на месте. Мы это заранее сделаем бесплатно. Вам останется его только установить.
+                        </li>
+                        <li>
+                            Мы даём клиентам <i>бесплатную экспертную консультацию</i>. Мы занимаемся подоконниками более пяти лет и знаем о них всё. <b>Звоните, консультируйтесь</b>!
+                        </li>
+                        <li>
+                            Доставка заказа к вам домой в течении <b>одних суток</b> после звонка.
+                        </li>
+                        <li>
+                            Для тех кто не решился на премиум вариант есть <b>эконом предложения - подоконник Страндарт и Комфорт</b> того же производителя - в 1.5-2,5 раза дешевле! <b>Звоните, уточняйте!</b>
+                        </li>
+                        <li>
+                            А если вы дилер или прораб - то для вас есть спецпредложение.
+                        </li>
+                    </ul>
+
+                    <!--counter-->
+                    <div class="counter">
+                        <h2>Акция: Старый курс!</h2>
+                        <div class="course-info">
+                            курс СберБанка: 63,71 грн./у.е.
+                        </div>
+                        <div class="our-course">
+                            Наш акционный курс: 63,71
+                        </div>
+                        <p><b>+ Каждый клиент получит скидку!</b></p>
+                        <p><b>Цена за метр подоконника от 183 руб.!</b></p>
+                        До конца акции осталось:
+                        <div id="countdown" class="counterprop">АКЦИЯ</div>
+                        <p>Не упустите возможность сэкономить.</p>
+                        <p>Чем больше заказ тем больше скидка!</p>
+                        <p>Заказав сейчас по сниженной цене, вы получаете:</p>
+                        <ul class="special-list">
+                            <li>Скидку 50% на заглушки при заказе подоконника от 1 м (Вы же не забыли про заглушки? они нужны в любом случае к каждому подоконнику). Экономия от 35 руб.</li>
+                            <li>Скидку 50% на соединители при заказе более одного. 65 руб. сэкономите.</li>
+                            <li>Скидку в 25% на монтаж подоконника. Вы экономите еще от ~120 руб!</li>
+                            <!--<li>Если вам нужны окна (обычно подоконники покупают при замене окон), то вы получаете скидку в 20%. Здесь вы экономите от 200 до 2200 руб.</li>
+                            <li>Если к окнам вам нужны проветриватели (клапаны приточной вентиляции), то вы получаете скидку в 10% на проветриватели <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/selevye" target="_blank"><u>Titon</u></a> и <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/avtomaticeskie" target="_blank"><u>Ventair</u></a>. Вы экономите от 23 до 120 руб.</li>
+                            <li>Предоставляем скидку 25% на установку оконных откосов любой сложности. Экономия составит от 120 руб. на одном окне.</li>-->
+                        </ul>
+                    </div>
+                    <!--end counter-->
+
+                    <div class="info-text">
+                        Закажите с помощью формы ниже, чтобы сэкономить около 120 руб! (Бывает и намного больше, но в среднем - так.)
+                    </div>
+
+                    <!--order product-->
+                    <div class="order-product">
+
+                        <!--select color-->
+                        <div class="select-color">
+                            <div class="title">Помимо белого на складе доступны цвета:</div>
+                            (Кликните на нужный цвет чтобы выбрать его.
+                            <br>После клика выбранный цвет попадет в форму)
+                            <div class="color-box">
+                                <b><div id="za" >выбирайте цвет</div></b>
+                                <img src="img/colors.jpg" alt="colors" usemap="#map1" onclick="yaCounter22695421.reachGoal('ORDERcolor'); return true;">
+                                <map name="map1" id="map1">
+                                    <area shape="poly" coords="0,0,140,0,140,105,0,105" onmouseout="document.getElementById('za').innerHTML='выбирайте цвет'" onmouseover="document.getElementById('za').innerHTML='Оникс'" onclick="document.getElementById('color').value='Оникс'">
+                                    <area shape="poly" coords="150,0,290,0,290,105,150,105" onmouseout="document.getElementById('za').innerHTML='выбирайте цвет'" onmouseover="document.getElementById('za').innerHTML='Бежевый мрамор'" onclick="document.getElementById('color').value='Бежевый мрамор'">
+                                    <area shape="poly" coords="296,0,440,0,440,105,296,105" onmouseout="document.getElementById('za').innerHTML='выбирайте цвет'" onmouseover="document.getElementById('za').innerHTML='Серый мрамор'" onclick="document.getElementById('color').value='Серый мрамор'">
+                                    <area shape="poly" coords="0,115,140,115,140,220,0,220" onmouseout="document.getElementById('za').innerHTML='выбирайте цвет'" onmouseover="document.getElementById('za').innerHTML='Белое дерево'" onclick="document.getElementById('color').value='Белое дерево'">
+                                    <area shape="poly" coords="150,115,290,115,290,220,150,220" onmouseout="document.getElementById('za').innerHTML='выбирайте цвет'" onmouseover="document.getElementById('za').innerHTML='Светлый дуб'" onclick="document.getElementById('color').value='Светлый дуб'">
+                                    <area shape="poly" coords="296,115,440,115,440,220,296,220" onmouseout="document.getElementById('za').innerHTML='выбирайте цвет'" onmouseover="document.getElementById('za').innerHTML='Золотой дуб (остатки)'" onclick="document.getElementById('color').value='Золотой дуб (остатки)'">
+                                    <area shape="poly" coords="0,225,140,225,140,330,0,330" onmouseout="document.getElementById('za').innerHTML='выбирайте цвет'"  onmouseover="document.getElementById('za').innerHTML='Венге'" onclick="document.getElementById('color').value='Венге'">
+                                    <area shape="poly" coords="150,225,290,225,290,330,150,330" onmouseout="document.getElementById('za').innerHTML='выбирайте цвет'" onmouseover="document.getElementById('za').innerHTML='Махагон'" onclick="document.getElementById('color').value='Махагон'">
+                                    <area shape="poly" coords="296,225,440,225,440,330,296,330" onmouseout="document.getElementById('za').innerHTML='выбирайте цвет'" onmouseover="document.getElementById('za').innerHTML='Коричневый дуб'" onclick="document.getElementById('color').value='Коричневый дуб'">
+                                </map>
+                            </div>
+                        </div>
+                        <!--end select color-->
+
+                        <!--order form-->
+                        <form id="zform" method="post" onkeypress="if(event.keyCode == 13) return false;" onsubmit="zvalid()">
+                            <table border="0" align="right" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td align="right" class="mobile-text"><b>Выбранный цвет : &nbsp;</b></td>
+                                        <td align="left">
+                                            <!--input type="text" name="color" id="color" disabled value="Белый" class="colr" form="zform"    size="1"      -->
+                                            <select id="color" name="mycolor" class="colr" form="zform" onclick="yaCounter22695421.reachGoal('ORDERcolor2'); return true;">
+                                                <option value="Оникс">Оникс</option>
+                                                <option value="Бежевый мрамор">Бежевый мрамор</option>
+                                                <option value="Серый мрамор">Серый мрамор</option>
+                                                <option value="Белое дерево">Белое дерево</option>
+                                                <option selected="selected" value="Белый">Белый</option>
+                                                <option value="Светлый дуб">Светлый дуб</option>
+                                                <option value="Золотой дуб (остатки)">Золотой дуб</option>
+                                                <option value="Венге">Венге</option>
+                                                ‎  <option value="Махагон">Махагон</option>
+                                                <option value="Коричневый дуб">Коричневый дуб</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="right">
+                                            <fieldset>
+                                                <center><h3>Расчет стоимости заказа:</h3></center>
+                                                <span class="text-align mobile-text">Выберите глубину:</span>
+                                                <select id="price" class="right" name="menu2" size="1" onchange="printValue('slider1','rangeValue1')" form="zform" onclick="yaCounter22695421.reachGoal('ORDERglub'); return true;">
+                                                    <option value="6.23">Глубина 100мм</option>
+                                                    <option value="9.35">Глубина 150мм</option>
+                                                    <option value="12.46">Глубина 200мм</option>
+                                                    <option value="15.58">Глубина 250мм</option>
+                                                    <option selected="selected" value="18.69">Глубина 300мм</option>
+                                                    <option value="21.81">Глубина 350мм</option>
+                                                    <option value="24.92">Глубина 400мм</option>
+                                                    <option value="28.04">Глубина 450мм</option>
+                                                    ‎  <option value="31.16">Глубина 500мм</option>
+                                                    <option value="31.16">Глубина 500мм (2 капиноса)</option>
+                                                    <option value="37.38">Глубина 600мм</option>
+                                                    <option value="43.61">Глубина 700мм (2 капиноса)</option>
+                                                </select>
+                                            </fieldset>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <fieldset>
+                                                <table border="0" align="right">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="2">Укажите ширину:</td><td><input id="rangeValue1" type="text" name="shirina1" size="3" onchange="minicorrections(&#39;slider1&#39;,&#39;rangeValue1&#39;)" class="small" onclick="yaCounter22695421.reachGoal('ORDERshir'); return true;"><span class="text-align">mm</span></td><td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3"><input id="slider1" type="range" min="100" max="6000" step="5" value="800" onchange="printValue(&#39;slider1&#39;,&#39;rangeValue1&#39;)" name="shirina" form="zform" slass="slider" onclick="yaCounter22695421.reachGoal('ORDERshir2'); return true;"></td>
+                                                        </tr>
+                                                        <tr><td colspan="4"><hr></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" align="right">Стоимость подоконника&nbsp;</td><td><input id="result" name="cena" type="text" size="3" disabled class="small" form="zform" onclick="yaCounter22695421.reachGoal('ORDERcena'); return true;"><span class="text-align">&nbsp;у.е.</span></td>
+                                                        </tr>
+                                                        <!--
+                                                             <tr>
+                                                              <td colspan="2" align="right">Примерная стоимость монтажа от:&nbsp;</td><td><input id="result1" name="cena2" type="text" size="3" class="small" disabled form="zform" onclick="yaCounter22695421.reachGoal('ORDERmont'); return true;">&nbsp;у.е.</td>
+                                                             </tr>
+                                                        -->
+                                                        <!-- <tr>
+                                                              <td colspan="2" align="right">Экономвариант :&nbsp;</td><td><input id="econom" name="eco" type="checkbox"  checked="checked" class="small" disabled form="zform"></td>
+                                                             </tr>
+                                                        -->
+                                                        <tr>
+                                                            <td colspan="2" align="right">Доставка</td><td><b>БЕСПЛАТНО!</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3" align="right">
+                                                                <font size="-3">* Оплата в национальной валюте России&nbsp;<br>** Курс меняется каждый день -- ЗВОНИТЕ, уточняйте!</font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </fieldset>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="right" class="mobile-special-text"><b><i>Для оформления заказа заполните форму.<br>Мы свяжемся с вами в течении 10-15 минут.</i></b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+
+                                            <!--fieldset-->
+                                            <table border="0" align="right">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td><input type="text" name="clientmail" id="clientmail1" onfocus="if (this.value == 'Здесь e-mail') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Здесь e-mail';}" value="Здесь e-mail" form="zform" onclick="yaCounter22695421.reachGoal('ORDER'); return true;"></td>
+                                                    </tr>
+                                                    <!--tr>
+                                                     <td colspan="2"><hr width="35%" align="left"></td>
+                                                    </tr-->
+                                                    <tr>
+                                                        <td><font size="-1"><b>ИЛИ</b>&nbsp;</font></td>
+                                                        <td><input type="text"  name="clienttel" id="clienttel1" onfocus="if (this.value == 'Здесь номер телефона с кодом') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Здесь номер телефона с кодом';}" onclick="yaCounter22695421.reachGoal('ORDER'); return true;" value="Здесь номер телефона с кодом" form="zform"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><input type="submit" class="submit" value="Заказать" form="zform"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2" align="right"><hr>
+                                                            или позвоните нам прямо сейчас:<br>
+                                                            <!--hr width="35%" align="right"-->
+                                                            <div class="contacts">
+                                                                <div class="mobile-operator item-1">
+                                                                    <a href="tel:8(812)5-076-076">8(812)5-076-076</a>
+                                                                </div>
+                                                                <div class="mobile-operator item-2">
+                                                                    <a href="tel:+7932-222-53-43">+7932-222-53-43</a>
+                                                                </div>
+                                                               <div class="time">(c 9-00 до 19-00)</div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!--/fieldset-->
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                        <!--end order form-->
+
+                    </div>
+                    <!--end order product-->
+
+                </div>
+                <!--end right side-->
+
+            </div>
+        </div>
+        <!--end content-->
+
+    </div>
+    <!--end wrapper-->
+
+    <!--footer-->
+    <div class="footer">
+        <div class="copyrights mobile-none">
+            <div class="inner-block">
+                Dedal Instrument (c) 2013-2019
+            </div>
+        </div>
+        
+    <!--    
+        <div class="footer-bottom-line">
+            <div class="inner-block">
+
+                <div class="text">
+                    Не забудьте рассказать о нас друзьям, которые тоже хотят быстро и недорого хороший подоконник премиум класса. Они будут вам благодарны:
+                </div>
+
+                <div class="socials">
+                    <script type="text/javascript">(function() {
+                        if (window.pluso)if (typeof window.pluso.start == "function") return;
+                        if (window.ifpluso==undefined) { window.ifpluso = 1;
+                            var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                            s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                            s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                            var h=d[g]('body')[0];
+                            h.appendChild(s);
+                        }})();</script>
+                    <div class="pluso" data-background="transparent" data-options="big,square,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print,linkedin,bookmark,googlebookmark,yazakladki" data-url="http://danke.4okna.com" data-title="Подоконники Данке в Санкт-Петербурге" data-description="Подоконники с Доставкой по Санкт-Петербургу и Ленинградской области. Бесплатная доставка."></div>
+                </div>
+            </div>
+        </div>
+       --> 
+        
+    </div>
+    <!--end footer-->
+
+<a name="bot"></a>
+
+</body>
+</html>
+
+

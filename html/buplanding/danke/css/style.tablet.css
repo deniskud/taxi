@@ -1,0 +1,18 @@
+@media screen and (max-width: 1230px) {
+
+    .inner-block {
+        width: 1000px;
+    }
+
+    .left-side,
+    .right-side {
+        width: 480px;
+    }
+
+    .video-box object,
+    .video-box .inner,
+    .video-box .inner iframe {
+        width: 100% !important;
+    }
+   
+}

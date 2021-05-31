@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taxi 2</title>
+    <link rel="icon" href="img/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/spectrum.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="css/jquery.modal.min.css">
+    <link rel="stylesheet" href="css/leaflet.css"/>
+    <link rel="stylesheet" href="css/jquery.timeline.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/response.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <!--    <script type="text/javascript" src="https://hst-api.wialon.com/wsdk/script/wialon.js"></script>-->
+</head>
+<body id="app">
+
+    <header id="header" class="clearfix">
+        <h4 class="title">Имя / никнейм пользователя</h4>
+        <a href="#" class="btn">Выход</a>
+    </header>
+
+    <aside id="sidebar">
+        <a href="/" class="logo">
+            <img src="http://taxi2.4okna.com/img/logo.svg" alt="taxi logo">
+        </a>
+        <h4 class="title">Разделы</h4>
+        <nav>
+            <ul>
+                <li>
+                    <button type="button" data-target="map" class="active"><i class="fas fa-map-marked-alt"></i>Карта</button>
+                </li>
+                <li>
+                    <button type="button" data-target="messenger"><i class="fas fa-comment-dots"></i>Мессенджер</button>
+                </li>
+                <li>
+                    <button type="button" data-target="finance"><i class="fas fa-chart-line"></i>Финансы</button>
+                </li>
+                <li>
+                    <button type="button" data-target="car-park"><i class="fas fa-taxi"></i>Автопарк / водители</button>
+                </li>
+                <li>
+                    <button type="button" data-target="settings"><i class="fas fa-tasks"></i>Настройки</button>
+                </li>
+                <li>
+                    <button type="button" data-target="ai"><i class="fas fa-brain"></i>Управление ИИ</button>
+                </li>
+                <li>
+                    <button type="button" data-target="db"><i class="fas fa-database"></i>Инструменты БД</button>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="main">
+        <section class="tab active in" id="map">
+            <div class="title-wrap">
+                <h2 class="main-title">Карта</h2>
+                <div class="map-time-wrap">
+                    <span>Активность<br>за время</span>
+                    <label class="select-wrap">
+                        <select id="map-time">
+                            <option data-time="30" selected>30 секунд</option>
+                            <option data-time="60">1 минута</option>
+                            <option data-time="180">3 минуты</option>
+                            <option data-time="300">5 минут</option>
+                            <option data-time="600">10 минут</option>
+                            <option data-time="900">15 минут</option>
+                            <option data-time="1800">30 минут</option>
+                            <option data-time="3600">1 час</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </label>
+                </div>
+                <div class="map-car-select">
+                    <button type="button" class="btn"><i class="fas fa-taxi"></i> Активные машины</button>
+                    <div><ul></ul></div>
+                </div>
+            </div>
+            <div class="main-block">
+                <div id="main-map"></div>
+            </div>
+        </section>
+        <section class="tab" id="messenger">
+            <div class="title-wrap">
+                <h2 class="main-title">Мессенджер</h2>
+            </div>
+            <div class="mess-wrap">
+                <div id="messages">
+                    <button type="button" id="mess-load-btn" class="btn">Загузить еще</button>
+<!--                    <div class="message">-->
+<!--                        <div class="mess-title">Александр Иванов - <time>09.03.21 12:32</time></div>-->
+<!--                        <div class="mess-body">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона. Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает.</div>-->
+<!--                    </div>-->
+<!--                    <div class="message">-->
+<!--                        <div class="mess-title">Александр Иванов - <time>09.03.21 12:32</time></div>-->
+<!--                        <div class="mess-body">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.</div>-->
+<!--                    </div>-->
+<!--                    <div class="message">-->
+<!--                        <div class="mess-title">Александр Иванов - <time>09.03.21 12:32</time></div>-->
+<!--                        <div class="mess-body">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее.</div>-->
+<!--                    </div>-->
+<!--                    <div class="message own">-->
+<!--                        <div class="mess-title">Александр Иванов - <time>09.03.21 12:32</time></div>-->
+<!--                        <div class="mess-body">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона.</div>-->
+<!--                    </div>-->
+<!--                    <div class="message">-->
+<!--                        <div class="mess-title">Александр Иванов - <time>09.03.21 12:32</time></div>-->
+<!--                        <div class="mess-body">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона.</div>-->
+<!--                    </div>-->
+<!--                    <div class="message own">-->
+<!--                        <div class="mess-title">Александр Иванов - <time>09.03.21 12:32</time></div>-->
+<!--                        <div class="mess-body">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.</div>-->
+<!--                    </div>-->
+                </div>
+                <div class="mess-input-wrap">
+                    <div class="mess-smiles-wrap">
+                        <button type="button" id="mess-smiles-btn"><i class="far fa-smile"></i></button>
+                        <div class="clearfix" id="mess-smiles">
+                            <div>🙂</div>
+                            <div>😀</div>
+                            <div>😁</div>
+                            <div>😂</div>
+                            <div>🤣</div>
+                            <div>😄</div>
+                            <div>😅</div>
+                            <div>😆</div>
+                            <div>😉</div>
+                            <div>😊</div>
+                            <div>😋</div>
+                            <div>😎</div>
+                            <div>😍</div>
+                            <div>😘</div>
+                            <div>😗</div>
+                            <div>🤔</div>
+                            <div>🤨</div>
+                            <div>😐</div>
+                            <div>🙄</div>
+                            <div>😥</div>
+                            <div>😮</div>
+                            <div>🤐</div>
+                            <div>😴</div>
+                            <div>😌</div>
+                            <div>😜</div>
+                            <div>😝</div>
+                            <div>😓</div>
+                            <div>😔</div>
+                            <div>😕</div>
+                            <div>🙁</div>
+                            <div>😖</div>
+                            <div>😤</div>
+                            <div>😭</div>
+                            <div>😨</div>
+                            <div>🤯</div>
+                            <div>😬</div>
+                            <div>😱</div>
+                            <div>😵</div>
+                            <div>😡</div>
+                            <div>😠</div>
+                            <div>🤬</div>
+                            <div>😷</div>
+                            <div>🤒</div>
+                            <div>🤕</div>
+                            <div>🤢</div>
+                            <div>🤮</div>
+                            <div>😇</div>
+                            <div>🤫</div>
+                            <div>🤓</div>
+                            <div>😈</div>
+                            <div>👿</div>
+                            <div>💀</div>
+                            <div>👻</div>
+                            <div>👽</div>
+                            <div>💩</div>
+                            <div>👶</div>
+                            <div>👧</div>
+                            <div>👴</div>
+                            <div>👨‍🔧</div>
+                            <div>👮</div>
+                            <div>👷</div>
+                            <div>💐</div>
+                            <div>🌺</div>
+                            <div>🌼</div>
+                            <div>🌷</div>
+                            <div>🍀</div>
+                            <div>🌵</div>
+                            <div>🍄</div>
+                            <div>🌍</div>
+                            <div>🌙</div>
+                            <div>☀</div>
+                            <div>☁</div>
+                            <div>⛅</div>
+                            <div>⛈</div>
+                            <div>🌤</div>
+                            <div>🌦</div>
+                            <div>🌧</div>
+                            <div>🌨</div>
+                            <div>🌩</div>
+                            <div>🌪</div>
+                            <div>🌫</div>
+                            <div>🌈</div>
+                            <div>❄</div>
+                            <div>🏥</div>
+                            <div>🏫</div>
+                            <div>🚂</div>
+                            <div>🚇</div>
+                            <div>🚌</div>
+                            <div>🚎</div>
+                            <div>🚑</div>
+                            <div>🚒</div>
+                            <div>🚓</div>
+                            <div>🚕</div>
+                            <div>🚖</div>
+                            <div>🚗</div>
+                            <div>✈</div>
+                            <div>💎</div>
+                            <div>🚥</div>
+                            <div>🚦</div>
+                            <div>🚧</div>
+                            <div>⌛</div>
+                            <div>⏰</div>
+                            <div>🎈</div>
+                            <div>🎉</div>
+                            <div>🎁</div>
+                            <div>📞</div>
+                            <div>💰</div>
+                            <div>✉</div>
+                            <div>📅</div>
+                            <div>📈</div>
+                            <div>📉</div>
+                            <div>📊</div>
+                            <div>📌</div>
+                            <div>🏁</div>
+                            <div>🚩</div>
+                            <div>🚬</div>
+                            <div>👍</div>
+                            <div>👎</div>
+                            <div>☝</div>
+                            <div>👇</div>
+                            <div>🖐</div>
+                            <div>✋</div>
+                            <div>👌</div>
+                            <div>👊</div>
+                            <div>👏</div>
+                            <div>🙏</div>
+                            <div>💤</div>
+                            <div>🚼</div>
+                            <div>♿</div>
+                            <div>✔</div>
+                            <div>❌</div>
+                        </div>
+                    </div>
+                    <input type="text" placeholder="Ваше сообщение..." id="mess-input">
+                    <label class="select-wrap">
+                        <select id="mess-users">
+<!--                            <option data-user="all" selected>Всем</option>-->
+<!--                            <option data-user="drivers">Всем водителям</option>-->
+<!--                            <option data-user="administration">Всей администрации</option>-->
+<!--                            <option data-user="accountant1">Бухгалтеру 1</option>-->
+<!--                            <option data-user="accountant1">Бухгалтеру 2</option>-->
+<!--                            <option data-user="driver1">Водителю 1</option>-->
+<!--                            <option data-user="driver2">Водителю 2</option>-->
+<!--                            <option data-user="driver3">Водителю 3</option>-->
+<!--                            <option data-user="driver4">Водителю 4</option>-->
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </label>
+                    <button type="button" id="mess-submit" class="btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </section>
+        <section class="tab" id="finance">
+            <div class="title-wrap">
+                <h2 class="main-title">Финансы</h2>
+                <label class="select-wrap">
+                    <select id="fin-drivers-cars">
+                        <option data-item="drivers" selected>По водителям</option>
+                        <option data-item="cars">По машинам</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="title-divider"></div>
+                <button type="button" class="btn" id="fin-week-btn" disabled>Недельная</button>
+                <input type="text" id="fin-start-date" class="text-input" readonly>
+                <input type="text" id="fin-end-date" class="text-input" readonly>
+            </div>
+            <div class="main-block">
+                <div class="fin-total">
+                    <ul>
+                        <li>Всего по Uber: <strong id="ft-1">56 561</strong></li>
+                        <li>Всего по Bolt: <strong id="ft-2">32 481</strong></li>
+                        <li>Всего по Uklon: <strong id="ft-3">36 721</strong></li>
+                        <li>Всего по Руке: <strong id="ft-4">12 440</strong></li>
+                    </ul>
+                    <ul>
+                        <li>Всего по U1: <strong id="ft-5">39 828</strong></li>
+                        <li>Всего по U2: <strong id="ft-6">34 043</strong></li>
+                        <li>Всего по U3: <strong id="ft-7">64 332</strong></li>
+                    </ul>
+                    <ul>
+                        <li>Итого за период: <strong id="ft-8">138 203</strong></li>
+                    </ul>
+                </div>
+                <div class="table-wrap">
+                    <table id="fin-table" class="table">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>UU</th>
+                                <th>Номер</th>
+                                <th>Имя</th>
+                                <th>Фамилия</th>
+                                <th>Отчет</th>
+                                <th>Uber</th>
+                                <th>Bolt</th>
+                                <th>Uklon</th>
+                                <th>Рука</th>
+                                <th>Итого</th>
+                                <th>60%</th>
+                                <th>Нал всего</th>
+                                <th>Баланс</th>
+                                <th>Поправка</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>70</td>
+                                <td>U1</td>
+                                <td>0192</td>
+                                <td>Александр</td>
+                                <td>Павлов</td>
+                                <td>4764</td>
+                                <td>5177</td>
+                                <td>622</td>
+                                <td>2828</td>
+                                <td></td>
+                                <td>8627</td>
+                                <td>5176</td>
+                                <td>3606</td>
+                                <td>1770</td>
+                                <td>200</td>
+                            </tr>
+                            <tr>
+                                <td>93</td>
+                                <td>U1</td>
+                                <td>0194</td>
+                                <td>Евгений</td>
+                                <td>Ястремский</td>
+                                <td>2530</td>
+                                <td>3414</td>
+                                <td>0</td>
+                                <td>1548</td>
+                                <td></td>
+                                <td>4962</td>
+                                <td>2977</td>
+                                <td>2210</td>
+                                <td class="text-error">-2329</td>
+                                <td class="text-error">-3096</td>
+                            </tr>
+                            <tr>
+                                <td>107</td>
+                                <td>U2</td>
+                                <td>0428</td>
+                                <td>Станислав</td>
+                                <td>Михайлов</td>
+                                <td>2710</td>
+                                <td>0</td>
+                                <td>158</td>
+                                <td>2552</td>
+                                <td></td>
+                                <td>2710</td>
+                                <td>1626</td>
+                                <td>2360</td>
+                                <td class="text-error">-1580</td>
+                                <td class="text-error">-846</td>
+                            </tr>
+                            <tr>
+                                <td>39</td>
+                                <td>U1</td>
+                                <td>0438</td>
+                                <td>Сергей</td>
+                                <td>Грюк</td>
+                                <td>4937</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>4937</td>
+                                <td></td>
+                                <td>4937</td>
+                                <td>2962</td>
+                                <td>2669</td>
+                                <td>293</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>102</td>
+                                <td>U1</td>
+                                <td>0439</td>
+                                <td>Артем</td>
+                                <td>Безотосный</td>
+                                <td>2249</td>
+                                <td>0</td>
+                                <td>424</td>
+                                <td>1825</td>
+                                <td></td>
+                                <td>2249</td>
+                                <td>1349</td>
+                                <td>1534</td>
+                                <td class="text-error">-185</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>111</td>
+                                <td>U2</td>
+                                <td>2400</td>
+                                <td>Александр</td>
+                                <td>Матяш</td>
+                                <td>4234</td>
+                                <td>0</td>
+                                <td>365</td>
+                                <td>3369</td>
+                                <td>500</td>
+                                <td>4234</td>
+                                <td>2540</td>
+                                <td>3468</td>
+                                <td class="text-error">-907</td>
+                                <td>21</td>
+                            </tr>
+                            <tr>
+                                <td>80</td>
+                                <td>U3</td>
+                                <td>2977</td>
+                                <td>Юрий</td>
+                                <td>Опанасенко</td>
+                                <td>2113</td>
+                                <td>7814</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>7814</td>
+                                <td>4688</td>
+                                <td>2113</td>
+                                <td class="text-error">-3</td>
+                                <td class="text-error">-2578</td>
+                            </tr>
+                            <tr>
+                                <td>69</td>
+                                <td>U1</td>
+                                <td>2982</td>
+                                <td>Александр</td>
+                                <td>Королюк</td>
+                                <td>3186</td>
+                                <td>1579</td>
+                                <td>440</td>
+                                <td>2605</td>
+                                <td>140</td>
+                                <td>4764</td>
+                                <td>2859</td>
+                                <td>1508</td>
+                                <td>1351</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>98</td>
+                                <td>U3</td>
+                                <td>3158</td>
+                                <td>Станислав</td>
+                                <td>Бондаренко</td>
+                                <td>1727</td>
+                                <td>0</td>
+                                <td>403</td>
+                                <td>1324</td>
+                                <td></td>
+                                <td>1727</td>
+                                <td>1036</td>
+                                <td>1343</td>
+                                <td class="text-error">-207</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>78</td>
+                                <td>U3</td>
+                                <td>3176</td>
+                                <td>Аллаш</td>
+                                <td>Новризбаев</td>
+                                <td>3125</td>
+                                <td>1674</td>
+                                <td>2306</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>3980</td>
+                                <td>2388</td>
+                                <td>1881</td>
+                                <td>372</td>
+                                <td class="text-error">-135</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>U2</td>
+                                <td>3730</td>
+                                <td>Руслан</td>
+                                <td>Стрежемецький</td>
+                                <td>3770</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>3770</td>
+                                <td></td>
+                                <td>3770</td>
+                                <td>2262</td>
+                                <td>2705</td>
+                                <td class="text-error">-443</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>64</td>
+                                <td>U3</td>
+                                <td>3738</td>
+                                <td>Андрей</td>
+                                <td>Никифоров</td>
+                                <td>5050</td>
+                                <td>0</td>
+                                <td>1963</td>
+                                <td>1187</td>
+                                <td>1900</td>
+                                <td>5050</td>
+                                <td>3030</td>
+                                <td>3427</td>
+                                <td class="text-error">-479</td>
+                                <td class="text-error">-82</td>
+                            </tr>
+                            <tr>
+                                <td>113</td>
+                                <td>U3</td>
+                                <td>3746</td>
+                                <td>Виталий</td>
+                                <td>Мамай</td>
+                                <td>2265</td>
+                                <td>5399</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>5399</td>
+                                <td>3239</td>
+                                <td>2265</td>
+                                <td>975</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td>U3</td>
+                                <td>3861</td>
+                                <td>Сергий</td>
+                                <td>Дорошенко</td>
+                                <td>6516</td>
+                                <td>1182</td>
+                                <td>2072</td>
+                                <td>3307</td>
+                                <td>1000</td>
+                                <td>7561</td>
+                                <td>4536</td>
+                                <td>4316</td>
+                                <td class="text-error">-1003</td>
+                                <td class="text-error">-1223</td>
+                            </tr>
+                            <tr>
+                                <td>26</td>
+                                <td>U3</td>
+                                <td>3864</td>
+                                <td>Игорь</td>
+                                <td>Мовчан</td>
+                                <td>5415</td>
+                                <td>0</td>
+                                <td>2121</td>
+                                <td>3294</td>
+                                <td></td>
+                                <td>5415</td>
+                                <td>3249</td>
+                                <td>2876</td>
+                                <td>466</td>
+                                <td>93</td>
+                            </tr>
+                            <tr>
+                                <td>87</td>
+                                <td>U3</td>
+                                <td>3866</td>
+                                <td>Александр</td>
+                                <td>Нижнык</td>
+                                <td>5114</td>
+                                <td>0</td>
+                                <td>5053</td>
+                                <td>61</td>
+                                <td></td>
+                                <td>5114</td>
+                                <td>3068</td>
+                                <td>3365</td>
+                                <td class="text-error">-297</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>110</td>
+                                <td>U1</td>
+                                <td>4769</td>
+                                <td>Ибрагим</td>
+                                <td>Мамедов</td>
+                                <td>1794</td>
+                                <td>3190</td>
+                                <td>55</td>
+                                <td>291</td>
+                                <td>200</td>
+                                <td>3737</td>
+                                <td>2242</td>
+                                <td>1500</td>
+                                <td>742</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>112</td>
+                                <td>U1</td>
+                                <td>4780</td>
+                                <td>Дмитрий</td>
+                                <td>Яковенко</td>
+                                <td>1406</td>
+                                <td>4915</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>4915</td>
+                                <td>2949</td>
+                                <td>1406</td>
+                                <td>943</td>
+                                <td class="text-error">-600</td>
+                            </tr>
+                            <tr>
+                                <td>109</td>
+                                <td>U3</td>
+                                <td>5510</td>
+                                <td>Виталий</td>
+                                <td>Резванов</td>
+                                <td>952</td>
+                                <td>1610</td>
+                                <td>147</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>1757</td>
+                                <td>1054</td>
+                                <td>984</td>
+                                <td class="text-error">-1040</td>
+                                <td class="text-error">-1110</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>U3</td>
+                                <td>6543</td>
+                                <td>Владимир</td>
+                                <td>Улянченко</td>
+                                <td>2834</td>
+                                <td>6827</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>6827</td>
+                                <td>4096</td>
+                                <td>2834</td>
+                                <td>1262</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>U3</td>
+                                <td>6544</td>
+                                <td>Олександр</td>
+                                <td>Нирков</td>
+                                <td>843</td>
+                                <td>6798</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>6798</td>
+                                <td>4079</td>
+                                <td>843</td>
+                                <td>3095</td>
+                                <td class="text-error">-140</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>U3</td>
+                                <td>7549</td>
+                                <td>Владимир</td>
+                                <td>Пирко</td>
+                                <td>3434</td>
+                                <td>2069</td>
+                                <td>2309</td>
+                                <td>816</td>
+                                <td></td>
+                                <td>5194</td>
+                                <td>3116</td>
+                                <td>2710</td>
+                                <td>406</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>100</td>
+                                <td>U3</td>
+                                <td>8621</td>
+                                <td>Валерий</td>
+                                <td>Турчин</td>
+                                <td>4559</td>
+                                <td>0</td>
+                                <td>4025</td>
+                                <td>534</td>
+                                <td></td>
+                                <td>4559</td>
+                                <td>2735</td>
+                                <td>2390</td>
+                                <td>345</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>31</td>
+                                <td>U3</td>
+                                <td>8684</td>
+                                <td>Магеррам</td>
+                                <td>Гаджиев</td>
+                                <td>915</td>
+                                <td>4183</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>4183</td>
+                                <td>2510</td>
+                                <td>915</td>
+                                <td>1595</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>U3</td>
+                                <td>8745</td>
+                                <td>Сергей</td>
+                                <td>Ткаченко</td>
+                                <td>7197</td>
+                                <td>615</td>
+                                <td>2774</td>
+                                <td>3570</td>
+                                <td>500</td>
+                                <td>7459</td>
+                                <td>4475</td>
+                                <td>5348</td>
+                                <td class="text-error">-2873</td>
+                                <td class="text-error">-2000</td>
+                            </tr>
+                            <tr>
+                                <td>105</td>
+                                <td>U3</td>
+                                <td>8747</td>
+                                <td>Гиорги</td>
+                                <td>Бедианидзе</td>
+                                <td>3450</td>
+                                <td>2691</td>
+                                <td>2677</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>5368</td>
+                                <td>3221</td>
+                                <td>3138</td>
+                                <td>82</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>U2</td>
+                                <td>8901</td>
+                                <td>Андрей</td>
+                                <td>Шутовский</td>
+                                <td>10104</td>
+                                <td>0</td>
+                                <td>765</td>
+                                <td>1339</td>
+                                <td>8000</td>
+                                <td>10104</td>
+                                <td>6062</td>
+                                <td>8544</td>
+                                <td class="text-error">-2482</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>44</td>
+                                <td>U2</td>
+                                <td>8902</td>
+                                <td>Роман</td>
+                                <td>Проценко</td>
+                                <td>2402</td>
+                                <td>504</td>
+                                <td>2221</td>
+                                <td>61</td>
+                                <td></td>
+                                <td>2786</td>
+                                <td>1671</td>
+                                <td>1279</td>
+                                <td class="text-error">-7</td>
+                                <td class="text-error">-400</td>
+                            </tr>
+                            <tr>
+                                <td>116</td>
+                                <td>U1</td>
+                                <td>8905</td>
+                                <td>Максим</td>
+                                <td>Руль </td>
+                                <td>723</td>
+                                <td>3127</td>
+                                <td>38</td>
+                                <td>0</td>
+                                <td>50</td>
+                                <td>3215</td>
+                                <td>1929</td>
+                                <td>736</td>
+                                <td>1194</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>117</td>
+                                <td>U2</td>
+                                <td>8906</td>
+                                <td>Роман</td>
+                                <td>Штанько</td>
+                                <td>7124</td>
+                                <td>0</td>
+                                <td>7124</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>7124</td>
+                                <td>4274</td>
+                                <td>4739</td>
+                                <td class="text-error">-465</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>86</td>
+                                <td>U1</td>
+                                <td>8907</td>
+                                <td>Игорь</td>
+                                <td>Легкий</td>
+                                <td>3277</td>
+                                <td>5198</td>
+                                <td>0</td>
+                                <td>393</td>
+                                <td>600</td>
+                                <td>6191</td>
+                                <td>3715</td>
+                                <td>3131</td>
+                                <td>84</td>
+                                <td class="text-error">-500</td>
+                            </tr>
+                            <tr>
+                                <td>85</td>
+                                <td>U2</td>
+                                <td>8910</td>
+                                <td>Андрей</td>
+                                <td>Петров</td>
+                                <td>4315</td>
+                                <td>378</td>
+                                <td>3992</td>
+                                <td>242</td>
+                                <td></td>
+                                <td>4611</td>
+                                <td>2767</td>
+                                <td>2276</td>
+                                <td>491</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>58</td>
+                                <td>U2</td>
+                                <td>8911</td>
+                                <td>Михаил</td>
+                                <td>Коротков</td>
+                                <td>4246</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>4246</td>
+                                <td></td>
+                                <td>4246</td>
+                                <td>2548</td>
+                                <td>2565</td>
+                                <td class="text-error">-17</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>56</td>
+                                <td>U2</td>
+                                <td>8912</td>
+                                <td>Антон</td>
+                                <td>Землянуха</td>
+                                <td>2030</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>2030</td>
+                                <td></td>
+                                <td>2030</td>
+                                <td>1218</td>
+                                <td>1065</td>
+                                <td>153</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>115</td>
+                                <td>U1</td>
+                                <td>8914</td>
+                                <td>Виталий</td>
+                                <td>Ястремский</td>
+                                <td>4287</td>
+                                <td>356</td>
+                                <td>0</td>
+                                <td>3923</td>
+                                <td>150</td>
+                                <td>4430</td>
+                                <td>2658</td>
+                                <td>3126</td>
+                                <td class="text-error">-369</td>
+                                <td>99</td>
+                            </tr>
+                            <tr>
+                                <td>88</td>
+                                <td>U1</td>
+                                <td>9588</td>
+                                <td>Аладин</td>
+                                <td>Рзаев</td>
+                                <td>2075</td>
+                                <td>6069</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td></td>
+                                <td>6069</td>
+                                <td>3642</td>
+                                <td>2075</td>
+                                <td>1566</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="fin-graphs"></div>
+            </div>
+        </section>
+        <section class="tab" id="car-park">
+            <div class="title-wrap">
+                <h2 class="main-title">Автопарк / водители</h2>
+                <label class="select-wrap">
+                    <select id="park-view">
+                        <option data-view="cars" selected>По машинам</option>
+                        <option data-view="drivers">По водителям</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </label>
+                <div class="title-divider"></div>
+                <div class="park-dates">
+                    <div class="park-dates-title">Период с</div>
+                    <input type="text" id="park-start-date" class="text-input" readonly>
+                    <div class="park-dates-divider">по</div>
+                    <input type="text" id="park-end-date" class="text-input" readonly>
+                </div>
+            </div>
+            <div class="main-block">
+                <div id="park-full"></div>
+
+
+
+
+
+
+
+            </div>
+        </section>
+        <section class="tab" id="settings">
+            <div class="title-wrap">
+                <h2 class="main-title">Настройки</h2>
+            </div>
+        </section>
+        <section class="tab" id="ai">
+            <div class="title-wrap">
+                <h2 class="main-title">Управление ИИ</h2>
+            </div>
+
+            <div>
+                <label class="checkbox">
+                    <input type="checkbox" id="test-1">
+                    <span><i class="fas fa-check"></i></span>
+                </label>
+                <label for="test-1" class="label-for-check">Рассылка сообщений в начале смен</label>
+            </div>
+            <div>
+                <label class="checkbox">
+                    <input type="checkbox" id="test-2">
+                    <span><i class="fas fa-check"></i></span>
+                </label>
+                <label for="test-2" class="label-for-check">Рассылка сообщений при зарытии смены водителю</label>
+            </div>
+            <div>
+                <label class="checkbox">
+                    <input type="checkbox" id="test-3">
+                    <span><i class="fas fa-check"></i></span>
+                </label>
+                <label for="test-3" class="label-for-check">Рассылка сообщений при зарытии смены диспетчеру</label>
+            </div>
+
+        </section>
+        <section class="tab" id="db">
+            <div class="title-wrap">
+                <h2 class="main-title">Инструменты БД</h2>
+            </div>
+
+            <div>
+                <label class="checkbox">
+                    <input type="checkbox" id="test-4">
+                    <span><i class="fas fa-check"></i></span>
+                </label>
+                <label for="test-4" class="label-for-check">Импорртировать данные</label>
+            </div>
+            <div>
+                <label class="checkbox">
+                    <input type="checkbox" id="test-5">
+                    <span><i class="fas fa-check"></i></span>
+                </label>
+                <label for="test-5" class="label-for-check">Экспортировать данные</label>
+            </div>
+            <div>
+                <label class="checkbox">
+                    <input type="checkbox" id="test-6">
+                    <span><i class="fas fa-check"></i></span>
+                </label>
+                <label for="test-6" class="label-for-check">Text to show</label>
+            </div>
+
+        </section>
+    </main>
+
+    <div id="modal-fin-user" class="modal">
+        <header>
+            <a href="#" rel="modal:close" class="modal-close"><i class="fas fa-times"></i></a>
+            <h4>Александр Павлов | <a href="tel:+380963280903">+380963280903</a></h4>
+        </header>
+        <div class="modal-body">
+            <div class="modal-fin-user-total">
+                <div>Итого: 67 поездок</div>
+                <div>Всего: 6695</div>
+                <div>60% = 4017</div>
+                <div>Наличка: -2425</div>
+                <div>Баланс: 1592</div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <ul>
+                        <li>Статистика по <strong>Uber</strong>:</li>
+                        <li>Поездок: 44</li>
+                        <li>ВСЕГО: 4072</li>
+                        <li>60% = 2443</li>
+                        <li>наличка: -957</li>
+                        <li>Баланс: 1486</li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul>
+                        <li>Статистика по <strong>Uklon</strong>:</li>
+                        <li>Поездок: 17</li>
+                        <li>ВСЕГО: 2136</li>
+                        <li>60% = 1281</li>
+                        <li>наличка: 1072</li>
+                        <li>Баланс: 209</li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul>
+                        <li>Статистика по <strong>Bolt</strong>:</li>
+                        <li>Поездок: 6</li>
+                        <li>ВСЕГО: 488</li>
+                        <li>60% = 293</li>
+                        <li>наличка: -396</li>
+                        <li>Баланс: <span class="text-error">-103</span></li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul>
+                        <li>Статистика <strong>'С руки'</strong>:</li>
+                        <li>Поездок: 0</li>
+                        <li>ВСЕГО: 0</li>
+                        <li>60% = 0</li>
+                        <li>наличка: 0</li>
+                        <li>Баланс: 0</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loader"><svg viewBox="22 22 44 44"><circle cx="44" cy="44" r="20.2" fill="none" stroke-width="3.6"></circle></svg></div>
+
+    <script src="js/spectrum.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/bootstrap-datepicker.ru.min.js"></script>
+    <script src="js/jquery.modal.min.js"></script>
+    <script src="js/Chart.bundle.min.js"></script>
+    <script src="js/jquery.timeline.min.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/esri-leaflet.js"></script>
+    <script src="js/esri-leaflet-geocoder.js"></script>
+    <!--    <script src="js/leaflet.hotline.js"></script>-->
+   <script src="http://taxi2.4okna.com:8080/socket.io/socket.io.js"></script>
+    <script src="js/script.js"></script>
+<!--    <script> socket = io.connect('http://taxi2.4okna.com:8080');</script> -->
+</body>
+</html>

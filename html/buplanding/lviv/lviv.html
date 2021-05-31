@@ -1,0 +1,745 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+  	<title>Підвіконня Данке - мабуть, найкращі підвіконня України</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.tablet.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.tablet.small.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.mobile.css" />
+</head>
+
+<body>
+
+<!-- google anal -------------------------------------------------->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15886641-6']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- end of google anal -->
+
+<!-- Yandex.Metrika informer -->
+<!--
+<a href="http://metrika.yandex.ru/stat/?id=22695421&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/22695421/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:22695421,lang:'ru'});return false}catch(e){}"/>
+</a>
+-->
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+
+<!--
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter22695421 = new Ya.Metrika({id:22695421,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/22695421" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+-->
+<!-- /Yandex.Metrika counter -->
+
+<script>
+        function zvalid() {
+         // yaCounter22695421.reachGoal('ORDER'); //target from yandex
+          var field = document.getElementById('clientmail1'); // email field
+          var myform = document.getElementById('zform');
+          myform.action="php/send.php";
+          var str = field.value ; // email string
+          var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/; // not valid
+          var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,3}|[0-9]{1,3})(\]?)$/; // valid
+          var reg3 = /[0-9\-\.]/;
+          var reg4 = /[a-zA-Z]/;
+          var str2 =  document.getElementById('clienttel1').value;
+         if (!reg4.test(str2) && reg3.test(str2)) return true ;
+            if (!reg1.test(str) && reg2.test(str)) {
+              return true;
+            }
+          alert("Вказані вами дані не коректні! Ми не зможемо зв’язатись по е-мейлу:\"" + str + "\" та звичайно зателефонувати за номером  \"" + str2 + "\" також не зможемо. Будь ласка, вкажіть коректно чи ТЕЛЕФОН, чи е-мейл. А потім натискайте \"замовити\"");
+          myform.action="#bot";
+          field.focus();
+          field.select();
+          return false;
+}
+
+         /* функция для вывода значения со слайдера */
+        function printValue(sliderID, textbox) {
+            var x = document.getElementById(textbox);
+            var y = document.getElementById(sliderID);
+            var z = document.getElementById("price");
+            var a = document.getElementById("result");
+         //   var b = document.getElementById("result1");
+            x.value = y.value ;
+            var tmp = x.value * z.value / 1000 ;
+            a.value = tmp.toFixed(2);
+         //   tmp = a.value * 0.30 ;
+         //   b.value = tmp.toFixed(2);
+          }
+         /* функция для вывода сосчитаных значений стоимости  */
+         function minicorrections(sliderID, textbox) {
+            var x = document.getElementById(textbox);
+            var y = document.getElementById(sliderID);
+            var z = document.getElementById("price");
+            var a = document.getElementById("result");
+         //   var b = document.getElementById("result1");
+            y.value = x.value ;
+            a.value = x.value * z.value / 1000 ;
+         //   b.value = a.value * 0.30 ; // za ustanovku
+         //   b.value = b.value.toFixed(2);
+}
+        window.onload = function() { printValue('slider1', 'rangeValue1'); }
+
+/* timer initializations */
+var end = new Date(2020,08,21, 00, 00, 01); /* конечная дата  месяц 0..11  */
+var refreshinterval = 1000; /* в милисекундах 1000мс = 1 сек*/
+var today = new Date(); /* poluchaem datu segodny */
+var _second = 1000;          /* opredelyaem razmernost razryadov*/
+var _minute = _second * 60;
+var _hour = _minute * 60;
+var _day = _hour * 24;
+var timer;
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+            document.getElementById("countdown").innerHTML = "Акція закінчилась";
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        if (hours < 10) hours = '0' + hours;
+        var minutes = Math.floor((distance % _hour) / _minute);
+        if (minutes < 10) minutes = '0' + minutes;
+        var seconds = Math.floor((distance % _minute) / _second);
+        if (seconds < 10) seconds = '0' + seconds;
+        document.getElementById('countdown').innerHTML = ""+ days +" дн. "+ hours +":"+ minutes +":"+ seconds +"";
+        document.getElementById('countdown2').innerHTML = ""+ days +" дн. "+ hours +":"+ minutes +":"+ seconds +"";
+
+/*        document.getElementById('countdown1').innerHTML = ""+ days +" дн. "+ hours +":"+ minutes +":"+ seconds +"";*/
+    }
+    timer = setInterval(showRemaining, refreshinterval);
+</script>
+
+    <!--wrapper-->
+    <div id="wrapper">
+
+        <!--header-->
+        <div class="header">
+            <div class="inner-block">
+
+                <div class="top-line clearfix">
+                    <a href="" class="logo left clearfix">
+                        <img src="img/danke.jpg" class="left" />
+                        <span class="info">
+                            <h1><span class="big-text">Підвіконня Данке</span></h1>
+                            <h3><span class="small-text">Німецька якість за розумною ціною</span></h3>
+                        </span>
+                    </a>
+                    <div class="contacts mobile-none right">
+                        Наша адреса: м.Львів
+                        <br />Шевченка, 111
+                        <div class="title">
+                            Натисніть щоб зателефонувати:
+                        </div>
+                        <div class="mobile-operator item-1">
+                            <a href="tel:093-799-0-899">093-799-0-899</a>
+                        </div>
+                        <div class="mobile-operator item-2">
+                            <a href="tel:067-325-60-60">067-325-60-60</a>
+                        </div>
+                        <div class="mobile-operator item-3">
+                            <a href="callto:066-688-88-77">066-688-88-77</a>
+                        </div>
+                        <div class="time">(з 9-00 до 19-00)</div>
+                    </div>
+                </div>
+
+                <div class="slogan">
+                    <h2>Якщо ви живете у Львові чи області та бажаєте купити підвіконня - замовляйте підвіконня Данке у нас. Ми надаємо безумовну 10-річну гарантію та у нас завжди в наявності всі кольори. Також ви отримуєте БЕЗКОШТОВНО: індивідуальну прирізку тп вичерпну консультацію.</h2>
+                </div>
+
+                <div class="contacts mobile-on right">
+                    <div class="title">
+                        Натисніть щоб зателефонувати:
+                    </div>
+                    <div class="mobile-operator item-1">
+                        <a href="tel:093-799-0-899">093-799-0-899</a>
+                        </div>
+                        <div class="mobile-operator item-2">
+                            <a href="tel:067-325-60-60">067-325-60-60</a>
+                        </div>
+                        <div class="mobile-operator item-3">
+                            <a href="callto:066-688-88-77">066-688-88-77</a>
+                    </div>
+                    <div class="time">(з 9-00 до 19-00)</div>
+                    Наша адреса: м.Львів
+                    <br />Шквченка, 111
+                </div>
+
+            </div>
+        </div>
+        <!--end header-->
+
+        <!--content-->
+        <div class="content">
+            <div class="inner-block clearfix">
+
+                <!--right side-->
+                <div class="right-side right mobile-on">
+
+                    <h3>Чому вигідно купувати підвіконня Данке у нас?</h3>
+                    <ul class="special-list about">
+                        <li>
+                            У нас <b> доставка за адресою</b> по місту та області будь-якої кількості. 
+                        </li>
+                        <li>
+                            І оплата у нас - <b>при отриманні</b>. Схема проста: ми привезли - ви оплатили!
+                        </li>
+                        <li>
+                            Наші партнери-монтажники монтують підвіконня більше 10 років. Монтують також еркерні або криволінійні підвіконня.
+                        </li>
+                        <li>
+                            При необхідності попередньо направимо до вас замірника.
+                        </li>
+						<li>
+                        	Загальну вартість (підвіконня + монтаж) можливо прорахувати заздалегідь, по телефону або по почті. Сюрпризів у нас не буває.
+						</li>
+                    </ul>
+
+                    <h4>Ми працюємо з офіційним представництвом компанії Данке у Львові, а це значить, що:</h4>
+
+                    <ul class="special-list about">
+                        <li>
+                            Безумовна <b>10-річна гарантія</b>. Обслуговування здійснюється максимально оперативно - для цього є всі можливості.
+                        </li>
+                        <li>
+                            У нас завжди в наявності підвіконня всіх заявлених кольорів.
+                        </li>
+                        <li>
+                            Ціна на підвіконня різних кольорів однакова:
+                            <br />"від виробника" і не залежить від популярності того чи іншого декору. Плюс <b>знижки</b> та <b>бонуси</b>!
+                        </li>
+                        <li>
+                            Ми <i>безкоштовно</i> робимо індивідуальну прирізку. Це значить, що ми дамо вам відразу той розмір, який вам потрібен: хоч 95 см, хоч 2.45 м, хоч 6 м однією полосою. Вам не потрібно купувати довге підвіконня, а потім прирізати його на місці. Ми заздалегідь це зробимо за вас. Вам залишиться тільки його встановити.
+                        </li>
+                        <li>
+                            Надаємо клієнтам <i>безкоштовну експертну консультацію</i>. Ми займаємось підвіконнями більше шести років і знаємо про них все. <b>Телефонуйте, консультуйтесь</b>!
+                        </li>
+                        <li>
+                            Доставка замовлення до вас додому по місту протягом <b>однієї доби</b> після дзвінка. Та протягом тижня по області.
+                        </li>
+                        <li>
+                            Для тих хто не зважився на преміум варіант в наявності спеціальна <b>економ пропозиції - підвіконня Страндарт та Комфорт</b> того ж виробника - в 1.5-2,5 рази дешевше! <b>Телефонуйте, уточнюйте!</b>
+                        </li>
+                        <li>
+                            А якщо ви дилер або прораб - то для вас є спецпропозиція.
+                        </li>
+                    </ul>
+
+                    <!--counter-->
+                    <div class="counter">
+                        <h2>Акція: Старий курс!</h2>
+                        <div class="course-info">
+                            курс ПриватБанку: 27,933 грн./у.о.
+                        </div>
+                        <div class="our-course">
+                            Наш акційний курс: 27,50
+                        </div>
+                        <p><b>+ Кожен клієнт отримає бонус!</b></p>
+                        <p><b>Ціна за метр підвіконня від 66,0 грн.!</b></p>
+                        До кінця акції залишилось:
+                        <div id="countdown2" class="counterprop">АКЦІЯ</div>
+                        <p>Не пропустіть можливість заощадити.</p>
+                        <p>Чим більше замовлення тим більша економія!</p>
+                        <p>Замовивши тепер за зниженою ціною, ви отримуєте:</p>
+                        <ul class="special-list">
+                            <li>Знижка 50% на заглушки при замовлені підвіконня від 1 м (Ви ж не забули про заглушки? вони потрібні в будь-якому випадку до кожного підвіконня). Економія від 15 грн.</li>
+                            <li>Знижка 50% на з'єднувачі при замовлені більш одного. 27 грн. заощадите.</li>
+                            <li>Знижку в 25% на монтаж підвіконня. Ви заощаджуєте ще від ~50 грн!</li>
+                            <!--<li>Якщо до вікон вам потрібні провітрювачі (клапани приточної вентиляції), то ви отримуєте знижку 10% на провітрювачі <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/selevye" target="_blank"><u>Titon</u></a> та <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/avtomaticeskie" target="_blank"><u>Ventair</u></a>. Ви заощоджуєте від 10 до 50 грн.</li>-->
+                                                    </ul>
+                    </div>
+                    <!--end counter-->
+
+                </div>
+                <!--end right side-->
+
+                <div class="contacts special mobile-on">
+                    <div class="title">
+                        Натисніть щоб зателефонувати:
+                    </div>
+                    <div class="mobile-operator item-1">
+                        <a href="tel:093-799-0-899">093-799-0-899</a>
+                        </div>
+                        <div class="mobile-operator item-2">
+                            <a href="tel:067-325-60-60">067-325-60-60</a>
+                        </div>
+                        <div class="mobile-operator item-3">
+                            <a href="callto:066-688-88-77">066-688-88-77</a>
+                    </div>
+                    <div class="time">(з 9-00 до 19-00)</div>
+                    Наша адреса: м.Львів
+                    <br />Шевченка, 111
+                </div>
+
+                <!--left side-->
+                <div class="left-side left">
+
+                    <div class="video-box">
+                        <div class="inner">
+                        
+                         <iframe id="ytplayer" type="text/html" width="500" height="280"
+  src="http://www.youtube.com/embed/DmxU94I6J8g?hl=ru_RU&fs=1;showinfo=0;rel=0;autoplay=0"
+  frameborder="0"/>
+  </iframe>
+  <!--
+                            <object width="500" height="280" type="application/x-shockwave-flash" data="http://www.youtube.com/v/DmxU94I6J8g?hl=ru_RU&amp;fs=1;showinfo=0;rel=0;autoplay=0">
+                                <param name="movie" value="//www.youtube.com/v/DmxU94I6J8g?hl=ru_RU&amp;version=3&amp;rel=0;autoplay=0">
+                                <param name="allowFullScreen" value="true">
+                                <param name="allowscriptaccess" value="always">
+                                <param name="wmode" value="opaque">
+                            </object>
+                            
+                            -->
+                            
+                            <!--http://danke.4okna.com/-->
+                        </div>
+                    </div>
+
+                    <div class="guarantee">
+                        <b>Безумовна гарантія 10 років на підвіконня Данке</b>
+                        <p>Якщо протягом 10 років щось станеться з вашими підвіконнями не по вашій вині, то ми їх без питань замінемо.</p>
+                    </div>
+
+                    <ul class="special-list advantages">
+                        <li>
+                            <b>Екологічно чисті та безпечні компоненти</b>
+                            Акрилове покриття не містить формальдегід чи інші канцерогеннні або шкідливі речовини, котрі часто використовуються в виробництві ПВХ чи ДСП.
+                        </li>
+                        <li>
+                            <b>Фабричний блиск ідеально зберігається протягом років</b>
+                            Глянцева поверхня захищена від механічних пошкоджень: подряпин квітковими горщиками, статуетками, вазами чи іншими предметами.
+                        </li>
+                        <li>
+                            <b>Відмінна термостійкість</b>
+                            Покриття гарантовано не постраждає від короткочастного контакту з гарячим посудом. Та цигарка, що випадково впала, не залишить характерної коричневої плями.
+                        </li>
+                        <li>
+                            <b>Спокійно витримує вагу дорослої людини</b>
+                            Міцність основи (як за хімічним складом, так і за конструктивним рішенням) гарантовано витримає вагу дорослої людини під час миття вікон та не постраждає від важких предметів.
+                        </li>
+                        <li>
+                            <b>Не бояться пари, сирості та вологості</b>
+                            На відміну від дерев'яних чи підвіконь із ДСП, на підвіконня Данке нанесено водовідштовхуюче покриття Elesgo, яке використовують при виготовленні ламінату для підлоги.
+                        </li>
+                        <li>
+                            <b>Стійкий до виникнення харчових плям</b>
+                            Сліди від розлитого вина або кави легко витираються.
+                        </li>
+                        <li>
+                            <b>Не чутливий до різного роду розчинників</b>
+                            Розлиті лак для нігтів, зеленка або фарба для малювання легко витираються ганчіркою. Також поверхня підвіконня стійка до кислотомістних засобів.
+                        </li>
+                        <li>
+                            <b>Практичні та прості в догляді</b>
+                            Покриття не має пор і не вимагає ніяких хімічних засобів для чищення. Можна просто протерти.
+                        </li>
+                        <li>
+                            <b>Широка палітра кольорів</b>
+                            В наявності імітація деревини та мармуру, які задовільнять будь-який смак. І звичайно ж, є класичні білі підвіконня в глянцевому та матовому виконаннях.
+                        </li>
+                        <li>
+                            <b>Широкий діапазон розмірів</b>
+                            Від 10 до 70 см по глибині та до 6 метрів по довжині. В наявності підвіконня з двома капіносами глибиною 50 та 70 см.
+                        </li>
+                        <li>
+                            <b>Можна з'єднати кутові підвіконня</b>
+                            В наявності кутові з'єднувачі на 90, 120, 135 и 180°.
+                        </li>
+                        <li>
+                            <b>Всі кольори торцевих заглушок</b>
+                            Для кожного кольору існують торцеві заглушки по 35 та 70 см.
+                        </li>
+                        <li>
+                            <b>Вся продукція сертифікована</b>
+                            Є всі необхідні сертифікати: СЕС, пожежний та ін.
+                        </li>
+                    </ul>
+
+                    <div class="contacts special mobile-on">
+                        <div class="title">
+                            Натисніть щоб зателефонувати:
+                        </div>
+                        <div class="mobile-operator item-1">
+                            <a href="tel:093-799-0-899">093-799-0-899</a>
+                        </div>
+                        <div class="mobile-operator item-2">
+                            <a href="tel:067-325-60-60">067-325-60-60</a>
+                        </div>
+                        <div class="mobile-operator item-3">
+                            <a href="callto:066-688-88-77">066-688-88-77</a>
+                        </div>
+                        <div class="time">(з 9-00 до 19-00)</div>
+                        Наша адреса: м.Львів
+                        <br />Шевченка, 111
+                    </div>
+
+                    <!--comments-->
+                    <div class="comments">
+
+                        <div class="comment-box">
+                            <h4>Що кажуть професіонали:</h4>
+                            <div class="row clearfix">
+                                <div class="photo left">
+                                    <img src="img/mnv.jpg" alt="" />
+                                </div>
+                                <div class="status">
+                                    <h4>Монтажник вікон Андрій Снігирьов. Досвід работи понад 10 років. (http://vk.com/id124738314)</h4>
+                                </div>
+                                <p>Я працюю монтажником вікон понад 10 років. Доводилось монтувати разом з вікнами й підвіконня різних виробників. Коли я працюю з підвіконням Данке, мені ніколи не буває соромно за результат своєї праці. Замовник завжди отримує більше, ніж розраховував. З Данке не буває проблем з монтажем. Не буває перемонтажу! Мені доводиться часто замінювати у замовника різні підвіконня на Данке, алн ще ні разу не міняв підвіконня Данке на якесь інше. Це дійсно підвіконня преміум класу. Чудовий зовнішній вигляд, котрий не зіпсується з часов. Різноманітність палітри дає можливість його вдало "вписати" в будь-який інтер'єр. Все просто на рівні. Дуже рекомендую!</p>
+                            </div>
+                        </div>
+
+                        <div class="comment-box">
+                            <h4>Що кажуть клієнти:</h4>
+                            <div class="row clearfix">
+                                <div class="photo left">
+                                    <img src="img/july.jpg" alt="" />
+                                </div>
+                                <div class="status">
+                                    <h4>Юлія Марченко. З Данке 6 років! (http://vk.com/id9050571)</h4>
+                                </div>
+                                <p>У мене вдома стоїть на балконі Данке золотий дуб глянець, причому над балконною тумбою - широкий, 60 см. По-перше, думала, що з часом поверхня піде хвилями, будуть виступати внутрішні перегородки. По-друге, не знала, як той глянець поведет себе з часом. Просто це підвіконня краще всього підходило до кольору балкону. За підсумками служби за 6 років: все як новеньке. Вазони стоять кожне літо, засохші потьоки від води відмиваються легко. Інструменти чоловіка лежали - царапин немає. Каструльки ставила остигати - все нормально. Взагалі, підвіконня протерти - і виглядає як нове, та глянець виглядає дуже приємно. Впевнена, що слугуватиме дуже довго.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--end comments-->
+
+                </div>
+                <!--end left side-->
+
+                <!--right side-->
+                <div class="right-side right mobile-none">
+
+                    <h3>Чому вигідно купувати підвіконня Данке у нас?</h3>
+                    <ul class="special-list about">
+                        <li>
+                            У нас <b> доставка за адресою</b> по місту та області будь-якої кількості. 
+                        </li>
+                        <li>
+                            І оплата у нас - <b>при отриманні</b>. Схема проста: ми привезли - ви оплатили!
+                        </li>
+                        <li>
+                            Наші партнери-монтажники монтують підвіконня більше 10 років. Монтують також еркерні або криволінійні підвіконня.
+                        </li>
+                        <li>
+                            При необхідності попередньо направимо до вас замірника.
+                        </li>
+						<li>
+                            Загальну вартість (підвіконня + монтаж) можливо прорахувати заздалегідь, по телефону або по почті. Сюрпризів у нас не буває.
+                        </li>
+                    </ul>
+
+                    <h4>Ми працюємо з офіційним представництвом компанії Данке у Львові, а це значить, що:</h4>
+
+                    <ul class="special-list about">
+                        <li>
+                            Безумовна <b>10-річна гарантія</b>. Обслуговування здійснюється максимально оперативно - для цього є всі можливості.
+                        </li>
+                        <li>
+                            У нас завжди в наявності підвіконня всіх заявлених кольорів.
+                        </li>
+                        <li>
+                            Ціна на підвіконня різних кольорів однакова:
+                            <br />"від виробника" і не залежить від популярності того чи іншого декору. Плюс <b>знижки</b> та <b>бонуси</b>!
+                        </li>
+                        <li>
+                            Ми <i>безкоштовно</i> робимо індивідуальну прирізку. Це значить, що ми дамо вам відразу той розмір, який вам потрібен: хоч 95 см, хоч 2.45 м, хоч 6 м однією полосою. Вам не потрібно купувати довге підвіконня, а потім прирізати його на місці. Ми заздалегідь це зробимо за вас. Вам залишиться тільки його встановити.
+                        </li>
+                        <li>
+                            Надаємо клієнтам <i>безкоштовну експертну консультацію</i>. Ми займаємось підвіконнями більше шести років і знаємо про них все. <b>Телефонуйте, консультуйтесь</b>!
+                        </li>
+                        <li>
+                            Доставка замовлення до вас додому по місту протягом <b>однієї доби</b> після дзвінка. Та протягом тижня по області.
+                        </li>
+                        <li>
+                            Для тих хто не зважився на преміум варіант в наявності спеціальна <b>економ пропозиції - підвіконня Страндарт та Комфорт</b> того ж виробника - в 1.5-2,5 рази дешевше! <b>Телефонуйте, уточнюйте!</b>
+                        </li>
+                        <li>
+                            А якщо ви дилер або прораб - то для вас є спецпропозиція.
+                        </li>
+                    </ul>
+
+
+                    <!--counter-->
+                    <div class="counter">
+                       <h2>Акція: Старий курс!</h2>
+                        <div class="course-info">
+                            курс ПриватБанку: 27,933 грн./у.о.
+                        </div>
+                        <div class="our-course">
+                            Наш акційний курс: 27,50
+                       </div>
+                        <p><b>+ Кожен клієнт отримає бонус!</b></p>
+                        <p><b>Ціна за метр підвіконня від 66,0 грн.!</b></p>
+                        До кінця акції залишилось:
+                        <div id="countdown" class="counterprop">АКЦІЯ</div>
+                        <p>Не пропустіть можливість заощадити.</p>
+                        <p>Чим більше замовлення тим більша економія!</p>
+                        <p>Замовивши тепер за зниженою ціною, ви отримуєте:</p>
+                        <ul class="special-list">
+                            <li>Знижка 50% на заглушки при замовлені підвіконня від 1 м (Ви ж не забули про заглушки? вони потрібні в будь-якому випадку до кожного підвіконня). Економія від 15 грн.</li>
+                            <li>Знижка 50% на з'єднувачі при замовлені більш одного. 27 грн. заощадите.</li>
+                            <li>Знижку в 25% на монтаж підвіконня. Ви заощаджуєте ще від ~50 грн!</li>
+                            <!--<li>Якщо до вікон вам потрібні провітрювачі (клапани приточної вентиляції), то ви отримуєте знижку 10% на провітрювачі <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/selevye" target="_blank"><u>Titon</u></a> та <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/avtomaticeskie" target="_blank"><u>Ventair</u></a>. Ви заощоджуєте від 10 до 50 грн.</li>-->
+                                                    </ul>
+                    </div>
+                    <!--end counter-->
+
+                    <div class="info-text">
+                        Замовте за допомогою форми що нижче щоб заощадити близько 50 грн! (Буває й набагато більше, але в середньому - так.)
+                    </div>
+
+                    <!--order product-->
+                    <div class="order-product">
+
+                        <!--select color-->
+                        <div class="select-color">
+                            <div class="title">Окрім білого на складі доступні кольори:</div>
+                            (Клікніть на необхідний колір щоб його вибрати.
+                            <br>Після кліку обраний колір попаде в форму)
+                            <div class="color-box">
+                                <b><div id="za" >обирайте колір</div></b>
+                                <img src="img/colors.jpg" alt="colors" usemap="#map1" onclick="yaCounter22695421.reachGoal('ORDERcolor'); return true;">
+                                <map name="map1" id="map1">
+                                    <area shape="poly" coords="0,0,140,0,140,105,0,105" onmouseout="document.getElementById('za').innerHTML='обирайте колір'" onmouseover="document.getElementById('za').innerHTML='Онікс'" onclick="document.getElementById('color').value='Онікс'">
+                                    <area shape="poly" coords="150,0,290,0,290,105,150,105" onmouseout="document.getElementById('za').innerHTML='обирайте колір'" onmouseover="document.getElementById('za').innerHTML='Бежевий мармур'" onclick="document.getElementById('color').value='Бежовий мармур'">
+                                    <area shape="poly" coords="296,0,440,0,440,105,296,105" onmouseout="document.getElementById('za').innerHTML='обирайте колір'" onmouseover="document.getElementById('za').innerHTML='Сірий мармур'" onclick="document.getElementById('color').value='Сірий мармур'">
+                                    <area shape="poly" coords="0,115,140,115,140,220,0,220" onmouseout="document.getElementById('za').innerHTML='обирайте колір'" onmouseover="document.getElementById('za').innerHTML='Біле дерево'" onclick="document.getElementById('color').value='Біле дерево'">
+                                    <area shape="poly" coords="150,115,290,115,290,220,150,220" onmouseout="document.getElementById('za').innerHTML='обирайте колір'" onmouseover="document.getElementById('za').innerHTML='Світлий дуб'" onclick="document.getElementById('color').value='Світлий дуб'">
+                                    <area shape="poly" coords="296,115,440,115,440,220,296,220" onmouseout="document.getElementById('za').innerHTML='обирайте колір'" onmouseover="document.getElementById('za').innerHTML='Золотий дуб (залишки)'" onclick="document.getElementById('color').value='Золотий дуб (залишки)'">
+                                    <area shape="poly" coords="0,225,140,225,140,330,0,330" onmouseout="document.getElementById('za').innerHTML='обирайте колір'"  onmouseover="document.getElementById('za').innerHTML='Венге'" onclick="document.getElementById('color').value='Венге'">
+                                    <area shape="poly" coords="150,225,290,225,290,330,150,330" onmouseout="document.getElementById('za').innerHTML='обирайте колір'" onmouseover="document.getElementById('za').innerHTML='Махагон'" onclick="document.getElementById('color').value='Махагон'">
+                                    <area shape="poly" coords="296,225,440,225,440,330,296,330" onmouseout="document.getElementById('za').innerHTML='обирайте колір'" onmouseover="document.getElementById('za').innerHTML='Коричневий дуб'" onclick="document.getElementById('color').value='Коричневий дуб'">
+                                </map>
+                            </div>
+                        </div>
+                        <!--end select color-->
+
+                        <!--order form-->
+                        <form id="zform" method="post" onkeypress="if(event.keyCode == 13) return false;" onsubmit="zvalid()">
+                            <table border="0" align="right" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td align="right" class="mobile-text"><b>Обраний колір : &nbsp;</b></td>
+                                        <td align="left">
+                                            <!--input type="text" name="color" id="color" disabled value="Білий" class="colr" form="zform"    size="1"      -->
+                                            <select id="color" name="mycolor" class="colr" form="zform" onclick="yaCounter22695421.reachGoal('ORDERcolor2'); return true;">
+                                                <option value="Онікс">Онікс</option>
+                                                <option value="Бежевий мармур">Бежовий мармур</option>
+                                                <option value="Сірий мармур">Сірий мармур</option>
+                                                <option value="Біле дерево">Біле дерево</option>
+                                                <option selected="selected" value="Білий">Білий</option>
+                                                <option value="Світлий дуб">Світлий дуб</option>
+                                                <option value="Золотий дуб (залишки)">Золотий дуб</option>
+                                                <option value="Венге">Венге</option>
+                                                ‎  <option value="Махагон">Махагон</option>
+                                                <option value="Коричневий дуб">Коричневий дуб</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="right">
+                                            <fieldset>
+                                                <center><h3>Розрахунок вартості замовлення:</h3></center>
+                                                <span class="text-align mobile-text">Оберіть глибину:</span>
+                                                <select id="price" class="right" name="menu2" size="1" onchange="printValue('slider1','rangeValue1')" form="zform" onclick="yaCounter22695421.reachGoal('ORDERglub'); return true;">
+                                                    <option value="6.70">Глибина 100мм</option>
+                                                    <option value="10.05">Глибина 150мм</option>
+                                                    <option value="13.40">Глибина 200мм</option>
+                                                    <option value="16.75">Глибина 250мм</option>
+                                                    <option selected="selected" value="20.10">Глибина 300мм</option>
+                                                    <option value="23.45">Глибина 350мм</option>
+                                                    <option value="26.80">Глибина 400мм</option>
+                                                    <option value="30.15">Глибина 450мм</option>
+                                                    ‎<option value="33.50">Глибина 500мм</option>
+                                                    <option value="33.50">Глибина 500мм (2 капиноса)</option>
+                                                    <option value="35.85">Глибина 550мм</option>
+                                                    <option value="40.20">Глибина 600мм</option>
+                                                    <option value="46.90">Глибина 700мм (2 капиноса)</option>
+                                                </select>
+                                            </fieldset>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <fieldset>
+                                                <table border="0" align="right">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="2">Вкажіть ширину:</td><td><input id="rangeValue1" type="text" name="shirina1" size="3" onchange="minicorrections(&#39;slider1&#39;,&#39;rangeValue1&#39;)" class="small" onclick="yaCounter22695421.reachGoal('ORDERshir'); return true;"><span class="text-align">mm</span></td><td>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3"><input id="slider1" type="range" min="100" max="6000" step="5" value="800" onchange="printValue(&#39;slider1&#39;,&#39;rangeValue1&#39;)" name="shirina" form="zform" slass="slider" onclick="yaCounter22695421.reachGoal('ORDERshir2'); return true;"></td>
+                                                        </tr>
+                                                        <tr><td colspan="4"><hr></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" align="right">Вартість підвіконня&nbsp;</td><td><input id="result" name="cena" type="text" size="3" disabled class="small" form="zform" onclick="yaCounter22695421.reachGoal('ORDERcena'); return true;"><span class="text-align">&nbsp;у.е.</span></td>
+                                                        </tr>
+                                                        <!--
+                                                             <tr>
+                                                              <td colspan="2" align="right">Приблизна вартість монтажу от:&nbsp;</td><td><input id="result1" name="cena2" type="text" size="3" class="small" disabled form="zform" onclick="yaCounter22695421.reachGoal('ORDERmont'); return true;">&nbsp;у.е.</td>
+                                                             </tr>
+                                                        -->
+                                                        <!-- <tr>
+                                                              <td colspan="2" align="right">Економваріант :&nbsp;</td><td><input id="econom" name="eco" type="checkbox"  checked="checked" class="small" disabled form="zform"></td>
+                                                             </tr>
+                                                        -->
+                                                        <tr>
+                                                            <td colspan="2" align="right">Доставка  </td><td><b>  !</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="3" align="right">
+                                                                <font size="-3">* Оплата в національній валюті України&nbsp;<br>** Курс змінюється щодня -- ТЕЛЕФОНУЙТЕ, уточнюйте!</font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </fieldset>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="right" class="mobile-special-text"><b><i>Для оформлення замовлення заповніть форму.<br>Ми зв'яжемось з вами протягом 10-15 хвилин.</i></b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+
+                                            <!--fieldset-->
+                                            <table border="0" align="right">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>&nbsp;</td>
+                                                        <td><input type="text" name="clientmail" id="clientmail1" onfocus="if (this.value == 'Тут e-mail') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Тут e-mail';}" value="Тут e-mail" form="zform" onclick="yaCounter22695421.reachGoal('ORDER'); return true;"></td>
+                                                    </tr>
+                                                    <!--tr>
+                                                     <td colspan="2"><hr width="35%" align="left"></td>
+                                                    </tr-->
+                                                    <tr>
+                                                        <td><font size="-1"><b>АБО</b>&nbsp;</font></td>
+                                                        <td><input type="text"  name="clienttel" id="clienttel1" onfocus="if (this.value == 'Тут номер телефону з кодом') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Тут номер телефону з кодом';}" onclick="yaCounter22695421.reachGoal('ORDER'); return true;" value="Тут номер телефону з кодом" form="zform"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><input type="submit" class="submit" value="Замовити" form="zform"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2" align="right"><hr>
+                                                            або зателефонуйте нам прямо зараз:<br>
+                                                            <!--hr width="35%" align="right"-->
+                                                            <div class="contacts">
+                                                                <div class="mobile-operator item-1">
+                                                                    <a href="tel:093-799-0-899">093-799-0-899</a>
+               						         </div>
+          					             <div class="mobile-operator item-2">
+          					                  <a href="tel:067-325-60-60">067-325-60-60</a>
+       						                 </div>
+        					                <div class="mobile-operator item-3">
+              					              <a href="callto:066-688-88-77">066-688-88-77</a>
+                                                                </div>
+                                                                <div class="time">(з 9-00 до 19-00)</div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!--/fieldset-->
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                        <!--end order form-->
+
+                    </div>
+                    <!--end order product-->
+
+                </div>
+                <!--end right side-->
+
+            </div>
+        </div>
+        <!--end content-->
+
+    </div>
+    <!--end wrapper-->
+
+    <!--footer-->
+    <div class="footer">
+        <div class="copyrights mobile-none">
+            <div class="inner-block">
+                Dedal Instrument (c) 2013-2020
+            </div>
+        </div>
+ 
+        <div class="footer-bottom-line">
+            <div class="inner-block">
+<!--
+                <div class="text">
+                    Не забудьте розповісти про нас друзям, які теж хочуть швидко й недорого хороше підвіконня преміум класу. Вони будуть вам вдячні:
+                </div>
+
+                <div class="socials">
+                    <script type="text/javascript">(function() {
+                        if (window.pluso)if (typeof window.pluso.start == "function") return;
+                        if (window.ifpluso==undefined) { window.ifpluso = 1;
+                            var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                            s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                            s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                            var h=d[g]('body')[0];
+                            h.appendChild(s);
+                        }})();</script>
+                    <div class="pluso" data-background="transparent" data-options="big,square,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print,linkedin,bookmark,googlebookmark,yazakladki" data-url="http://danke.4okna.com" data-title="Подоконники Данке в Киеве" data-description="Подоконники с Доставкой по Киеву. Бесплатная доставка."></div>
+                </div>
+            </div>
+        </div>
+--> 
+ 
+    </div>
+    <!--end footer-->
+
+<a name="bot"></a>
+
+</body>
+</html>

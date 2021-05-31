@@ -1,0 +1,8 @@
+User-Agent: *
+Allow: /
+Allow: /css/
+Allow: /img/
+Allow: /php/
+Disallow: /dbphp/
+
+

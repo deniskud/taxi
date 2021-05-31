@@ -1,0 +1,932 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+  	<title>Подоконники Топалит . Безупречное Австрийское качество</title>
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+
+
+
+<script>
+const ver={version:'210704.2'};
+console.log(ver);
+        function zvalid() {
+          var field = document.getElementById('clientmail1'); // email field
+          var myform = document.getElementById('zform');
+          myform.action="php/send.php";
+          var str = field.value ; // email string
+          var reg1 = /(@.*@)|(\.\.)|(@\.)|(\.@)|(^\.)/; // not valid
+          var reg2 = /^.+\@(\[?)[a-zA-Z0-9\-\.]+\.([a-zA-Z]{2,3}|[0-9]{1,3})(\]?)$/; // valid
+          var reg3 = /[0-9\-\.]/;
+          var reg4 = /[a-zA-Z]/;
+          var str2 =  document.getElementById('clienttel1').value;
+         if (!reg4.test(str2) && reg3.test(str2)) return true ;
+            if (!reg1.test(str) && reg2.test(str)) {
+              return true;
+            }
+          alert("Указанные вами данные не корректны! Мы не сможем связаться по е-мэйлу:\"" + str + "\" и конечно позвонить по телефону  \"" + str2 + "\" тоже не сможем. Пожалуйста укажите корректно или ТЕЛЕФОН или е-мэйл. А потом нажимайте \"заказать\"");
+          myform.action="#bot";
+          field.focus();
+          field.select();
+          return false;
+        }
+
+         /* функция для вывода значения со слайдера */
+        function printValue(sliderID, textbox) {
+            var x = document.getElementById(textbox);
+            var y = document.getElementById(sliderID);
+            var z = z=document.getElementById("price");
+            var a = document.getElementById("result");
+        //    var b = document.getElementById("result1");
+            x.value = y.value ;
+            var tmp = x.value * z.value / 1000 ;
+            a.value = tmp.toFixed(2);
+        //    tmp = a.value * 0.30 ;
+        //    b.value = tmp.toFixed(2);
+          }
+
+         /* функция для вывода сосчитаных значений стоимости  */
+         function minicorrections(sliderID, textbox) {
+            var x = document.getElementById(textbox);
+            var y = document.getElementById(sliderID);
+            var z = document.getElementById("price");
+            var a = document.getElementById("result");
+          //  var b = document.getElementById("result1");
+            y.value = x.value ;
+            a.value = x.value * z.value / 1000 ;
+          //  b.value = a.value * 0.30 ; // za ustanovku
+          //  b.value = b.value.toFixed(2);
+}
+        window.onload = function() { printValue('slider1', 'rangeValue1'); }
+
+/* timer initializations */
+
+ var end = new Date(2021,3,22, 00, 00, 01); /* конечная дата  месяц 0..11  */
+ var refreshinterval = 1000; /* в милисекундах 1000мс = 1 сек*/
+ var today = new Date(); /* poluchaem datu segodny */
+ var _second = 1000;          /* opredelyaem razmernost razryadov*/
+ var _minute = _second * 60;
+ var _hour = _minute * 60;
+ var _day = _hour * 24;
+ var timer;
+     function showRemaining() {
+
+         var now = new Date();
+         var distance = end - now;
+         if (distance < 0) {
+             document.getElementById("countdown22").innerHTML = "Акция окончена";
+             return;
+         }
+         var days = Math.floor(distance / _day);
+         var hours = Math.floor((distance % _day) / _hour);
+         if (hours < 10) hours = '0' + hours;
+         var minutes = Math.floor((distance % _hour) / _minute);
+         if (minutes < 10) minutes = '0' + minutes;
+         var seconds = Math.floor((distance % _minute) / _second);
+         if (seconds < 10) seconds = '0' + seconds;
+    //     document.getElementById('countdown').innerHTML = ""+ days +" дн. "+ hours +":"+ minutes +":"+ seconds +"";
+         document.getElementById('countdown22').innerHTML = ""+ days +" дн. "+ hours +":"+ minutes +":"+ seconds +"";
+
+/*        document.getElementById('countdown1').innerHTML = ""+ days +" дн. "+ hours +":"+ minutes +":"+ seconds +"";*/
+
+     }
+     timer = setInterval(showRemaining, refreshinterval);
+
+</script>
+
+    <!--wrapper-->
+    <div id="wrapper">
+
+        <!--header-->
+        <div class="header">
+            <div class="inner-block">
+
+                <div class="top-line clearfix">
+                    <a href="" class="logo left clearfix">
+                        <img src="img/logo.jpg" class="left">
+                        <span class="info">
+                            <h1><span class="big-text">Подоконники Топалит</span></h1>
+                            <h3><span class="small-text">Безупречное Австрийское качество</span></h3>
+                        </span>
+                    </a>
+                    <div class="contacts mobile-none right">
+                        Наш адрес: г.Киев
+                        <br>Светлицкого, 35
+                        <div class="title">
+                            Нажмите, что бы позвонить:
+                        </div>
+                        <div class="mobile-operator item-1">
+                            <a href="tel:093-799-0-899">093-799-0-899</a>
+                        </div>
+                        <div class="mobile-operator item-2">
+                            <a href="tel:067-325-60-60">067-325-60-60</a>
+                        </div>
+                        <div class="mobile-operator item-3">
+                            <a href="tel:066-6-8888-77">066-6-8888-77</a>
+                        </div>
+                        <div class="time">(c 9-00 до 19-00)</div>
+                    </div>
+                </div>
+<!-- УКП -->
+                <div class="slogan">
+                    <h2>Если вы живете в Киеве или области и хотите купить подоконники, то закажите подоконники Топалит у нас. 
+Мы даём на них безусловную 30-летнюю гарантию и у нас всегда есть все цвета.
+А еще вы получаете БЕСПЛАТНО: доставку по Киеву и индивидуальную прирезку,  а так же исчерпывающую консультацию.</h2>
+                </div>
+
+                <div class="contacts mobile-on right">
+                    <div class="title">
+                        Нажмите, что бы позвонить:
+                    </div>
+                    <div class="mobile-operator item-1">
+                        <a href="tel:093-799-0-899">093-799-0-899</a>
+                        </div>
+                        <div class="mobile-operator item-2">
+                            <a href="tel:067-325-60-60">067-325-60-60</a>
+                    </div>
+                    <div class="mobile-operator item-3">
+                        <a href="tel:066-6-8888-77">066-6-8888-77</a>
+                    </div>
+                    <div class="time">(c 9-00 до 19-00)</div>
+                    Наш адрес: г.Киев
+                    <br>Светлицкого, 35
+                </div>
+
+            </div>
+        </div>
+        <!--end header-->
+
+        <!--content-->
+        <div class="content">
+            <div class="inner-block clearfix">
+
+                <!--right side-->
+                <div class="right-side right mobile-on">
+
+                    <h3>Почему разумно покупать подоконники Топалит у нас?</h3>
+                    <ul class="special-list about">
+                        <li>
+                            У нас <b>бесплатная доставка</b> по Киеву. Обычно цена доставки существенно увеличивает стоимость, а тут - прямая экономия 350 грн.!
+                        </li>
+                        <li>
+                            <!--И оплата у нас - <b>после</b> доставки. Схема простая: мы привезли - вы оплатили!-->
+                        </li>
+                        <li>
+                            Наши партнеры-монтажники устанавливают подоконники более 10 лет. Они монтируют и эркерные или криволинейные подоконники. Также могут выполнить разнообразные дополнительные работы: от врезания радиаторной решетки, до фигурно вырезанных подоконников-столешниц.
+                        </li>
+                        <li>
+                            При необходимости наш партнер-монтажник приедет к вам на предварительный замер с мини-образцами всех декоров.
+                        </li>
+						<li>
+                            Общую стоимость (подоконник + монтаж) можно просчитать заранее, по телефону или по почте. Сюрпризов у нас не бывает.
+                        </li>
+                    </ul>
+
+                    <h4>Мы работаем с официальным поставщиком подоконников и столешниц Топалит в Украину, а это значит, что:</h4>
+
+                    <ul class="special-list about">
+                        <li>
+                            Безусловная <b>30-летняя гарантия</b> осуществляется максимально оперативно - для этого есть все возможности.
+                        </li>
+                        <li>
+                            У нас всегда в наличии подоконники всех заявленных цветов.
+                        </li>
+                        <li>
+                            Цена на подоконники разных цветов в классической и дизайнерской группе декоров всегда одинакова: "от производителя" и не зависит от популярности того или иного цвета. Плюс <b>скидки</b> и <b>бонусы</b>!
+                        </li>
+                        <li>
+                            Мы <i>бесплатно</i> делаем индивидуальную прирезку по длине. Это значит, что мы дадим вам сразу тот размер, который вам нужен: хоть 95 см, хоть 2.45 м, хоть 5.6 м одной полосой. Вам не надо покупать длинный подоконник, а потом прирезать его на месте. Мы это заранее сделаем бесплатно. Вам останется его только установить.
+                        </li>
+                        <li>
+                            Также <i>бесплатно</i> можем прирезать подоконник по глубине.
+                        </li>
+                        <li>
+                            Предоставляем дополнительные различные услуги по прирезке. Угловые, радиальные или срезы по лекалу.
+                        </li>
+                        <li>
+                            Если указанные размеры вам малы, то можем увеличить подоконник по глубине до 1 м или нарастить капинос.
+                        </li>
+                        <li>
+                            Мы даём клиентам <i>бесплатную экспертную консультацию</i>. Опыт работы с подоконниками более 15 лет и знаем о них всё. <b>Звоните, консультируйтесь</b>!
+                        </li>
+                        <li>
+                            Доставка заказа к вам домой в течении <b>2-3 суток</b> после звонка.
+                        </li>
+                        <li>
+                            <!--Для тех кто не решился на премиум вариант есть <b>эконом предложения - подоконник Страндарт и Комфорт</b> того же производителя - в 1.5-2,5 раза дешевле! <b>Звоните, уточняйте!</b>-->
+                        </li>
+                        <li>
+                            А если вы дилер или прораб - то для вас есть спецпредложение.
+                        </li>
+                    </ul>
+
+                    <!--counter22   -->
+<!--
+                    <div class="counter">
+
+                        <h2>Акция: ...</h2> 
+
+
+                        <h2>Старый курс!</h2>
+                        <div class="course-info">
+                            курс ПриватБанка: 28,409 грн./у.е.
+                        </div>
+                        <div class="our-course">
+                            Наш акционный курс: 27,50
+                        </div>
+                        <p><b>+ Каждый клиент получит скидку!</b></p>
+                        <p><b>Цена за метр подоконника от 68,75 грн.!</b></p>
+                        До конца акции осталось:
+                        <div id="countdown2" class="counterprop">АКЦИЯ</div>
+
+
+                        <p>Не упустите возможность сэкономить.</p>
+                        <p>Чем больше заказ тем больше скидка!</p>
+                        <p>Заказав сейчас по сниженной цене, вы получаете:</p>
+                        <ul class="special-list">
+                            <li>Бесплатную меламиновую ламинацию торца (Вы же не забыли про края подоконника? торцовки нужны почти к каждому подоконнику).</li>
+                            <li>Скидку 10% на абс-ламинацию торца.</li>
+                            <li>Скидку 10% на соединители при заказе более одного.</li>
+                            <li>Скидку в ~30% на монтаж подоконника. Вы экономите еще от 100 грн. на метре!</li>
+-->
+<!--
+                            <li>Если вам нужны окна (обычно подоконники покупают при замене окон), то вы получаете скидку в 20%. Здесь вы экономите от 100 до 950 грн.</li>
+                            <li>Если к окнам вам нужны проветриватели (клапаны приточной вентиляции), то вы получаете скидку в 10% на проветриватели <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/selevye" target="_blank"><u>Titon</u></a> и <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/avtomaticeskie" target="_blank"><u>Ventair</u></a>. Вы экономите от 10 до 50 грн.</li>
+                            <li>Предоставляем скидку 25% на установку оконных откосов любой сложности. Экономия составит от 50 грн. на одном окне.</li>
+
+                        </ul>
+                    </div>
+-->
+                    <!--end counter-->
+
+                </div>
+                <!--end right side-->
+
+                <div class="contacts special mobile-on">
+                    <div class="title">
+                        Нажмите, что бы позвонить:
+                    </div>
+                    <div class="mobile-operator item-1">
+                        <a href="tel:093-799-0-899">093-799-0-899</a>
+                        </div>
+                        <div class="mobile-operator item-2">
+                            <a href="tel:067-325-60-60">067-325-60-60</a>
+                    </div>
+                    <div class="mobile-operator item-3">
+                        <a href="tel:066-6-8888-77">066-6-8888-77</a>
+                    </div>
+                    <div class="time">(c 9-00 до 19-00)</div>
+                    Наш адрес: г.Киев
+                    <br>Светлицкого, 35
+                </div>
+
+                <!--left side-->
+                <div class="left-side left">
+
+                    <div class="video-box">
+                        <div class="inner">
+                        <iframe width="500" height="280" src="https://www.youtube.com/embed/BbFCvaXObJ0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!--                        <iframe id="ytplayer" type="text/html" width="500" height="280" src="embed/DmxU94I6J8g.html?hl=ru_RU&fs=1;showinfo=0;rel=0;autoplay=0" frameborder="0"></iframe>
+   -->
+                        
+<!--
+
+
+                        
+                            <object width="500" height="280" type="application/x-shockwave-flash" data="http://www.youtube.com/v/DmxU94I6J8g?hl=ru_RU&amp;fs=1;showinfo=0;rel=0;autoplay=0">
+                                <param name="movie" value="//www.youtube.com/v/DmxU94I6J8g?hl=ru_RU&amp;version=3&amp;rel=0;autoplay=0">
+                                <param name="allowFullScreen" value="true">
+                                <param name="allowscriptaccess" value="always">
+                                <param name="wmode" value="opaque">
+                            </object>
+  -->                          
+                        </div>
+                    </div>
+
+                    <div class="guarantee">
+                        <b>Безусловная гарантия 30 лет на подоконники Топалит</b>
+                        <p>Если в течении 30 лет что-то случится с вашими подоконниками не по вашей вине, то мы их без вопросов поменяем.</p>
+                    </div>
+
+                    <ul class="special-list advantages">
+                        <li>
+                            <b>Изготовлен из лучшего австрийского дерева, прессованного под высоким давлением в специальной форме, подоконники Topalit наделены уникальными свойствами. </b>
+                            Их основной материал гораздо плотнее, чем обычные ДСП, с исключительно высоким содержанием смолы. Изготовление полотна и его ламинация происходит прессованием одной деталью при высоком давлении и температуры с образованием стабильного и однородного материала.
+                        </li>
+                        <li>
+                            <b>XD поверхность от Topalit столешниц и подоконников </b>
+                            Сегодня стандарт для всех декоров.
+                        </li>
+                        <li>
+                            <b>Обладают высоким сопротивлением к строительной влаге </b>
+                            Устойчивы к деформациям благодаря спрессованному материалу основы с высоким содержанием смол.
+                        </li>
+                        <li>
+                            <b>Устойчивы к разломам, ударопрочные </b>
+                            Прочны при грубой обработке.
+                        </li>
+                        <li>
+                            <b>Сопротивление к ультрафиолету </b>
+                            Сопротивление к ультрафиолетовым лучам.
+                        </li>
+                        <li>
+                            <b>Тлеющая сигарета </b>
+                            не наносит вреда столешницам Topalit.
+                        </li>
+                        <li>
+                            <b>Термостойкость </b>
+                            Краткосрочно до 180°C<br>
+Долгосрочно до 90 °C.
+                        </li>
+                        <li>
+                            <b>Легко использовать </b>
+                           Легко содержать в чистоте для идеальной гигиены.
+                        </li>
+                        <li>
+                            <b>Легок в использовании </b>
+                            благодаря бесшовному покрытию.
+                        </li>
+                        <li>
+                            <b>Безопасность гарантирована Кодексом пищевых продуктов и кормов</b>
+                        </li>
+                        <li>
+                            <b>Все продукты Topalit</b>
+                            это натуральный продукт, пригодный для повторной переработки.
+                        </li>
+                        <li>
+                            <b>Е1 сертификат</b>
+                            Topalit соответствуют высочайшим стандартам на токсичность эмиссии вредных веществ.
+                        </li>
+                        <li>
+                            <b>Сертифицирован по стандарту PEFC</b>
+                            Древесина для изготовления проходит сертификацию.
+                        </li>
+                        <li>
+                            <b>Сделано в Австрии</b>
+                            Вся продукция Topalit производится на фабрике в Ампфлванге.
+                        </li>
+                        <li>
+                            <b>Ассоциация технического контроля Качество,</b>
+                            сертифицированное Союзом технического надзора, и проверенное в соответствии со строгими стандартами безопасности.
+                        </li>                                                
+                    </ul>
+
+                    <div class="contacts special mobile-on">
+                        <div class="title">
+                            Нажмите, что бы позвонить:
+                        </div>
+                        <div class="mobile-operator item-1">
+                            <a href="tel:093-799-0-899">093-799-0-899</a>
+                        </div>
+                        <div class="mobile-operator item-2">
+                            <a href="tel:067-325-60-60">067-325-60-60</a>
+                        </div>
+                        <div class="mobile-operator item-3">
+                            <a href="tel:066-6-8888-77">066-6-8888-77</a>
+                        </div>
+                        <div class="time">(c 9-00 до 19-00)</div>
+                        Наш адрес: г.Киев
+                        <br>Светлицкого, 35
+                    </div>
+
+                    <div class="order-product-mob"></div>
+
+                    <!--comments-->
+                    <div class="comments">
+
+                        <div class="comment-box">
+                            <h4>Что говорят профессионалы:</h4>
+                            <div class="row clearfix">
+                                <div class="photo left">
+                                    <img src="img/o1.jpg" alt="">
+                                </div>
+                                <div class="status">
+                                    <h4>Монтажник окон Андрей Снегирев. Опыт работы 10 лет. (http://vk.com/id124738314)</h4>
+                                </div>
+                                <p>Я работаю монтажником окон более 10 лет. Мне приходится монтировать вместе с окнами и подоконники разных производителей. Когда я работаю с подоконниками Данке, мне никогда не бывает стыдно за результат своей работы. Заказчик всегда получает больше, чем рассчитывал. С Данке не бывает проблем с монтажем. Не бывает перемонтажа! Мне приходится часто заменять у заказчика разные подоконники на Данке, но еще ни разу не менял подоконники Данке на какие-нибудь другие. Это действительно подоконник премиум класса. Превосходный внешний вид, который не испортится со временем. Разнообразие палитры позволяет его удачно "вписать" в любой интерьер. Всё очень-очень на уровне. Настоятельно рекомендую!</p>
+                            </div>
+                        </div>
+
+                        <div class="comment-box">
+                            <h4>Что говорят клиенты:</h4>
+                            <div class="row clearfix">
+                                <div class="photo left">
+                                    <img src="img/o2.jpg" alt="">
+                                </div>
+                                <div class="status">
+                                    <h4>Юлия Марченко. С Данке 4 года! (http://vk.com/id9050571)</h4>
+                                </div>
+                                <p>У меня дома стоит на балконе Данке золотой дуб глянец, причем над балконной тумбой - широкий, 60 см. Во-первых, думала, что со временем поверхность пойдет волнами, будут выступать внутренние перегородки. Во-вторых, не знала, как этот глянец поведет себя со временем. Просто этот подоконник лучше всего подходил к цвету балкона. По итогам службы за 4 года: все как новенькое. Вазоны стоят каждое лето, засохшие потеки от воды отмываются легко. Инструменты мужа лежали - царапин нет. Кастрюльки ставила остывать - все нормально. Вообще, подоконник вытереть - и смотрится как новый, и глянец выглядит очень приятно. Уверена, что прослужит очень долго.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--end comments-->
+
+                </div>
+                <!--end left side-->
+
+                <!--right side-->
+                <div class="right-side right mobile-none">
+
+                    <h3>Почему разумно покупать подоконники Топалит у нас?</h3>
+                    <ul class="special-list about">
+                        <li>
+                            У нас <b>бесплатная доставка</b> по Киеву. Обычно цена доставки существенно увеличивает стоимость, а тут - прямая экономия 350 грн.!
+                        </li>
+                        <li>
+                            <!--И оплата у нас - <b>после</b> доставки. Схема простая: мы привезли - вы оплатили!-->
+                        </li>
+                        <li>
+                            Наши партнеры-монтажники устанавливают подоконники более 10 лет. Они монтируют и эркерные или криволинейные подоконники. Также могут выполнить разнообразные дополнительные работы: от врезания радиаторной решетки, до фигурно вырезанных подоконников-столешниц.
+                        </li>
+                        <li>
+                            При необходимости наш партнер-монтажник приедет к вам на предварительный замер с мини-образцами всех декоров.
+                        </li>
+						<li>
+                            Общую стоимость (подоконник + монтаж) можно просчитать заранее, по телефону или по почте. Сюрпризов у нас не бывает.
+                        </li>
+                    </ul>
+
+                    <h4>Мы работаем с официальным поставщиком подоконников и столешниц Топалит в Украину, а это значит, что:</h4>
+
+                    <ul class="special-list about">
+                        <li>
+                            Безусловная <b>30-летняя гарантия</b> осуществляется максимально оперативно - для этого есть все возможности.
+                        </li>
+                        <li>
+                            У нас всегда в наличии подоконники всех заявленных цветов.
+                        </li>
+                        <li>
+                            Цена на подоконники разных цветов в классической и дизайнерской группе декоров всегда одинакова: "от производителя" и не зависит от популярности того или иного цвета. Плюс <b>скидки</b> и <b>бонусы</b>!
+                        </li>
+                        <li>
+                            Мы <i>бесплатно</i> делаем индивидуальную прирезку по длине. Это значит, что мы дадим вам сразу тот размер, который вам нужен: хоть 95 см, хоть 2.45 м, хоть 5.6 м одной полосой. Вам не надо покупать длинный подоконник, а потом прирезать его на месте. Мы это заранее сделаем бесплатно. Вам останется его только установить.
+                        </li>
+                        <li>
+                            Также <i>бесплатно</i> можем прирезать подоконник по глубине.
+                        </li>
+                        <li>
+                            Предоставляем дополнительные различные услуги по прирезке. Угловые, радиальные или срезы по лекалу.
+                        </li>
+                        <li>
+                            Если указанные размеры вам малы, то можем увеличить подоконник по глубине до 1 м или нарастить капинос.
+                        </li>
+                        <li>
+                            Мы даём клиентам <i>бесплатную экспертную консультацию</i>. Опыт работы с подоконниками более 15 лет и знаем о них всё. <b>Звоните, консультируйтесь</b>!
+                        </li>
+                        <li>
+                            Доставка заказа к вам домой в течении <b>2-3 суток</b> после звонка.
+                        </li>
+                        <li>
+                            <!--Для тех кто не решился на премиум вариант есть <b>эконом предложения - подоконник Страндарт и Комфорт</b> того же производителя - в 1.5-2,5 раза дешевле! <b>Звоните, уточняйте!</b>-->
+                        </li>
+                        <li>
+                            А если вы дилер или прораб - то для вас есть спецпредложение.
+                        </li>
+                    </ul>
+
+                    <!--counter-->
+                    <div class="counter">
+                        <h2>Акция: ...</h2>
+
+                        <h2>Старый курс!</h2>
+                        <div class="course-info">
+                            курс ПриватБанка: 28,409 грн./у.е.
+                        </div>
+                        <div class="our-course">
+                            Наш акционный курс: 27,50
+                        </div>
+                        <p><b>+ Каждый клиент получит скидку!</b></p>
+                        <p><b>Цена за метр подоконника от 68,75 грн.!</b></p>
+                        До конца акции осталось:
+                        <div id="countdown22" class="counterprop">АКЦИЯ</div>
+
+                        <p>Не упустите возможность сэкономить.</p>
+                        <p>Чем больше заказ тем больше скидка!</p>
+                        <p>Заказав сейчас по сниженной цене, вы получаете:</p>
+                        <ul class="special-list">
+                            <li>Бесплатную меламиновую ламинацию торца (Вы же не забыли про края подоконника? торцовки нужны почти к каждому подоконнику).</li>
+                            <li>Скидку 10% на абс-ламинацию торца.</li>
+                            <li>Скидку 10% на соединители при заказе более одного.</li>
+                            <li>Скидку в ~30% на монтаж подоконника. Вы экономите еще от 100 грн. на метре!</li>
+                            <!--<li>Если вам нужны окна (обычно подоконники покупают при замене окон), то вы получаете скидку в 20%. Здесь вы экономите от 100 до 950 грн.</li>
+                            <li>Если к окнам вам нужны проветриватели (клапаны приточной вентиляции), то вы получаете скидку в 10% на проветриватели <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/selevye" target="_blank"><u>Titon</u></a> и <a href="http://www.4okna.com/produkcia/avtomaticeskie-provetrivateli/avtomaticeskie" target="_blank"><u>Ventair</u></a>. Вы экономите от 10 до 50 грн.</li>
+                            <li>Предоставляем скидку 25% на установку оконных откосов любой сложности. Экономия составит от 50 грн. на одном окне.</li>-->
+                        </ul>
+                    </div>
+                    <!--end counter-->
+
+                    <div class="info-text">
+                        Закажите с помощью формы ниже, чтобы сэкономить около 100 грн! (Бывает и намного больше, но в среднем - так.)
+                    </div>
+
+                    <!--order product-->
+                    <div class="order-product-desc">
+                        <div class="order-product">
+
+                            <!--select color-->
+                            <div class="select-color">
+                                <div class="title">Помимо белого на складе доступны цвета:</div>
+                                (Кликните на нужный цвет чтобы выбрать его.
+                                <br>После клика выбранный цвет попадет в форму)
+                                <div class="color-box">
+                                    <b><div id="za">Белоснежный матовый</div></b>
+                                    <div class="colors-view">
+                                        <div>
+                                            <img src="img/colors/006.jpg" alt="Венге">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/008.jpg" alt="Светлый мрамор">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/009.jpg" alt="Тик">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/021.jpg" alt="Металик">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/044.jpg" alt="Светлый дуб">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/070.jpg" alt="Белый мрамор">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/074.jpg" alt="Антрацит">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/080.jpg" alt="Травертин">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/121.jpg" alt="Гризли">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/152.jpg" alt="Конкрит/бетон">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/202.jpg" alt="Орех">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/214.jpg" alt="Тимбер">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/217.jpg" alt="Урбан спейс">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/218.jpg" alt="Винтаж">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/220.jpg" alt="Белое дерево">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/222.jpg" alt="Атакама черри">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/224.jpg" alt="Выбеленый дуб">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/226.jpg" alt="Вашингтон пайн">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/227.jpg" alt="Мессина оак">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/231.jpg" alt="Темный камень">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/232.jpg" alt="Белый тимбер">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/245.jpg" alt="Светло-серый">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/247.jpg" alt="Золотой дуб">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/252.jpg" alt="Темно-серый">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/406gl.jpg" alt="Белоснежный полуглянцевый">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/406m.jpg" alt="Белоснежный матовый">
+                                        </div>
+                                        <div>
+                                            <img src="img/colors/407.jpg" alt="Черный">
+                                        </div>
+                                    </div>
+                                    <div class="colors-nav-wrap">
+                                        <div class="title" style="padding: 10px 0 5px 0;">Mono classic цвета</div>
+                                        <div class="colors-nav">
+                                            <div>
+                                                <img src="img/colors/406m_full.jpg" alt="Белоснежный матовый" class="active">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/406gl_full.jpg" alt="Белоснежный полуглянцевый">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/070_full.jpg" alt="Белый мрамор">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/008_full.jpg" alt="Светлый мрамор">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/080_full.jpg" alt="Травертин">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/021_full.jpg" alt="Металик">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/044_full.jpg" alt="Светлый дуб">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/006_full.jpg" alt="Венге">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/074_full.jpg" alt="Антрацит">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/245_full.jpg" alt="Светло-серый">
+                                            </div>
+                                        </div>
+                                        <div class="title" style="padding: 10px 0 5px 0;">Mono design цвета</div>
+                                        <div class="colors-nav">
+                                            <div>
+                                                <img src="img/colors/220_full.jpg" alt="Белое дерево">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/407_full.jpg" alt="Черный">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/222_full.jpg" alt="Атакама черри">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/217_full.jpg" alt="Урбан спейс">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/152_full.jpg" alt="Конкрит/бетон">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/009_full.jpg" alt="Тик">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/227_full.jpg" alt="Мессина оак">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/226_full.jpg" alt="Вашингтон пайн">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/121_full.jpg" alt="Гризли">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/218_full.jpg" alt="Винтаж">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/214_full.jpg" alt="Тимбер">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/224_full.jpg" alt="Выбеленый дуб">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/202_full.jpg" alt="Орех">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/231_full.jpg" alt="Темный камень">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/232_full.jpg" alt="Белый тимбер">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/247_full.jpg" alt="Золотой дуб">
+                                            </div>
+                                            <div>
+                                                <img src="img/colors/252_full.jpg" alt="Темно-серый">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end select color-->
+
+                            <!--order form-->
+                            <form id="zform" method="post" onKeyPress="if(event.keyCode == 13) return false;" onSubmit="zvalid()">
+                                <table border="0" align="right" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td align="right" class="mobile-text"><b>Выбранный цвет : &nbsp;</b></td>
+                                            <td align="left">
+                                                <select id="color" name="mycolor" class="colr" form="zform" style="background: #BE1623!important; border: 2px solid #7D0F18;">
+                                                    <option value="Венге">Венге</option>
+                                                    <option value="Светлый мрамор">Светлый мрамор</option>
+                                                    <option value="Тик">Тик</option>
+                                                    <option value="Металик">Металик</option>
+                                                    <option value="Светлый дуб">Светлый дуб</option>
+                                                    <option value="Белый мрамор">Белый мрамор</option>
+                                                    <option value="Антрацит">Антрацит</option>
+                                                    <option value="Травертин">Травертин</option>
+                                                    <option value="Гризли">Гризли</option>
+                                                    <option value="Конкрит/бетон">Конкрит/бетон</option>
+                                                    <option value="Орех">Орех</option>
+                                                    <option value="Тимбер">Тимбер</option>
+                                                    <option value="Урбан спейс">Урбан спейс</option>
+                                                    <option value="Винтаж">Винтаж</option>
+                                                    <option value="Белое дерево">Белое дерево</option>
+                                                    <option value="Атакама черри">Атакама черри</option>
+                                                    <option value="Выбеленый дуб">Выбеленый дуб</option>
+                                                    <option value="Вашингтон пайн">Вашингтон пайн</option>
+                                                    <option value="Мессина оак">Мессина оак</option>
+                                                    <option value="Темный камень">Темный камень</option>
+                                                    <option value="Белый тимбер">Белый тимбер</option>
+                                                    <option value="Светло-серый">Светло-серый</option>
+                                                    <option value="Золотой дуб">Золотой дуб</option>
+                                                    <option value="Темно-серый">Темно-серый</option>
+                                                    <option value="Белоснежный полуглянцевый">Белоснежный полуглянцевый</option>
+                                                    <option selected="selected" value="Белоснежный матовый">Белоснежный матовый</option>
+                                                    <option value="Черный">Черный</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="right">
+                                                <fieldset>
+                                                    <center><h3>Расчет стоимости заказа:</h3></center>
+                                                    <span class="text-align mobile-text">Выберите глубину:</span>
+                                                    <select id="price" class="right" name="menu2" size="1" onChange="printValue('slider1','rangeValue1')" form="zform" onclick="yaCounter22695421.reachGoal('ORDERglub'); return true;" style="background: #BE1623!important; border: 2px solid #7D0F18;">
+                                                        <option value="24.47}">(CLASSIC) Глубина 150мм</option>
+                                                        <option value="30.56">(CLASSIC) Глубина 200мм</option>
+                                                        <option value="34.34">(CLASSIC) Глубина 250мм</option>
+                                                        <option selected="selected" value="38.33">(CLASSIC) Глубина 300мм</option>
+                                                        <option value="45.89">(CLASSIC) Глубина 350мм</option>
+                                                        <option value="52.40">(CLASSIC) Глубина 400мм</option>
+                                                        <option value="66.33">(CLASSIC) Глубина 450мм</option>
+                                                        <option value="68.15">(CLASSIC) Глубина 500мм</option>
+
+                                                        <option value="28.14}">(Design) Глубина 150мм</option>
+                                                        <option value="34.02">(Design) Глубина 200мм</option>
+                                                        <option value="38.54">(Design) Глубина 250мм</option>
+                                                        <option value="43.26">(Design) Глубина 300мм</option>
+                                                        <option value="52.82">(Design) Глубина 350мм</option>
+                                                        <option value="63.14">(Design) Глубина 400мм</option>
+                                                        <option value="76.23">(Design) Глубина 450мм</option>
+                                                        <option value="78.35">(Design) Глубина 500мм</option>
+                                                    </select>
+                                                </fieldset>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <fieldset>
+                                                    <table border="0" align="right">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td colspan="2">Укажите ширину:</td><td><input id="rangeValue1" type="text" name="shirina1" size="3" onChange="minicorrections('slider1','rangeValue1')" class="small" onClick="yaCounter22695421.reachGoal('ORDERshir'); return true;"><span class="text-align">mm</span></td><td>&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3"><input id="slider1" type="range" min="100" max="6000" step="5" value="800" onChange="printValue('slider1','rangeValue1')" name="shirina" form="zform" slass="slider" onClick="yaCounter22695421.reachGoal('ORDERshir2'); return true;"></td>
+                                                            </tr>
+                                                            <tr><td colspan="4"><hr></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" align="right">Стоимость подоконника&nbsp;</td><td><input id="result" name="cena" type="text" size="3" disabled="" class="small" form="zform" onClick="yaCounter22695421.reachGoal('ORDERcena'); return true;"><span class="text-align">&nbsp;у.е.</span></td>
+                                                            </tr>
+                                                            <!--
+																 <tr>
+																  <td colspan="2" align="right">Примерная стоимость монтажа от:&nbsp;</td><td><input id="result1" name="cena2" type="text" size="3" class="small" disabled form="zform" onclick="yaCounter22695421.reachGoal('ORDERmont'); return true;">&nbsp;у.е.</td>
+																 </tr>
+															-->
+                                                            <!-- <tr>
+																  <td colspan="2" align="right">Экономвариант :&nbsp;</td><td><input id="econom" name="eco" type="checkbox"  checked="checked" class="small" disabled form="zform"></td>
+																 </tr>
+															-->
+                                                            <tr>
+                                                                <td colspan="2" align="right">Доставка</td><td><b>БЕСПЛАТНО!</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3" align="right">
+                                                                    <font size="-3">* Оплата в национальной валюте Украины&nbsp;<br>** Курс меняется каждый день -- ЗВОНИТЕ, уточняйте!</font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </fieldset>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="right" class="mobile-special-text"><b><i>Для оформления заказа заполните форму.<br>Мы свяжемся с вами в течении 10-15 минут.</i></b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+
+                                                <!--fieldset-->
+                                                <table border="0" align="right">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>&nbsp;</td>
+                                                            <td><input type="text" name="clientmail" id="clientmail1" onFocus="if (this.value == 'Здесь e-mail') {this.value = '';}" onBlur="if (this.value == '') {this.value = 'Здесь e-mail';}" value="Здесь e-mail" form="zform" onClick="yaCounter22695421.reachGoal('ORDER'); return true;"></td>
+                                                        </tr>
+                                                        <!--tr>
+														 <td colspan="2"><hr width="35%" align="left"></td>
+														</tr-->
+                                                        <tr>
+                                                            <td align="right" style="width: 100%;"><font size="-1"><b>ИЛИ</b>&nbsp;</font></td>
+                                                            <td><input type="text" name="clienttel" id="clienttel1" onFocus="if (this.value == 'Здесь номер телефона с кодом') {this.value = '';}" onBlur="if (this.value == '') {this.value = 'Здесь номер телефона с кодом';}" onClick="yaCounter22695421.reachGoal('ORDER'); return true;" value="Здесь номер телефона с кодом" form="zform"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2"><input type="submit" class="submit" value="Заказать" form="zform"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" align="right"><hr>
+                                                                <!--hr width="35%" align="right"-->
+                                                                <div class="contacts">
+                                                                    или позвоните нам прямо сейчас:<br>
+                                                                    <div class="mobile-operator item-1">
+                                                                        <a href="tel:093-799-0-899">093-799-0-899</a>
+                                                                    </div>
+                                                                    <div class="mobile-operator item-2">
+                                                                        <a href="tel:067-325-60-60">067-325-60-60</a>
+                                                                    </div>
+                                                                    <div class="mobile-operator item-3">
+                                                                        <a href="tel:066-6-8888-77">066-6-8888-77</a>
+                                                                    </div>
+                                                                    <div class="time">(c 9-00 до 19-00)</div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!--/fieldset-->
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                            <!--end order form-->
+
+                        </div>
+                    </div>
+                    <!--end order product-->
+
+                </div>
+                <!--end right side-->
+
+            </div>
+        </div>
+        <!--end content-->
+
+    </div>
+    <!--end wrapper-->
+
+    <!--footer-->
+    <div class="footer">
+        <div class="copyrights mobile-none">
+            <div class="inner-block">
+                Dedal Instrument &copy; 2013-2020
+            </div>
+        </div>
+        
+    <!--    
+        <div class="footer-bottom-line">
+            <div class="inner-block">
+
+                <div class="text">
+                    Не забудьте рассказать о нас друзьям, которые тоже хотят быстро и недорого хороший подоконник премиум класса. Они будут вам благодарны:
+                </div>
+
+                <div class="socials">
+                    <script type="text/javascript">(function() {
+                        if (window.pluso)if (typeof window.pluso.start == "function") return;
+                        if (window.ifpluso==undefined) { window.ifpluso = 1;
+                            var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                            s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                            s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                            var h=d[g]('body')[0];
+                            h.appendChild(s);
+                        }})();</script>
+                    <div class="pluso" data-background="transparent" data-options="big,square,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print,linkedin,bookmark,googlebookmark,yazakladki" data-url="http://danke.4okna.com" data-title="Подоконники Данке в Киеве" data-description="Подоконники с Доставкой по Киеву. Бесплатная доставка."></div>
+                </div>
+            </div>
+        </div>
+       --> 
+        
+    </div>
+    <!--end footer-->
+
+    <a name="bot"></a>
+
+    <script src="js/slick.min.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
+
+

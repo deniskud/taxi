@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1044" height="178" viewBox="0 0 1044 178">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4782da;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        font-size: 180px;
+        font-weight: 700;
+      }
+
+      .cls-2, .cls-4 {
+        fill: #fff;
+        font-family: Nunito;
+      }
+
+      .cls-3 {
+        fill: #388e3c;
+      }
+
+      .cls-4 {
+        font-size: 48px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M15,0H65A15,15,0,0,1,80,15V65A15,15,0,0,1,65,80H15A15,15,0,0,1,0,65V15A15,15,0,0,1,15,0ZM65,98h50a15,15,0,0,1,15,15v50a15,15,0,0,1-15,15H65a15,15,0,0,1-15-15V113A15,15,0,0,1,65,98ZM116,0h50a15,15,0,0,1,15,15V65a15,15,0,0,1-15,15H116a15,15,0,0,1-15-15V15A15,15,0,0,1,116,0Zm50,98h50a15,15,0,0,1,15,15v50a15,15,0,0,1-15,15H166a15,15,0,0,1-15-15V113A15,15,0,0,1,166,98ZM217,0h50a15,15,0,0,1,15,15V65a15,15,0,0,1-15,15H217a15,15,0,0,1-15-15V15A15,15,0,0,1,217,0Z"/>
+  <text class="cls-2" x="381.492" y="155.109" style="letter-spacing:40px">Taxi</text>
+  <rect class="cls-3" x="875" width="169" height="87" rx="15" ry="15"/>
+  <text class="cls-4" x="904.563" y="61.27" style="letter-spacing:4px">pro</text>
+</svg>

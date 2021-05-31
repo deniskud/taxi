@@ -1,0 +1,30 @@
+@media screen and (max-width: 1023px) {
+
+    .inner-block {
+        width: 740px;
+    }
+
+    .left-side,
+    .right-side {
+        width: 360px;
+    }
+
+    #price {
+        width: 160px !important;
+    }
+
+    .color-box img {
+        width: 100%;
+    }
+
+    .logo .info .small-text {
+        font-size: 18px;
+        text-align: left;
+    }
+
+    .our-course {
+        font-size: 23px;
+        line-height: 26px;
+    }
+
+}
